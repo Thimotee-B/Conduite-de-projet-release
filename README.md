@@ -20,3 +20,4 @@
 | US#6 | En tant qu'utilisateur, je souhaite pouvoir ajouter d'autres utilisateurs à un projet que j'ai crée afin qu'ils puissent gérer le projet | Feature | Haute | 3 | Sprint 1 | TODO |
 | US#7 | En tant qu'utilisateur, je souhaite pouvoir retirer un/des utilisateurs que j'ai ajouté au projet afin qu'ils ne puissent plus le gerer. | Feature |Haute | 3 | Sprint 1 | TODO |
 | US#8 | En tant qu'utilisateur, je souhaite pouvoir créer, dans un projet où je participe, une User Story (id, description, type, importance, plannification, état). | Feature | Haute | 3 | Sprint 2 | TODO |
+| US#9 | En tant qu'utilisateur, je souhaite pouvoir modifier, dans un projet où je participe, une User Story (description, type, importance, plannification, état **l'ID doit rester inchangé**) afin de la mettre à jour | Feature | Haute | 3 | Sprint 2 | TODO |
