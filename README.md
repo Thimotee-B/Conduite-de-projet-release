@@ -18,4 +18,5 @@
 | US#4 | En tant qu'utilisateur, je souhaite pouvoir accéder à chacun des projets dont je suis membre afin de consulter le backlog (sous forme d'une liste des US). | Feature | Moyenne-haute | 3 | Sprint 1 | TODO |
 | US#5 | En tant qu'utilisateur, je souhaite pouvoir cliquer sur le bouteau "Modifier le projet" afin de pouvoir modifier les informations (nom, description, durée des sprints) qui ont été entrées lors de la création du projet. | Feature | Haute | 5 | Sprint 1 | TODO |
 | US#6 | En tant qu'utilisateur, je souhaite pouvoir ajouter d'autres utilisateurs à un projet que j'ai crée afin qu'ils puissent gérer le projet | Feature | Haute | 3 | Sprint 1 | TODO |
-| US#7 | En tant qu'utilisateur, je souhaite pouvoir retirer un/des utilisateurs que j'ai ajouté au projet afin qu'ils ne puissent plus le gerer | Feature |Haute | 3 | Sprint 1 | TODO |
+| US#7 | En tant qu'utilisateur, je souhaite pouvoir retirer un/des utilisateurs que j'ai ajouté au projet afin qu'ils ne puissent plus le gerer. | Feature |Haute | 3 | Sprint 1 | TODO |
+| US#8 | En tant qu'utilisateur, je souhaite pouvoir créer, dans un projet où je participe, une User Story (id, description, type, importance, plannification, état). | Feature | Haute | 3 | Sprint 2 | TODO |
