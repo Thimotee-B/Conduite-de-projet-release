@@ -1,12 +1,10 @@
-# Conduite de projet 
+# Conduite de projet
 
-### Planning sprints
-
+## Planning sprints
 
 | Sprint 0  | Sprint 1 | Sprint 2 | Sprint 3 |
 |:---------:|:--------:|:-------:|:-------:|
 | Maintenant jusqu’au vendredi 23 octobre | Lundi 2 novembre au vendredi 13 Novembre | Lundi 16 Novembre au vendredi 27 Novembre | Lundi 30 Novembre au vendredi 11 Décembre |
-
 
 ## Backlog
 
@@ -23,4 +21,5 @@
 | US#9 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, modifier une **User Story** (description, type, importance, plannification, état **l'ID doit rester inchangé**) afin de la mettre à jour. | Feature | Haute | 3 | Sprint 2 | TODO |
 | US#10 | En tant qu'utilisateur, je souhaite pouvoir suprimmer, dans un projet où je participe, une User story afin qu'elle n'apparaîsse plus dans le backlog. | Feature | Moyenne-haute | 2 | Sprint 2 | TODO |
 | US#11 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, créer un nouveau **Sprint** (Date de début, description) afin de pouvoir y organiser les **User Story** qui vont être fait dans ce sprint par la suite | Feature | Haute | 5 | Sprint 2 | TODO |
-| US#12 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, ajouter ou supprimer une **User Story** (déjà existante) à un **Sprint** (déjà existant), afin de pouvoir détailler les tâches qui y sont liées par la suite. | Feature | Haute | 3 | Sprint 2 | TODO |
+| US#12 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, ajouter ou supprimer une **User Story** (déjà existante) à un **Sprint** (déjà existant), afin de pouvoir avoir le details des **Tasks** qui y sont liées par la suite. | Feature | Haute | 3 | Sprint 2 | TODO |
+| US#13 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, créer une **Tasks** (ID, description, durée, dépendances, US associées, état : TODO, ONGOING, REVIEWING, DONE), afin de l'ajouter au **Sprint**. | Feature | Haute | 3 | Sprint 2 | TODO |
