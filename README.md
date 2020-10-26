@@ -25,4 +25,6 @@
 | US#13 | En tant qu'utilisateur, je souhaite pouvoir, dans un projet où je participe, créer une **Tasks** (ID, description, durée, dépendances, US associées, état : TODO, ONGOING, REVIEWING, DONE), afin de l'ajouter au **Sprint**. | Feature | Haute | 3 | Sprint 2 | TODO |
 | US#14 | En tant que product Owner, je souhaite pouvoir gérer l'importance des issues afin de spécifier l'importance aux développeurs | Feature | Moyenne-Basse | 3 | Sprint 2 | TODO |
 | US#15 | En tant que chef de projet, je souhaite pouvoir attribuer des rôles au membre de mon équipe afin de pouvoir organiser le projet | Feature | Basse | 3 | Sprint 3 | TODO |
-| US#16 | En tant qu'utilisateur, je souhaite pouvoir voir une barre de progression de mes issues et sprints afin d'avoir un aperçu rapide de la progression du projet | Feature | Moyenne | 3 | Sprint 2 | TODO |
+| US#16 | En tant qu'utilisateur, je souhaite pouvoir voir une barre de progression de mes issues et sprints afin d'avoir un aperçu rapide de la progression du projet | Feature | Moyenne-basse | 3 | Sprint 2 | TODO |
+| US#17 | En tant que chef de projet, je souhaite pouvoir créer mon planning afin d'organiser mes tâches et de les répatir sur mes développeurs | Feature | Moyenne-haute | 3 | Sprint 2 | TODO |
+| US#18 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt qui se met à jour automatiquement selon le planning afin d'avoir un aperçu de la progression du projet | Feature | Moyenne-basse | 5 | Sprint 3 | TODO | 
