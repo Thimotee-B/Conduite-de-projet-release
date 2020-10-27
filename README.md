@@ -29,4 +29,5 @@
 | US#17 | En tant que chef de projet, je souhaite pouvoir créer mon planning afin d'organiser mes tâches et de les répatir sur mes développeurs | Feature | Moyenne-haute | 3 | Sprint 2 | TODO |
 | US#18 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt qui se met à jour automatiquement selon le planning afin d'avoir un aperçu de la progression du projet | Feature | Moyenne-basse | 5 | Sprint 3 | TODO | 
 | US#19 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'annuler ma dernière action. | Feature | Basse | 5 | Sprint 3 | TODO |
- 
+| US#20 | En tant qu'utilisateur, je souhaite que les tâches soient archivées lorsqu'elles sont en 'DONE' afin d'avoir un historique des tâches terminées. | Feature | Moyenne-Basse | 3 | Sprint 2 | TODO |
+  
