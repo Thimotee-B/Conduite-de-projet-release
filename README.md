@@ -30,4 +30,6 @@
 | US#18 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt qui se met à jour automatiquement selon le planning afin d'avoir un aperçu de la progression du projet | Feature | Moyenne-basse | 5 | Sprint 3 | TODO | 
 | US#19 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'annuler ma dernière action. | Feature | Basse | 5 | Sprint 3 | TODO |
 | US#20 | En tant qu'utilisateur, je souhaite que les tâches soient archivées lorsqu'elles sont en 'DONE' afin d'avoir un historique des tâches terminées. | Feature | Moyenne-Basse | 3 | Sprint 2 | TODO |
-| US#21 | En tant qu'utilisateur je souhaite voir l'état global des tests (non implémenté, passé, fail) afin d'avoir un aperçu du code testé. | Feature | Moyenne-Haute | 5 | Sprint 3 | TODO |  
+| US#21 | En tant qu'utilisateur, je souhaite voir l'état global des tests (non implémenté, passé, fail) afin d'avoir un aperçu du code testé. | Feature | Moyenne-Haute | 5 | Sprint 3 | TODO |  
+| US#22 | En tant qu'utilisateur, je souhaite avoir accès aux releases ainsi que pouvoir les télécharger afin d'en voir le descriptif et de les tester. | Feature | Haute | 5 | Sprint 1 | TODO |
+ 
