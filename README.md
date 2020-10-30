@@ -21,17 +21,17 @@
 | US#14 | En tant que Product Owner, je souhaite pouvoir gérer l'importance des issues | Feature | Moyenne-Haute | 1 | Sprint 1 | TODO |
 | US#20 | En tant qu'utilisateur, je souhaite pouvoir créer/supprimer une Task contenant une description, une defition of done, une difficulté | Feature | Haute | 2 | Sprint 1 | TODO |
 | US#24 | En tant que chef de projet, je souhaite pouvoir générer un fichier au format markdown afin d'avoir un récapitulatif de l'ensemble des issues du projet | Feature | Moyenne-Basse | 2 | Sprint 1 | TODO |
-| US#29 | En tant qu'utilisateur, je souhaite pouvoir modifier une Task d'un projet | Feature | Moyenne-Haute | 3 | Sprint 1 | TODO |
-| US#30 | En tant que développeur, je souhaite pouvoir changer d'état ma tâche afin d'avoir un suivi de son état dans le projet | Feature | Moyenne-Basse | 2 | Sprint 1 | TODO |
-| US#33 | En tant que développeur, je souhaite pouvoir m'assigner sur une tâche afin que les autres membres du projet sache quelle sont les tâches occupée ou non | Feature | Moyenne-Basse | 2 | Sprint 1 | TODO |
+| US#29 | En tant qu'utilisateur, je souhaite pouvoir modifier une Task d'un projet | Feature | Moyenne-Haute | 3 | Sprint 2 | TODO |
+| US#30 | En tant que développeur, je souhaite pouvoir changer d'état ma tâche afin d'avoir un suivi de son état dans le projet | Feature | Moyenne-Basse | 2 | Sprint 2 | TODO |
+| US#33 | En tant que développeur, je souhaite pouvoir m'assigner sur une tâche afin que les autres membres du projet sache quelle sont les tâches occupée ou non | Feature | Moyenne-Basse | 2 | Sprint 2 | TODO |
 | US#5 | En tant qu'utilisateur, je souhaite pouvoir cliquer sur le bouton "Modifier le projet" afin de pouvoir modifier les informations (nom, description, durée des sprints) qui ont été entrées lors de la création du projet. | Feature | Haute | 5 | Sprint 2 | TODO |
 | US#6 | En tant qu'utilisateur, je souhaite pouvoir ajouter d'autres utilisateurs à un projet que j'ai crée afin qu'ils puissent gérer le projet | Feature | Haute | 3 | Sprint 2 | TODO |
 | US#7 | En tant qu'utilisateur, je souhaite pouvoir retirer un/des utilisateurs que j'ai ajouté au projet afin qu'ils ne puissent plus le gerer. | Feature |Haute | 3 | Sprint 2 | TODO |
 | US#21 | En tant qu'utilisateur, je souhaite pouvoir voir l'état global des tests | Feature | Moyenne-Basse | 3 | Sprint 2 | TODO |
 | US#16 | En tant qu'utilisateur, je souhaite pouvoir voir une barre de progression de mes issues et sprints | Feature | Basse | 3 | Sprint 2 | TODO |
 | US#26 | En tant que chef de projet, je souhaite pouvoir assigner un test à un membre du projet | Feature | Moyenne-Haute | 1 | Sprint 2 | TODO |
-| US#15 | En tant que chef de projet, je souhaite pouvoir attribuer des rôles | Feature | Moyenne-Basse | 1 | Sprint 3 | TODO |
-| US#17 | En tant que chef de projet, je souhaite pouvoir créer/supprimer mon planning | Feature | Moyenne-Haute | 3 | Sprint 3 | TODO |
+| US#15 | En tant que chef de projet, je souhaite pouvoir attribuer des rôles | Feature | Moyenne-Basse | 1 | Sprint 2 | TODO |
+| US#17 | En tant que chef de projet, je souhaite pouvoir créer/supprimer mon planning | Feature | Moyenne-Haute | 3 | Sprint 2 | TODO |
 | US#18 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt | Feature | Moyenne-Basse | 3 | Sprint 3 | TODO |
 | US#19 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'effacer la dernière action qui a été faite sur le projet | Feature | Moyenne-Haute | 13 | Sprint 3 | TODO |
 | US#22 | En tant qu'utilisateur, je souhaite avoir accès aux releases | Feature | 1 | 3 | Sprint 3 |TODO |
