@@ -31,7 +31,7 @@
 | US#19 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'effacer la dernière action qui a été faite sur le projet | Feature | Moyenne-Haute | 13 | Sprint 3 | TODO |
 | US#20 | En tant qu'utilisateur, je souhaite pouvoir créer/supprimer une Task contenant une description, une defition of done, une difficulté | Feature | Haute | 2 | Sprint 1 | TODO |
 | US#21 | En tant qu'utilisateur, je souhaite pouvoir voir l'état global des tests | Feature | Moyenne-Basse | 3 | Sprint 2 | TODO |
-| US#22 | En tant qu'utilisateur, je souhaite avoir accès aux releases | Feature | 1 | Sprint 3 |TODO |
+| US#22 | En tant qu'utilisateur, je souhaite avoir accès aux releases | Feature | 1 | 3 | Sprint 3 |TODO |
 | US#23 | En tant que chef de projet, je souhaite pouvoir générer un fichier au format **markdown** afin d'avoir un récapitulatif de chaque sprint | Feature | Moyenne-Basse | 3 | Sprint 3 | TODO |
 | US#24 | En tant que chef de projet, je souhaite pouvoir générer un fichier au format markdown afin d'avoir un récapitulatif de l'ensemble des issues du projet | Feature | Moyenne-Basse | 2 | Sprint 1 | TODO |
 | US#26 | En tant que chef de projet, je souhaite pouvoir assigner un test à un membre du projet | Feature | Moyenne-Haute | 1 | Sprint 2 | TODO |
