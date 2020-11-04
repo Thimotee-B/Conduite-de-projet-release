@@ -1,13 +1,14 @@
 # Code de conduite - Règles d'écriture
 
 
-- [Fichiers markdown](#fichiers-markdown)
-- [Backlog](#backlog)
-- [Sprints](#sprints)
-- [Tasks](#tasks)
-- [Code source](#code-source)
-- [Tests](#tests)
-- [Release](#release)
+- [Code de conduite - Règles d'écriture](#code-de-conduite---règles-décriture)
+  - [Fichiers markdown](#fichiers-markdown)
+  - [Backlog](#backlog)
+  - [Sprints](#sprints)
+  - [Tasks](#tasks)
+  - [Code source](#code-source)
+  - [Tests](#tests)
+  - [Release](#release)
 
 
 ## Fichiers markdown
