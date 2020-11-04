@@ -39,11 +39,11 @@ Vocabulaire:
 | #14 | En tant que développeur, je souhaite pouvoir modifier une **Task** (description , Definition of done, durée, dépendances) d'un projet afin de redéfinir le travail à effectuer. (Undo-able) | Moyenne-Haute | 3 | Sprint 2 |  
 | #15 | En tant que développeur, je souhaite pouvoir supprimer une **Task** d'un projet afin de l'enlever du travail à faire. (Undo-able) | Moyenne-Haute | 3 | Sprint 2 |  
 | #16 | En tant que développeur, je souhaite avoir accès à un kanban (avec comme colones : Todo, Doing, Reviewing/Testing, Done) afin de changer d'état ma tâche. | Moyenne-Basse | 8 | Sprint 2 |  
-| #17 | En tant que développeur, je souhaite pouvoir m'assigner sur une **Task** afin que les autres membres du projet puissent savoir que je travaille dessus pour pouvoir organiser et s'attribuer les **Tasks** restantes.  | Moyenne-Basse | 2 | Sprint 2 |  
-| #18 | En tant que chef de projet, je souhaite pouvoir ajouter d'autres utilisateurs à un **projet** que j'ai crée afin qu'ils puissent participer à celui-ci.  | Haute | 3 | Sprint 2 |  
-| #19 | En tant que chef de projet, je souhaite pouvoir retirer un/des utilisateurs participant au **projet** afin qu'ils ne puissent plus y contribuer.  | Haute | 3 | Sprint 2 |  
-| #20 | En tant que développeur, je souhaite pouvoir voir l'état global des **tests** à l'aide d'un élément graphique (barre de progression, pastille de couleur) afin d'avoir un aperçu rapide du code testé.  | Moyenne-Basse | 3 | Sprint 2 |  
-| #21 | En tant que chef de projet, je souhaite pouvoir attribuer des rôles aux membres de mon équipe afin de délimiter leurs actions au sein du projet.  | Moyenne-Basse | 2 | Sprint 2 |  
+| #17 | En tant que développeur, je souhaite pouvoir m'assigner sur une **Task** afin de connaître l'état du projet et de savoir ce que fait chaque développeur.  | Moyenne-Basse | 2 | Sprint 2 |  
+| #18 | En tant que Scrum Master, je souhaite pouvoir ajouter par adresse mail d'autres utilisateurs à un **projet** que j'ai créé afin qu'ils puissent participer à celui-ci.  | Haute | 3 | Sprint 2 |  
+| #19 | En tant que Scrum Master, je souhaite pouvoir retirer un/des utilisateurs participant au **projet** afin qu'ils ne puissent plus y contribuer.  | Haute | 3 | Sprint 2 |  
+| #20 | En tant que développeur, je souhaite pouvoir voir l'état global des **tests** unitaires et d'intégration à l'aide d'un élément graphique (barre de progression, pastille de couleur) afin d'avoir un aperçu rapide du code testé.  | Moyenne-Basse | 3 | Sprint 2 |  
+| #21 | En tant que Scrum Master, je souhaite pouvoir attribuer des rôles aux membres de mon équipe afin de délimiter leurs actions au sein du projet.  | Moyenne-Basse | 2 | Sprint 2 |  
 | #22 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'annuler la dernière action qui a été faite sur le projet . | Basse | 13 | Sprint 2 |  
 | #23 | En tant que chef de projet, je souhaite pouvoir créer un **planning** afin de planifier le projet  | Moyenne-Haute | 3 | Sprint 2 |  
 ||
