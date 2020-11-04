@@ -54,7 +54,7 @@ Ecrire les tâches dans un fichier `TaskX.md ` où `X` est le numéro du sprint 
 
 Chaque tâche doit se composer comme suit:
 
-- ID de la forme: `#numero`
+- ID de la forme: `S<numero_du_sprint>#numero`
 - Description de la tâche
 - Issues liées à la tâche
 - Dépendances (indiquer l'ID des tâches)
