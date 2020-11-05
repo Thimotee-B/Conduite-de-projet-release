@@ -11,7 +11,7 @@
 ---
 Vocabulaire:
 - __Product owner__ : porteur de projet et membre spécial
-- __Scrum master__ : administrateur du projet (tous les droits)
+- __Scrum Master__ : administrateur du projet (tous les droits)
 - __Développeur__ : membre du projet
 - __Utilisateur__ : les membres ci-dessus
 - __Visiteur__ : utilisateur non-authentifié
@@ -45,14 +45,13 @@ Vocabulaire:
 | #20 | En tant que développeur, je souhaite pouvoir voir l'état global des **tests** unitaires et d'intégration à l'aide d'un élément graphique (barre de progression, pastille de couleur) afin d'avoir un aperçu rapide du code testé.  | Moyenne-Basse | 3 | Sprint 2 |  
 | #21 | En tant que Scrum Master, je souhaite pouvoir attribuer des rôles aux membres de mon équipe afin de délimiter leurs actions au sein du projet.  | Moyenne-Basse | 2 | Sprint 2 |  
 | #22 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'annuler la dernière action qui a été faite sur le projet . | Basse | 13 | Sprint 2 |  
-| #23 | En tant que chef de projet, je souhaite pouvoir créer un **planning** afin de planifier le projet  | Moyenne-Haute | 3 | Sprint 2 |  
+| #23 | En tant que Scrum Master, je souhaite pouvoir créer un **planning** afin de planifier le projet  | Moyenne-Haute | 3 | Sprint 2 |  
 ||
-| #24 | En tant que chef de projet, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 | Sprint 3 |  
+| #24 | En tant que Scrum Master, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 | Sprint 3 |  
 | #25 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt généré à partir du **planning** afin de voir l'état global du projet et son avancement  | Moyenne-Basse | 3 | Sprint 3 |  
-| #26 | En tant que chef de projet, je souhaite pouvoir modifier mon **planning** afin d'organiser mon équipe et la planification des tâches. (Undo-able) | Moyenne-Haute | 5 | Sprint 3 |  
-| #27 | En tant qu'utilisateur, je souhaite pouvoir télécharger les **releases** faites jusqu'à ce jour et voir les fonctionnalités de chacune d'entres-elles afin d'avoir un historique des releases fournis au product owner  | Haute | 3 | Sprint 3 | 
-| #28 | En tant que chef de projet, je souhaite pouvoir générer un **fichier** au format markdown afin d'avoir un récapitulatif (avancement global, état des tâches, état des User storys, état des tests, état des sprints, nom de release si existante, planning, l'équipe) de l'ensemble du projet.  | Moyenne-Basse | 3 | Sprint 3 |  
-| #29 | En tant que chef de projet, je souhaite pouvoir publier une **release** afin de la rendre disponible pour les utilisateurs. | Basse | 3 | Sprint 3 |  
+| #26 | En tant que Scrum Master, je souhaite pouvoir modifier mon **planning** afin d'organiser mon équipe et la planification des tâches. (Undo-able) | Moyenne-Haute | 5 | Sprint 3 |  
+| #28 | En tant que Scrum Master, je souhaite pouvoir générer un **fichier** au format markdown afin d'avoir un récapitulatif (avancement global, état des tâches, état des User storys, état des tests, état des sprints, nom de release si existante, planning, l'équipe) de l'ensemble du projet.  | Moyenne-Basse | 3 | Sprint 3 |  
+| #29 | En tant que Scrum Master, je souhaite pouvoir publier une **release** afin de la rendre disponible pour les utilisateurs. | Basse | 3 | Sprint 3 |  
 | #30 | En tant qu'utilisateur, je souhaite, sur la **page d'accueil**, voir la progression de chaque **Sprint** et **User storys** à l'aide de moyens graphiques (barre de progression, camembert) afin d'avoir un aperçu rapide de ce qu'il est fait et de ce qu'il reste à faire.  | Basse | 3 | Sprint 3 |  
 | #31 | En tant que visiteur, je souhaite pouvoir **m'inscrire** en renseignant mes informations (identifiant (obligatoire) : 20 caractères max, mot de passe (obligatoire) : 50 caractères max, adresse email (obligatoire) : 255 caractères max, nom (obligatoire) : 50 caractères max et prénom (obligatoire) : 50 caractères max) afin de créer mon compte utilisateur.  | Basse | 5 | Sprint 3 |  
 | #32 | En tant que visiteur, je souhaite pouvoir me **connecter** avec les identifiants (nom d'utilisateur, mot de passe) démarrer une session et d'accéder à la liste des projets ou je suis membre.  | Basse | 5 | Sprint 3 |  
