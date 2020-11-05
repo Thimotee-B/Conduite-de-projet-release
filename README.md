@@ -59,3 +59,40 @@ Vocabulaire:
 | #33 | En tant qu'utilisateur, je souhaite pouvoir me **déconnecter** afin de quitter une session.  | Basse | 2 | Sprint 3 |  
 | #34 | En tant qu'utilisateur, je souhaite avoir une **page d'accueil** contenant un aperçu des sprints (liste des US pour chaque sprints), une présentation de l'équipe avec photo, prénom nom et rôle et le diagramme de Gantt du projet afin d'avoir un visualisation globale du projet.  | Basse | 3 | Sprint 3 |  
 | #35 | En tant qu'utilisateur, je souhaite avoir une **barre de recherche** au dessus de la liste de mes projets afin de chercher un projet plus rapidement.  | Basse | 3 | Sprint 3 |  
+
+
+
+# TODO temporaire pour Backlog (supprimer au fur et a mesure)
+
+## Par US
+
+* 22 : vague. Ne vaudrait-il mieux pas préciser dans chaque US décrivant une fonctionnalité F si F est "undo-able" ? là l'US 23 est beaucoup trop générale
+* 23 : c'est quoi un planning ? on a déja les sprints, alors je ne comprend pas (a préciser ou revoir)
+* 25 : Un GANTT pour quoi ? le projet ?  un sprint ? une semaine ? précisez + bonne chance pour générer un GANTT :D 
+* 34 : vous n'avez jamais défini la possibilité de renseigner une photo, vous donc on ne peut pas ajouter de photo. Dans ce contexte, vous affichez quoi ?
+* 35 : la barre de recherche permet de rechercher dans quoi ? les titres de projets uniquements ? leurs descriptions ? si je recherche le nom d'un développeur, ça me liste les projets dans lesquels il est ?  précisez
+
+## Maquette
+
+* Pour la page d'accueil: en SCRUM, il est peu probable que vous aiyez rédigé les taches du sprint 3 quand vous en etes au sprint 1, votre image de planing ne me parait pas top (ne vaudrait-il pas mieux afficher le Kanban du sprint en cours ici ?)
+* Sinon c'est super, sauf pour les points dont j'ai parlé plus hauts, et ceux dont je vais parler ci-après
+
+## Manque d'automatisation (et de précision de ce qui est automatisé)
+
+* Quid des burndown charts ? calculs de vélocités ? etc. qui aident a la gestion de projet
+* **Problème majeur** a mon sens: votre application permet (entre autre) de :
+  * modifier/supprimer une issue
+  * supprimer une issue d'un sprint
+  * modifier la durée d'un sprint
+  * modifier une task
+  * retirer un développeur  
+    Hors, vous ne bornez pas ces fonctionnalités. Cela me paraît etre dangereux et ne garantit pas qu'une gestion de projet faite avec votre appliation assure un suivi des bonnes pratiques SCRUM. En outre, que se passe-t-il si je supprime une US qui est dans le sprint en cours et dont des taches soint en cours de réalisation (voire on déja été terminées) ? idem si je modifie ce genre d'US, comment je doit interpréter les tâches déjà effectuées (et qui ne répondent peut être pas au besoin exprimé par la nouvelle version de l'US) ? Même probleme avec les tâches ou la suppression de développeurs d'un projet: a chaque fois, ça peut avoir des conséquences qui risquent de nuire a l'intégrité du projet. 
+* Dans l'état actuel de votre backlog, mis apart la gestion de plusieurs projets/utilisateurs a la fois, la plusvalue qu'il y aurait a l'utiliser par rapport a une fiche de gestion de projet Excel n'est pas évidente (eg. comme une feuille excel: tout peut etre modifié n'importe quand sans restriction ni garantie, il n'y a que quelques statistiques/visualisations). 
+
+## Remarques finales
+
+* Un plutot bon niveau de rédaction sur le début du backlog qui s'amoindrit petit a petit. En prenant en compte les commentaires que je vous ai fait et en rédigeant toutes les US avec la même rigueur que pour les premières, ce sera un bon backlog (je pense)
+* Un manque de précision sur plusieurs niveaux (dommage, ça avait bien commencé)
+* Un manque d'automatisation
+* Mauvaise homogénéité (beaucoup d'US ne décrivent que l'affichage d'un champ)
+* Vous survolez complètement la gestion des artefacts Tests, Release et n'avez aucun point Documentation
