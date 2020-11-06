@@ -6,7 +6,7 @@
 |:---------:|:--------:|:-------:|:-------:|
 | Maintenant jusqu’au vendredi 23 octobre <br> **Coût** : 0 | Lundi 2 novembre au vendredi 13 Novembre <br> **Coût** : 45 | Lundi 16 Novembre au vendredi 27 Novembre <br> **Coût** : 43 | Lundi 30 Novembre au vendredi 11 Décembre <br> **Coût** : 44 |
 
- Les **Coûts** correspondent a la somme des difficultés des US
+Les **Coûts** correspondent a la somme des difficultés des US
 
 ---
 Vocabulaire:
@@ -44,11 +44,11 @@ Vocabulaire:
 | #19 | En tant que Scrum Master, je souhaite pouvoir retirer un/des utilisateurs participant au **projet** afin qu'ils ne puissent plus y contribuer.  | Haute | 3 | Sprint 2 |  
 | #20 | En tant que développeur, je souhaite pouvoir voir l'état global des **tests** unitaires et d'intégration à l'aide d'un élément graphique (barre de progression, pastille de couleur) afin d'avoir un aperçu rapide du code testé.  | Moyenne-Basse | 3 | Sprint 2 |  
 | #21 | En tant que Scrum Master, je souhaite pouvoir attribuer des rôles aux membres de mon équipe afin de délimiter leurs actions au sein du projet.  | Moyenne-Basse | 2 | Sprint 2 |  
-| #22 | En tant qu'utilisateur, je souhaite pouvoir revenir en arrière afin d'annuler la dernière action qui a été faite sur le projet . | Basse | 13 | Sprint 2 |  
-| #23 | En tant que Scrum Master, je souhaite pouvoir créer un **planning** afin de planifier le projet  | Moyenne-Haute | 3 | Sprint 2 |  
+| #22 | En tant qu'utilisateur, je souhaite pouvoir annuler la dernière action qui a été faite sur le projet (Ajouter un membre/task/US/sprint, Supprimer un membre/task/US/sprint) afin de revenir à l'état du projet précédent l'action qui a été annulé, si l'action en question est undo-able. | Basse | 13 | Sprint 2 |  
+| #23 | En tant que Scrum Master, je souhaite pouvoir créer un **planning** des tâches afin de planifier le projet dans son ensemble. | Moyenne-Haute | 3 | Sprint 2 |  
 ||
 | #24 | En tant que Scrum Master, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 | Sprint 3 |  
-| #25 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt généré à partir du **planning** afin de voir l'état global du projet et son avancement  | Moyenne-Basse | 3 | Sprint 3 |  
+| #25 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt montrant l'organisation du projet généré à partir du **planning** afin de voir l'état global du projet et son avancement  | Moyenne-Basse | 3 | Sprint 3 |  
 | #26 | En tant que Scrum Master, je souhaite pouvoir modifier mon **planning** afin d'organiser mon équipe et la planification des tâches. (Undo-able) | Moyenne-Haute | 5 | Sprint 3 |  
 | #27 | En tant qu'utilisateur, je souhaite pouvoir télécharger les **releases** faites jusqu'à ce jour et voir les fonctionnalités de chacune d'entres-elles afin d'avoir un historique des releases fournis au product owner  | Haute | 3 | Sprint 3 | 
 | #28 | En tant que Scrum Master, je souhaite pouvoir générer un **fichier** au format markdown afin d'avoir un récapitulatif (avancement global, état des tâches, état des User storys, état des tests, état des sprints, nom de release si existante, planning, l'équipe) de l'ensemble du projet.  | Moyenne-Basse | 3 | Sprint 3 |  
@@ -58,19 +58,11 @@ Vocabulaire:
 | #32 | En tant que visiteur, je souhaite pouvoir me **connecter** avec les identifiants (nom d'utilisateur, mot de passe) démarrer une session et d'accéder à la liste des projets ou je suis membre.  | Basse | 5 | Sprint 3 |  
 | #33 | En tant qu'utilisateur, je souhaite pouvoir me **déconnecter** afin de quitter une session.  | Basse | 2 | Sprint 3 |  
 | #34 | En tant qu'utilisateur, je souhaite avoir une **page d'accueil** contenant un aperçu des sprints (liste des US pour chaque sprints), une présentation de l'équipe avec photo, prénom nom et rôle et le diagramme de Gantt du projet afin d'avoir un visualisation globale du projet.  | Basse | 3 | Sprint 3 |  
-| #35 | En tant qu'utilisateur, je souhaite avoir une **barre de recherche** au dessus de la liste de mes projets afin de chercher un projet plus rapidement.  | Basse | 3 | Sprint 3 |  
-
+| #35 | En tant qu'utilisateur, je souhaite avoir une **barre de recherche** au dessus de la liste de mes projets afin de chercher un projet plus rapidement via son nom ou son équipe. | Basse | 3 | Sprint 3 |  
+| #36 | En tant qu'utilisateur, je souhaite pouvoir changer ma photo de profil de mon compte afin qu'on puisse m'identifier rapidement sur les projets et la page d'accueil.  | Basse | 3 | Sprint 3 |
 
 
 # TODO temporaire pour Backlog (supprimer au fur et a mesure)
-
-## Par US
-
-* 22 : vague. Ne vaudrait-il mieux pas préciser dans chaque US décrivant une fonctionnalité F si F est "undo-able" ? là l'US 23 est beaucoup trop générale
-* 23 : c'est quoi un planning ? on a déja les sprints, alors je ne comprend pas (a préciser ou revoir)
-* 25 : Un GANTT pour quoi ? le projet ?  un sprint ? une semaine ? précisez + bonne chance pour générer un GANTT :D 
-* 34 : vous n'avez jamais défini la possibilité de renseigner une photo, vous donc on ne peut pas ajouter de photo. Dans ce contexte, vous affichez quoi ?
-* 35 : la barre de recherche permet de rechercher dans quoi ? les titres de projets uniquements ? leurs descriptions ? si je recherche le nom d'un développeur, ça me liste les projets dans lesquels il est ?  précisez
 
 ## Maquette
 
