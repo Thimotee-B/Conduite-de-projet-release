@@ -6,7 +6,7 @@
 |:---------:|:--------:|:-------:|:-------:|
 | Maintenant jusqu’au vendredi 23 octobre <br> **Coût** : 0 | Lundi 2 novembre au vendredi 13 Novembre <br> **Coût** : 45 | Lundi 16 Novembre au vendredi 27 Novembre <br> **Coût** : 43 | Lundi 30 Novembre au vendredi 11 Décembre <br> **Coût** : 44 |
 
- Les **Coûts** correspondent a la somme des difficultés des US
+Les **Coûts** correspondent a la somme des difficultés des US
  
 ---
 Vocabulaire:
