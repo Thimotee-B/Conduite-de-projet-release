@@ -4,7 +4,7 @@
 
 | Sprint 0  | Sprint 1 | Sprint 2 | Sprint 3 |
 |:---------:|:--------:|:-------:|:-------:|
-| Maintenant jusqu’au vendredi 23 octobre <br> **Coût** : 0 | Lundi 2 novembre au vendredi 13 Novembre <br> **Coût** : 45 | Lundi 16 Novembre au vendredi 27 Novembre <br> **Coût** : 43 | Lundi 30 Novembre au vendredi 11 Décembre <br> **Coût** : 44 |
+| Maintenant jusqu’au vendredi 23 octobre <br> **Coût** : 0 | Lundi 2 novembre au vendredi 13 Novembre <br> **Coût** : 45 | Lundi 16 Novembre au vendredi 27 Novembre <br> **Coût** : 49 | Lundi 30 Novembre au vendredi 11 Décembre <br> **Coût** : 48 |
 
 Les **Coûts** correspondent a la somme des difficultés des US
 
@@ -50,7 +50,7 @@ Vocabulaire:
 | #24 | En tant que Scrum Master, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 | Sprint 3 |  
 | #25 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt montrant l'organisation du projet généré à partir du **planning** afin de voir l'état global du projet et son avancement  | Moyenne-Basse | 5 | Sprint 3 |  
 | #26 | En tant que Scrum Master, je souhaite pouvoir modifier mon **planning** afin d'organiser mon équipe et la planification des tâches. (Undo-able) | Moyenne-Haute | 5 | Sprint 3 |  
-| #27 | En tant qu'utilisateur, je souhaite pouvoir télécharger les **releases** faites jusqu'à ce jour et voir les fonctionnalités de chacune d'entres-elles afin d'avoir un historique des releases fournis au product owner  | Haute | 3 | Sprint 3 | 
+| #27 | En tant qu'utilisateur, je souhaite pouvoir télécharger les **releases** faites jusqu'à ce jour et voir les fonctionnalités de chacune d'entres-elles afin d'avoir un historique des releases fournis au product owner  | Haute | 3 | Sprint 1 | 
 | #28 | En tant que Scrum Master, je souhaite pouvoir générer un **fichier** au format markdown afin d'avoir un récapitulatif (avancement global, état des tâches, état des User storys, état des tests, état des sprints, nom de release si existante, planning, l'équipe) de l'ensemble du projet.  | Moyenne-Basse | 3 | Sprint 3 |  
 | #29 | En tant que Scrum Master, je souhaite pouvoir publier une **release** (se compose de : dossier compressé contenant le code fonctionnel du projet, une description de ce qui a été fait, un numéro de version générer automatiquement grace à un rapide questionnaire (numero du sprint concerné (entier), checkbox pour le type de mofication: majeure/mineure)) afin de la rendre disponible pour les utilisateurs. | Basse | 3 | Sprint 3 |  
 | #30 | En tant qu'utilisateur, je souhaite, sur la **page d'accueil**, voir la progression de chaque **Sprint** et **User storys** à l'aide de moyens graphiques (Chaque Sprint aura un camembert de progression associé à son nom et listera l'ID de ses US. A coté de chaque US, une barre de progression indiquera la progression qui a été effectuée sur cette US (tâches réalisées/total tâches liées à l'US)  afin d'avoir un aperçu rapide de ce qui est fait et de ce qu'il reste à faire.  | Haute | 3 | Sprint 2 |  
