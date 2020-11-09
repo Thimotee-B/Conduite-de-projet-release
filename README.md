@@ -57,17 +57,17 @@ Vocabulaire:
 | #31 | En tant que visiteur, je souhaite pouvoir **m'inscrire** en renseignant mes informations (identifiant (obligatoire) : 20 caractères max, mot de passe (obligatoire) : 50 caractères max, adresse email (obligatoire) : 255 caractères max, nom (obligatoire) : 50 caractères max et prénom (obligatoire) : 50 caractères max) afin de créer mon compte utilisateur.  | Basse | 5 | Sprint 3 |  
 | #32 | En tant que visiteur, je souhaite pouvoir me **connecter** avec les identifiants (nom d'utilisateur, mot de passe) démarrer une session et d'accéder à la liste des projets ou je suis membre.  | Basse | 5 | Sprint 3 |  
 | #33 | En tant qu'utilisateur, je souhaite pouvoir me **déconnecter** afin de quitter une session.  | Basse | 2 | Sprint 3 |  
-| #34 | En tant qu'utilisateur, je souhaite avoir une **page d'accueil** contenant un aperçu des sprints (liste des US pour chaque sprints), une présentation de l'équipe avec photo, prénom nom et rôle et le diagramme de Gantt du projet afin d'avoir un visualisation globale du projet.  | Basse | 3 | Sprint 3 |  
+| #34 | En tant qu'utilisateur, je souhaite avoir une **page d'accueil** contenant un aperçu des sprints (liste des US pour chaque sprints), une présentation de l'équipe avec photo, prénom nom et rôle et le diagramme de type "BurnDown Chart" et un diagramme de vélocité du projet afin d'avoir un visualisation globale du projet.  | Moyenne-Haute | 5 | Sprint 3 |  
 | #35 | En tant qu'utilisateur, je souhaite avoir une **barre de recherche** au dessus de la liste de mes projets afin de chercher un projet plus rapidement via son nom ou son équipe. | Basse | 3 | Sprint 3 |  
 | #36 | En tant qu'utilisateur, je souhaite pouvoir changer ma photo de profil de mon compte afin qu'on puisse m'identifier rapidement sur les projets et la page d'accueil.  | Basse | 3 | Sprint 3 |
 
+</br>
+</br>
+</br>
+</br>
+
 
 # TODO temporaire pour Backlog (supprimer au fur et a mesure)
-
-## Maquette
-
-* Pour la page d'accueil: en SCRUM, il est peu probable que vous aiyez rédigé les taches du sprint 3 quand vous en etes au sprint 1, votre image de planing ne me parait pas top (ne vaudrait-il pas mieux afficher le Kanban du sprint en cours ici ?)
-* Sinon c'est super, sauf pour les points dont j'ai parlé plus hauts, et ceux dont je vais parler ci-après
 
 ## Manque d'automatisation (et de précision de ce qui est automatisé)
 
