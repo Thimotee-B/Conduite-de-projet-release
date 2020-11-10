@@ -1,0 +1,23 @@
+#projectListDiv{
+    margin-top: 1em;
+}
+
+#plusImg{
+    width: 1em;
+}
+
+#searchProjectForm{
+    margin-top: 4em;
+
+}
+
+#searchProjetInput{
+    width: 80%;
+    border-radius: 30px;
+}
+
+#plusBtn{
+    background-color: #6fcf97;
+    border-radius: 30px;
+    color: white;
+}
