@@ -1,0 +1,35 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID US</th>
+            <th scope="col">Description</th>
+            <th scope="col">Difficulté</th>
+            <th scope="col">Importance</th>
+            <th scope="col">Plannification</th>
+            <th scope="col">Etat</th>
+        </tr>
+    </thead>
+    <tbody>
+         <!-- Loop through quotes -->
+        <% for(var i = 0; i < project.us.length; i++) {%>
+            <tr class='clickable-row' data-href="">
+                <td><span>US#<%= project.us[i].id %></span></td>
+                <td><span><%= project.us[i].projectDesc %></span></td>
+                <td><span><%= project.us[i].difficulte %></span></td>
+                <td><h5><span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span></h5></td>
+                <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
+                <td><h5><span class="badge badge-pill badge-secondary">Todo</span></h5></td>
+            </tr>
+           
+            
+        <% } %>
+        <script>
+            jQuery(document).ready(function($) {
+                $(".clickable-row").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
+        </script>
+
+    </tbody>
+</table>

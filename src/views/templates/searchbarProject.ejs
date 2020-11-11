@@ -1,8 +1,8 @@
 <form class="form-inline" id="searchProjectForm">
     <input id="searchProjetInput" class="form-control mr-sm-2 ml-3 my-2 my-lg-0" type="text"
         placeholder="Rechercher un projet" aria-label="Search">
-    <button type="button" class="btn btn-sm" id="plusBtn" data-toggle="modal" data-target="#createProjectModal">
-        <img src="/assets/plus-sign-in-a-white-circle.png" id="plusImg">
+    <button type="button" class="btn btn-sm plusBtn" data-toggle="modal" data-target="#createProjectModal">
+        <img src="/assets/plus-sign-in-a-white-circle.png" class="plusImg">
         Créer un projet
     </button>
 </form>
@@ -36,11 +36,8 @@
                     </div>
                     <div class="form-group">
                         <label for="dateEnd">Date de livraison prévu</label>
-                        <input type="date" class="form-control rounded-0" id="dateEnd" name="dateEnd" value="-">
+                        <input type="date" class="form-control rounded-0" id="dateEnd" name="dateEnd">
                     </div>
-                    <input id="beginDate" name="beginDate" type="hidden" value="11/11/2020">
-                    <input id="role" name="role" type="hidden" value="scrum master">
-                    <input id="nbMember" name="nbMember" type="hidden" value="1">
 
 
                 </div>

@@ -1,0 +1,84 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <form class="form-inline">
+        <button type="button" class="btn btn-sm plusBtn" data-toggle="modal" data-target="#createUSModal">
+            <img src="/assets/plus-sign-in-a-white-circle.png" class="plusImg">
+            Créer une User Story
+        </button>
+    </form>
+</div>
+
+
+
+<div class="modal fade" id="createUSModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Nouvelle User Story</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form action="/projectView/<%=project._id%>/createUS" method="POST">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="entantque">En tant que</label>
+                        <select class="form-control" id="entantque" name="entantque">
+                            <option>Scrum Master</option>
+                            <option>Développeur</option>
+                            <option>Product Owner</option>
+                            <option>Utilisateur</option>
+                        </select>
+                        <label for="jesouhaite">Je souhaite</label>
+                        <textarea class="form-control rounded-0" id="jesouhaite" name="jesouhaite"
+                            placeholder="avoir accès à ..." rows="3" maxlength="500"></textarea>
+                        <label for="afinde">Afin de</label>
+                        <textarea class="form-control rounded-0" id="afinde" name="afinde" placeholder="pouvoir me connecter ..." rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="importance">Importance</label>
+                        <select class="form-control" id="importance" name="importance">
+                            <option>Haute</option>
+                            <option>Moyenne-Haute</option>
+                            <option>Moyenne-Basse</option>
+                            <option>Basse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulte">Difficulté</label>
+                        <select class="form-control" id="difficulte" name="difficulte">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>5</option>
+                            <option>8</option>
+                            <option>13</option>
+                            <option>21</option>
+                            <option>34</option>
+                            <option>55</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="plannification">Plannification</label>
+                        <select class="form-control" id="plannification" name="plannification">
+                            <option>Sprint 1</option>
+                            <option>Sprint 2</option>
+                            <option>Sprint 3</option>
+                        </select>
+                    </div>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                </div>
+
+            </form>
+
+
+
+
+        </div>
+    </div>
+</div>

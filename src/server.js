@@ -19,6 +19,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         const dataBaseName = 'MAIN_DATABASE';
         const db = client.db(dataBaseName)
         const projectCollection = db.collection('projects')
+        const usCollection = db.collection('us')
 
 
         app.set('view engine', 'ejs')
@@ -40,20 +41,87 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         // Création d'un nouveau projet
         app.post('/createNewProject', (req, res) => {
-            projectCollection.insertOne(req.body)
+            let today = new Date(); 
+            let dd = today.getDate(); 
+            let mm = today.getMonth() + 1; 
+            let yyyy = today.getFullYear(); 
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            } 
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            } 
+            today = dd + '/' + mm + '/' + yyyy; 
+            projectCollection.insertOne(
+                {
+                    projectName: req.body.projectName,
+                    projectDesc: req.body.desc,
+                    sprintDelay: req.body.sprintDelay,
+                    dateEnd: req.body.dateEnd,
+                    beginDate: today.toString(),
+                    role: 'Scrum Master',
+                    nbMember: 1,
+                    us: [],
+                    nbUs: 0
+                }
+            )
                 .then(result => {
                     res.redirect('/projectList')
                 })
                 .catch(error => console.error(error))
         })
 
-        // Page d'un projet
+        // Page d'un projet (accueil)
         app.get('/projectView/:projectId', (req, res) => {
             const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
             .then(results => {
                 res.render('pages/project.ejs', {project: results})
             })
             .catch(error => console.error(error))
+            
+        })
+
+        // Page backlog
+        app.get('/projectView/:projectId/backlog', (req, res) => {
+            const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                res.render('pages/backlog.ejs', {project: results})
+            })
+            .catch(error => console.error(error))
+            
+        })
+
+        // Création une nouvelle US
+        app.post('/projectView/:projectId/createUS', (req, res) => {
+            const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                projectCollection.updateOne(
+                    { _id : ObjectId(req.params.projectId)},
+                    { $set:  {nbUs:  results.nbUs+1}},
+                    { upsert: true}
+                )
+                .then(result => {
+                    projectCollection.updateOne(
+                        { _id : ObjectId(req.params.projectId)},
+                        { $push: 
+                            { us: 
+                                {
+                                    projectDesc: 'En tant que '+req.body.entantque+', je souhaite '+req.body.jesouhaite+' afin de '+req.body.afinde,
+                                    importance: req.body.importance,
+                                    difficulte: req.body.difficulte,
+                                    plannification: req.body.plannification,
+                                    id: results.nbUs+1
+                                }
+                            }
+                        }
+                    )
+                    .then(result => {
+                        res.redirect('/projectView/'+req.params.projectId+'/backlog')
+                    })
+                    .catch(error => console.error(error))
+                })
+                .catch(error => console.error(error))
+            })
             
         })
 
