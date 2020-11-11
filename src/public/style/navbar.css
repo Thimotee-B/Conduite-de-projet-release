@@ -1,0 +1,23 @@
+.navbar-Blue{
+  background-color: #00315f;
+  color: white;
+  padding: 1em;
+}
+  
+.navbar-title {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#deconnexionBtn{
+  background-color: inherit;
+  color: inherit;
+}
+#rocketLogo{
+  width: 1em;
+}
