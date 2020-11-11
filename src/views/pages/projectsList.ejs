@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-    <%- include("../templates/header")%>
+    <%- include("../templates/header/headerProjectList")%>
 </head>
 
 <body>
@@ -13,7 +13,6 @@
     <div class="container">
         <%- include("../templates/searchbarProject")%>
         <div id="projectListDiv">
-
            
             <table class="table table-hover">
                 <thead>
@@ -28,35 +27,24 @@
                 <tbody>
                      <!-- Loop through quotes -->
                     <% for(var i = 0; i < projectsList.length; i++) {%>
-                        <tr>
+                        
+                        <tr class='clickable-row' data-href="/projectView/<%= projectsList[i]._id %>">
                             <td><%= projectsList[i].projectName %></td>
                             <td><%= projectsList[i].role %></td>
                             <td><%= projectsList[i].nbMember %></td>
                             <td><%= projectsList[i].beginDate %></td>
                             <td><%= projectsList[i].endDate %></td>
                         </tr>
+                       
+                        
                     <% } %>
-                    <!-- <tr>
-                        <td>SUPER PROJET</td>
-                        <td>DEVELOPPEUR</td>
-                        <td>5</td>
-                        <td>29/10/2020</td>
-                        <td>10/12/2020</td>
-                    </tr>
-                    <tr>
-                        <td>PROJET INNOVANT</td>
-                        <td>SCRUM MASTER</td>
-                        <td>8</td>
-                        <td>12/09/2020</td>
-                        <td>27/01/2021</td>
-                    </tr>
-                    <tr>
-                        <td>CDP PROJECT</td>
-                        <td>PRODUCT OWNER</td>
-                        <td>4</td>
-                        <td>04/08/2020</td>
-                        <td>03/05/2021</td>
-                    </tr> -->
+                    <script>
+                        jQuery(document).ready(function($) {
+                            $(".clickable-row").click(function() {
+                                window.location = $(this).data("href");
+                            });
+                        });
+                    </script>
 
                 </tbody>
             </table>

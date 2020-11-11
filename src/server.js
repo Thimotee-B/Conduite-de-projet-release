@@ -4,10 +4,11 @@ const ejs = require("ejs")
 const path = require("path");
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectID
 
 connectionString = 'mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority'
-app.use(express.static('public'))
 
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 
@@ -28,6 +29,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             res.redirect('/projectList')
         })
 
+        // Liste des projets
         app.get('/projectList', (req, res) => {
             const cursor = db.collection('projects').find().toArray()
                 .then(results => {
@@ -36,12 +38,23 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
 
+        // Création d'un nouveau projet
         app.post('/createNewProject', (req, res) => {
             projectCollection.insertOne(req.body)
                 .then(result => {
                     res.redirect('/projectList')
                 })
                 .catch(error => console.error(error))
+        })
+
+        // Page d'un projet
+        app.get('/projectView/:projectId', (req, res) => {
+            const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                res.render('pages/project.ejs', {project: results})
+            })
+            .catch(error => console.error(error))
+            
         })
 
         // app.put('/quotes', (req, res) => {
