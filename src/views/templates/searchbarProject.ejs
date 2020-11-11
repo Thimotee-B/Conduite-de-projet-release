@@ -1,7 +1,60 @@
 <form class="form-inline" id="searchProjectForm">
-    <input id="searchProjetInput" class="form-control mr-sm-2 ml-3 my-2 my-lg-0" type="text" placeholder="Rechercher un projet" aria-label="Search">
-    <button class="btn btn-sm" id="plusBtn" type="submit">
+    <input id="searchProjetInput" class="form-control mr-sm-2 ml-3 my-2 my-lg-0" type="text"
+        placeholder="Rechercher un projet" aria-label="Search">
+    <button type="button" class="btn btn-sm" id="plusBtn" data-toggle="modal" data-target="#createProjectModal">
         <img src="/assets/plus-sign-in-a-white-circle.png" id="plusImg">
-         Créer un projet
+        Créer un projet
     </button>
 </form>
+
+
+<div class="modal fade" id="createProjectModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Nouveau projet</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <form action="/createNewProject" method="POST">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="projectName">Nom du projet</label>
+                        <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Nom du projet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDesc">Description</label>
+                        <textarea class="form-control rounded-0" id="projectDesc" name="projectDesc" placeholder="Description du projet" rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="sprintDelay">Durée d'un sprint par défault (en semaine)</label>
+                        <input type="number" class="form-control rounded-0" min="1" max="54" id="sprintDelay" name="sprintDelay" value="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateEnd">Date de livraison prévu</label>
+                        <input type="date" class="form-control rounded-0" id="dateEnd" name="dateEnd" value="-">
+                    </div>
+                    <input id="beginDate" name="beginDate" type="hidden" value="11/11/2020">
+                    <input id="role" name="role" type="hidden" value="scrum master">
+                    <input id="nbMember" name="nbMember" type="hidden" value="1">
+
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                </div>
+
+            </form>
+
+
+
+
+        </div>
+    </div>
+</div>

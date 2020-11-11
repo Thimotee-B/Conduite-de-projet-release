@@ -17,6 +17,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         const dataBaseName = 'MAIN_DATABASE';
         const db = client.db(dataBaseName)
+        const projectCollection = db.collection('projects')
 
 
         app.set('view engine', 'ejs')
@@ -35,13 +36,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
 
-        // app.post('/quotes', (req, res) => {
-        //     quotesCollection.insertOne(req.body)
-        //         .then(result => {
-        //             res.redirect('/')
-        //         })
-        //         .catch(error => console.error(error))
-        // })
+        app.post('/createNewProject', (req, res) => {
+            projectCollection.insertOne(req.body)
+                .then(result => {
+                    res.redirect('/projectList')
+                })
+                .catch(error => console.error(error))
+        })
 
         // app.put('/quotes', (req, res) => {
         //     quotesCollection.findOneAndUpdate(

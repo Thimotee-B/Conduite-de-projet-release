@@ -26,7 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                     <!-- Loop through quotes -->
+                    <% for(var i = 0; i < projectsList.length; i++) {%>
+                        <tr>
+                            <td><%= projectsList[i].projectName %></td>
+                            <td><%= projectsList[i].role %></td>
+                            <td><%= projectsList[i].nbMember %></td>
+                            <td><%= projectsList[i].beginDate %></td>
+                            <td><%= projectsList[i].endDate %></td>
+                        </tr>
+                    <% } %>
+                    <!-- <tr>
                         <td>SUPER PROJET</td>
                         <td>DEVELOPPEUR</td>
                         <td>5</td>
@@ -46,7 +56,7 @@
                         <td>4</td>
                         <td>04/08/2020</td>
                         <td>03/05/2021</td>
-                    </tr>
+                    </tr> -->
 
                 </tbody>
             </table>
