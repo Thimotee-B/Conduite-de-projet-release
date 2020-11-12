@@ -30,6 +30,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             res.redirect('/projectList')
         })
 
+        /*************************************/
+        /*                                   */
+        /*         LISTE DES PROJETS         */ 
+        /*                                   */ 
+        /*************************************/
+
         // Liste des projets
         app.get('/projectList', (req, res) => {
             const cursor = db.collection('projects').find().toArray()
@@ -71,6 +77,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
 
+        /*************************************/
+        /*                                   */
+        /*              ACCUEIL              */ 
+        /*                                   */ 
+        /*************************************/
+
         // Page d'un projet (accueil)
         app.get('/projectView/:projectId', (req, res) => {
             const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
@@ -80,6 +92,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             .catch(error => console.error(error))
             
         })
+
+
+        /*************************************/
+        /*                                   */
+        /*              BACKLOG              */ 
+        /*                                   */ 
+        /*************************************/
 
         // Page backlog
         app.get('/projectView/:projectId/backlog', (req, res) => {
@@ -95,22 +114,26 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         app.post('/projectView/:projectId/createUS', (req, res) => {
             const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
             .then(results => {
+                const updateNbUs = (results.us.length != 0) ? results.nbUs+1 : 1;
                 projectCollection.updateOne(
                     { _id : ObjectId(req.params.projectId)},
-                    { $set:  {nbUs:  results.nbUs+1}},
+                    { $set:  {nbUs:  updateNbUs}},
                     { upsert: true}
                 )
                 .then(result => {
+                    const updateNbUs = (results.us.length != 0) ? results.nbUs+1 : 1;
                     projectCollection.updateOne(
                         { _id : ObjectId(req.params.projectId)},
                         { $push: 
                             { us: 
                                 {
-                                    projectDesc: 'En tant que '+req.body.entantque+', je souhaite '+req.body.jesouhaite+' afin de '+req.body.afinde,
+                                    entantque: req.body.entantque,
+                                    jesouhaite: req.body.jesouhaite,
+                                    afinde: req.body.afinde,
                                     importance: req.body.importance,
                                     difficulte: req.body.difficulte,
                                     plannification: req.body.plannification,
-                                    id: results.nbUs+1
+                                    id: updateNbUs
                                 }
                             }
                         }
@@ -125,37 +148,59 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             
         })
 
-        // app.put('/quotes', (req, res) => {
-        //     quotesCollection.findOneAndUpdate(
-        //         { name: 'Yoda' },
-        //         {
-        //             $set: {
-        //                 name: req.body.name,
-        //                 quote: req.body.quote
-        //             }
-        //         },
-        //         {
-        //             upsert: true
-        //         }
-        //     )
-        //         .then(result => {
-        //             res.json('Success')
-        //         })
-        //         .catch(error => console.error(error))
-        // })
+        // Supprimer une US
+        app.get('/projectView/:projectId/removeUS/:pos', (req, res) => {
+            const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                const usPos = req.params.pos;
+                projectCollection.updateOne(
+                    { _id : ObjectId(req.params.projectId)},
+                    { $pull:  {us:  results.us[usPos]}}
+                )
+                .then(result => {
+                    res.redirect('/projectView/'+req.params.projectId+'/backlog')
+                })
+                .catch(error => console.error(error))
+            })
+        })
 
-        // app.delete('/quotes', (req, res) => {
-        //     quotesCollection.deleteOne(
-        //         { name: req.body.name }
-        //     )
-        //         .then(result => {
-        //             if (result.deletedCount === 0) {
-        //                 return res.json('No quote to delete')
-        //             }
-        //             res.json(`Deleted Darth Vadar's quote`)
-        //         })
-        //         .catch(error => console.error(error))
-        // })
+
+        // Modifier une US
+        app.post('/projectView/:projectId/updateUS/:pos', (req, res) => {
+            const cursor =  db.collection('projects').findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                const usPos = parseInt(req.params.pos,10);
+                const usId = results.us[usPos].id;
+                projectCollection.updateOne(
+                    { _id : ObjectId(req.params.projectId)},
+                    { $pull:  {us:  results.us[usPos]}}
+                )
+                .then(result => {
+                    projectCollection.updateOne(
+                        { _id : ObjectId(req.params.projectId)},
+                        { $push:  {
+                            us: {
+                                $each: [{
+                                    entantque: req.body.entantque,
+                                    jesouhaite: req.body.jesouhaite,
+                                    afinde: req.body.afinde,
+                                    importance: req.body.importance,
+                                    difficulte: req.body.difficulte,
+                                    plannification: req.body.plannification,
+                                    id: usId
+                                }],
+                                $position: usPos
+                            } 
+                        }
+                    })
+                    .then(results =>{
+                        res.redirect('/projectView/'+req.params.projectId+'/backlog')
+                    })
+                })
+                .catch(error => console.error(error))
+            })
+        })
+
 
 
         app.listen(3000, function () {
