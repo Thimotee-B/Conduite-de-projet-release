@@ -18,7 +18,23 @@
                 <td><span>US#<%= project.us[i].id %></span></td>
                 <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                 <td><span><%= project.us[i].difficulte %></span></td>
-                <td><h5><span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span></h5></td>
+                <td><h5>
+                    <% if (project.us[i].importance == 'Haute') {%>
+                        <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Moyenne-Haute') {%>
+                        <span class="badge badge-pill badge-moyenne-haute"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Moyenne-Basse') {%>
+                        <span class="badge badge-pill badge-warning"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Basse') {%>
+                        <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
+                    <% } %>
+
+                    
+                
+                </h5></td>
                 <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
                 <td><h5><span class="badge badge-pill badge-secondary">Todo</span></h5></td>
                 <td class="modifyUS">
