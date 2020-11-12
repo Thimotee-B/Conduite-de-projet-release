@@ -9,7 +9,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <%- include("../templates/project/sideBar",{page: 'accueil'})%>
+        <%- include("../templates/project/sideBar", {page: "sprints"})%>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -18,7 +18,11 @@
                 <%- include("../templates/project/topbarProject")%>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <%- include("../templates/project/content/heading")%>
+                    <%- include("../templates/project/sprint/heading")%>
+                    <%- include("../templates/project/sprint/buttonList")%>
+                </div>
+                <div class="container-fluid spacex1" style="padding-right: 5rem;">
+                    <%- include("../templates/project/sprint/sprintList")%>
                 </div>
             </div>
             <!-- End of Main Content -->

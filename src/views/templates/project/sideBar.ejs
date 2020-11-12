@@ -13,7 +13,11 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <% if (page == 'accueil'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
         <a class="nav-link" href="/projectView/<%= project._id %>">
             <i class="fab fa-elementor"></i>
             <span>Accueil</span></a>
@@ -23,18 +27,28 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
+    
     <div class="sidebar-heading">
         Gestion du projet
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <% if (page == 'sprints'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
+    
+        <a class="nav-link" href="/projectView/<%= project._id %>/sprint">
             <i class="fas fa-stopwatch"></i>
             <span>Sprints</span></a>
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <% if (page == 'backlog'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
         <a class="nav-link" href="/projectView/<%= project._id %>/backlog">
             <i class="fas fa-th-list"></i>
             <span>Backlog</span>

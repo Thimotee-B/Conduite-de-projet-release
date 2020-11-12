@@ -36,7 +36,7 @@
                 
                 </h5></td>
                 <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
-                <td><h5><span class="badge badge-pill badge-secondary">Todo</span></h5></td>
+                <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
                 <td class="modifyUS">
                     <a class="text-warning" data-toggle="modal" data-target="#modifyUSModal<%= project.us[i].id %>">
                         <i class="fas fa-edit"></i>
@@ -98,13 +98,14 @@
                                     <div class="form-group">
                                         <label for="plannification">Plannification</label>
                                         <select class="form-control" id="plannification" name="plannification">
-                                            <% ['Sprint 1','Sprint 2','Sprint 3'].forEach(function(sprint){ %>
-                                                <% if (project.us[i].plannification == sprint) {%>
-                                                    <option selected> <%= sprint %> </option>
+                                            <option>-</option>
+                                            <% for(var j = 0; j < project.nbSprint; j++) {%>
+                                                <% if (project.us[i].plannification == project.sprint[j].id) {%>
+                                                    <option selected><%= project.sprint[j].id %></option>
                                                 <% }else { %>
-                                                        <option><%= sprint %></option>
-                                                <% } %>  
-                                            <% }) %>
+                                                    <option><%= project.sprint[j].id %></option>
+                                                <% } %> 
+                                            <% } %>
                                         </select>
                                     </div>
                 
@@ -120,14 +121,17 @@
                         </div>
                     </div>
                 </div>
-                <td class="text-danger trashUS" data-href="/projectView/<%=project._id%>/removeUS/<%=i%>"><i class="fas fa-trash-alt"></i></td>
+                <td>
+                    <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+                
             </tr>
         <% } %>
         <script>
             jQuery(document).ready(function($) {
-                $(".trashUS").click(function(){
-                    window.location = $(this).data("href");
-                });
+                $('tbody').sortable();
             });
         </script>
 
