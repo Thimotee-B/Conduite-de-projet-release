@@ -4,7 +4,7 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ../tests/endToEndComplet13nov.spec.js",
     "app": "nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
@@ -13,7 +13,9 @@
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "mocha": "^8.2.1",
     "mongodb": "^3.6.3",
+    "node": "^15.2.0",
     "nodemon": "^2.0.6",
     "path": "^0.12.7"
   },
