@@ -1,0 +1,11 @@
+<div class="clickable-row" data-toggle="modal" data-target="#taskModal<%= project.sprint.id %>" scope="col"">
+
+</div>
+<%- include("taskModal",{project: project, i: i})%>
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("target");
+        });
+    })
+</script>

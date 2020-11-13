@@ -16,6 +16,7 @@ const projectViewRoutes = require("./routes/projectView.js")
 const projectBacklogRoutes = require("./routes/projectBacklog.js")
 const projectUserStoryRoutes = require("./routes/projectUserStory.js")
 const projectSprintRoutes = require("./routes/projectSprint.js")
+const projectTasksRoutes = require("./routes/projectTasks.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -39,6 +40,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         projectBacklogRoutes.init(app, db, ObjectId)
 
         projectUserStoryRoutes.init(app, db, ObjectId)
+        
+        projectTasksRoutes.init(app, db, ObjectId)
 
         projectSprintRoutes.init(app, db, ObjectId)
 
