@@ -1,0 +1,145 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID US</th>
+            <th scope="col">Description</th>
+            <th scope="col">Difficulté</th>
+            <th scope="col">Importance</th>
+            <th scope="col">Plannification</th>
+            <th scope="col">Etat</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+         <!-- Loop through quotes -->
+        <% for(var i = 0; i < project.us.length; i++) {%>
+            <tr>
+                <td><span>US#<%= project.us[i].id %></span></td>
+                <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                <td><span><%= project.us[i].difficulte %></span></td>
+                <td><h5>
+                    <% if (project.us[i].importance == 'Haute') {%>
+                        <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Moyenne-Haute') {%>
+                        <span class="badge badge-pill badge-moyenne-haute"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Moyenne-Basse') {%>
+                        <span class="badge badge-pill badge-warning"><%= project.us[i].importance %></span>
+                    <% } %>
+                    <% if (project.us[i].importance == 'Basse') {%>
+                        <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
+                    <% } %>
+
+                    
+                
+                </h5></td>
+                <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
+                <td><h5><span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span></h5></td>
+                <td class="modifyUS">
+                    <a class="text-warning" data-toggle="modal" data-target="#modifyUSModal<%= project.us[i].id %>">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <div class="modal fade" id="modifyUSModal<%= project.us[i].id %>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modifier US#<%= project.us[i].id %></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                
+                            <form action="/projectView/<%=project._id%>/updateUS/<%= i %>" method="POST">
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="entantque">En tant que</label>
+                                        <select class="form-control" id="entantque" name="entantque">
+                                            <% ['Scrum Master', 'Développeur', 'Product Owner', 'Utilisateur'].forEach(function(user){ %>
+                                                <% if (project.us[i].entantque == user) {%>
+                                                    <option selected> <%= user %> </option>
+                                                <% }else { %>
+                                                        <option><%= user %></option>
+                                                <% } %>  
+                                            <% }) %>
+                                        </select>
+                                        <label for="jesouhaite">Je souhaite</label>
+                                        <textarea class="form-control rounded-0" id="jesouhaite" name="jesouhaite"
+                                            placeholder="avoir accès à ..." rows="3" maxlength="500"><%= project.us[i].jesouhaite %></textarea>
+                                        <label for="afinde">Afin de</label>
+                                        <textarea class="form-control rounded-0" id="afinde" name="afinde" placeholder="pouvoir me connecter ..." rows="3" maxlength="500"><%= project.us[i].afinde %></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="importance">Importance</label>
+                                        <select class="form-control" id="importance" name="importance">
+                                            <% ['Haute', 'Moyenne-Haute', 'Moyenne-Basse', 'Basse'].forEach(function(imp){ %>
+                                                <% if (project.us[i].importance == imp) {%>
+                                                    <option selected> <%= imp %> </option>
+                                                <% }else { %>
+                                                        <option><%= imp %></option>
+                                                <% } %>  
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="difficulte">Difficulté</label>
+                                        <select class="form-control" id="difficulte" name="difficulte">
+                                            <% [1,2,3,5,8,13,21,34,55].forEach(function(num){ %>
+                                                <% if (project.us[i].difficulte == num) {%>
+                                                    <option selected> <%= num %> </option>
+                                                <% }else { %>
+                                                        <option><%= num %></option>
+                                                <% } %>  
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="plannification">Plannification</label>
+                                        <select class="form-control" id="plannification" name="plannification">
+                                            <option>-</option>
+                                            <% for(var j = 0; j < project.nbSprint; j++) {%>
+                                                <% if (project.us[i].plannification == project.sprint[j].id) {%>
+                                                    <option selected><%= project.sprint[j].id %></option>
+                                                <% }else { %>
+                                                    <option><%= project.sprint[j].id %></option>
+                                                <% } %> 
+                                            <% } %>
+                                        </select>
+                                    </div>
+                
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Valider</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                </div>
+                
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <td>
+                    <% if (project.us[i].plannification == "-") {%>
+                        <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    <% }else { %>
+                        <p class="text-danger disabled" href="#">
+                            <i class="fas fa-trash-alt"></i>
+                        </p>
+                    <% } %> 
+                    
+                </td>
+                
+            </tr>
+        <% } %>
+        <script>
+            jQuery(document).ready(function($) {
+                $('tbody').sortable();
+            });
+        </script>
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include("../templates/header/headerProjectList")%>
+</head>
+
+<body>
+    <%- include("../templates/navbar")%>
+
+
+
+    <div class="container">
+        <%- include("../templates/searchbarProject")%>
+        <div id="projectListDiv">
+           
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom du projet</th>
+                        <th scope="col">Rôle</th>
+                        <th scope="col">Nombre de membres</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Date de livraison</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <!-- Loop through quotes -->
+                    <% for(var i = 0; i < projectsList.length; i++) {%>
+                        
+                        <tr class='clickable-row' data-href="/projectView/<%= projectsList[i]._id %>">
+                            <td><%= projectsList[i].projectName %></td>
+                            <td><%= projectsList[i].role %></td>
+                            <td><%= projectsList[i].nbMember %></td>
+                            <td><%= projectsList[i].beginDate %></td>
+                            <td><%= projectsList[i].dateEnd %></td>
+                        </tr>
+                       
+                        
+                    <% } %>
+                    <script>
+                        jQuery(document).ready(function($) {
+                            $(".clickable-row").click(function() {
+                                window.location = $(this).data("href");
+                            });
+                        });
+                    </script>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<% for(var j = 0; j < project.nbSprint; j++) {%>
+   
+        <div style="margin-bottom: 2em; ">
+            <table class="table table-hover">
+                <thead>
+                    <th class="text-uppercase" >Sprint <%= j+1 %></th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                </thead>
+                <tbody>
+                    <!-- Loop through quotes -->
+                    <% for(var i = 0; i < project.us.length; i++) {%>
+                        <% if(project.us[i].plannification == project.sprint[j].id){ %>
+                            <tr>
+                                <td><span>US#<%= project.us[i].id %></span></td>
+                                <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                                <td><span><%= project.us[i].difficulte %></span></td>
+                                <td><h5>
+                                    <% if (project.us[i].importance == 'Haute') {%>
+                                        <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
+                                    <% } %>
+                                    <% if (project.us[i].importance == 'Moyenne-Haute') {%>
+                                        <span class="badge badge-pill badge-moyenne-haute"><%= project.us[i].importance %></span>
+                                    <% } %>
+                                    <% if (project.us[i].importance == 'Moyenne-Basse') {%>
+                                        <span class="badge badge-pill badge-warning"><%= project.us[i].importance %></span>
+                                    <% } %>
+                                    <% if (project.us[i].importance == 'Basse') {%>
+                                        <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
+                                    <% } %>
+            
+                                </h5></td>
+                                <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
+                            </tr>               
+                        <%}%>
+                    <% } %>
+                </tbody>
+            </table>
+            <div style="float: right;">
+                <% var cout = 0 %>
+                <% var ticket = 0 %>
+                <% for(var i = 0; i < project.us.length; i++) {%>
+                    <% if(project.us[i].plannification == project.sprint[j].id){ %>
+                        <% cout += parseInt(project.us[i].difficulte ,10) %>
+                        <% ticket++ %>
+                    <% } %>
+                <% } %>
+                <p>Coût total: <%= cout %> | <%= ticket %> tickets</p>
+                
+            </div>
+        </div>
+    
+<% } %>
+
+<div style="margin-bottom: 2em;">
+    <table class="table table-hover">
+        <thead>
+            <th class="text-uppercase" scope="col">Non plannifié</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+        </thead>
+        <tbody>
+            <!-- Loop through quotes -->
+            <% for(var i = 0; i < project.us.length; i++) {%>
+                <% if(project.us[i].plannification == '-'){ %>
+                    <tr>
+                        <td><span>US#<%= project.us[i].id %></span></td>
+                        <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                        <td><span><%= project.us[i].difficulte %></span></td>
+                        <td><h5>
+                            <% if (project.us[i].importance == 'Haute') {%>
+                                <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
+                            <% } %>
+                            <% if (project.us[i].importance == 'Moyenne-Haute') {%>
+                                <span class="badge badge-pill badge-moyenne-haute"><%= project.us[i].importance %></span>
+                            <% } %>
+                            <% if (project.us[i].importance == 'Moyenne-Basse') {%>
+                                <span class="badge badge-pill badge-warning"><%= project.us[i].importance %></span>
+                            <% } %>
+                            <% if (project.us[i].importance == 'Basse') {%>
+                                <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
+                            <% } %>
+                        </h5></td>
+                        <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
+                    </tr>
+                <%}%>
+            <% } %>
+        </tbody>
+    </table>
+    <div style="float: right;">
+        <% var cout = 0 %>
+        <% var ticket = 0 %>
+        <% for(var i = 0; i < project.us.length; i++) {%>
+            <% if(project.us[i].plannification == '-'){ %>
+                <% cout += parseInt(project.us[i].difficulte ,10) %>
+                <% ticket++ %>
+            <% } %>
+        <% } %>
+        <p>Coût total: <%= cout %> | <%= ticket %> tickets</p>
+    </div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".trashUS").click(function(){
+            window.location = $(this).data("href");
+        });
+        $("tbody").sortable();
+    })
+
+
+</script>

@@ -1,13 +1,14 @@
 # Code de conduite - Règles d'écriture
 
 
-- [Fichiers markdown](#fichiers-markdown)
-- [Backlog](#backlog)
-- [Sprints](#sprints)
-- [Tasks](#tasks)
-- [Code source](#code-source)
-- [Tests](#tests)
-- [Release](#release)
+- [Code de conduite - Règles d'écriture](#code-de-conduite---règles-décriture)
+  - [Fichiers markdown](#fichiers-markdown)
+  - [Backlog](#backlog)
+  - [Sprints](#sprints)
+  - [Tasks](#tasks)
+  - [Code source](#code-source)
+  - [Tests](#tests)
+  - [Release](#release)
 
 
 ## Fichiers markdown
@@ -54,7 +55,7 @@ Ecrire les tâches dans un fichier `TaskX.md ` où `X` est le numéro du sprint 
 
 Chaque tâche doit se composer comme suit:
 
-- ID de la forme: `#numero`
+- ID de la forme: `S<numero_du_sprint>#numero`
 - Description de la tâche
 - Issues liées à la tâche
 - Dépendances (indiquer l'ID des tâches)
@@ -67,10 +68,15 @@ Chaque tâche doit se composer comme suit:
 
 Utiliser des *Linters* pour aider à suivre les règles suivantes:
 
-- Nom des fichiers:
-- Nom des classes:
-- Nom des fonctions:
-- Etc. A définir
+- Nom des fichiers : Utilisation du format `camelCase`.
+- Nom des classes : Utilisation du format `snake_case`
+- Nom des fonctions : Utilisation du format `snake_case`
+- Nom des variables : Utilisation du format `snake_case`
+- Clean Code : 
+  - Indentation avec espaces de taille 4
+  - Privilégier les variables `const`et `let`
+  - Utilisation de double quote pour les strings
+  - Ne pas mettre de ; à la fin
 
 
 
