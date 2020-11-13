@@ -4,7 +4,7 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "test": "mocha ../tests/endToEndComplet13nov.spec.js",
+    "test": "mocha ../tests/testEndToEnd13nov.spec.js",
     "app": "nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
