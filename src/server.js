@@ -8,7 +8,7 @@ const ObjectId = require("mongodb").ObjectID
 
 const connectionString = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority"
 
-app.use(express.static(__dirname + "/public"))
+app.use(express.static(path.join(__dirname, "/public")))
 app.set("view engine", "ejs")
 
 const projectListRoutes = require("./routes/projectList.js")

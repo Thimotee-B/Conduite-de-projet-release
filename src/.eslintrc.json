@@ -14,8 +14,8 @@
             4
         ],
         "linebreak-style": [
-            "warning",
-            "unix"
+            "error",
+            "windows"
         ],
         "quotes": [
             "error",
@@ -26,6 +26,16 @@
             "never"
         ],
         "no-param-reassign": "error",
-        "no-var":"error"
+        "no-var":"error",
+        "camelcase": [
+            "error",
+            {"properties": "never"}
+        ],
+        "dot-notation": [
+            "error", 
+            { "allowPattern": "^[a-z]+(_[a-z]+)+$" }
+        ],
+        "no-unused-vars": "warn",
+        "no-unused-expressions": "warn"
     }
 }
