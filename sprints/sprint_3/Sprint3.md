@@ -6,7 +6,7 @@
 
 ### Issues
 
-|  ID  |                            Issue                             | Importance | Difficulté | Etat |
+|  ID  |                            User Story                             | Importance | Difficulté | Etat |
 | :--: | :----------------------------------------------------------: | :-----: | :-----------: | :--: |
 | #24 | En tant que Scrum Master, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 |TODO|
 | #25 | En tant qu'utilisateur, je souhaite pouvoir avoir accès à un diagramme de Gantt montrant l'organisation du projet généré à partir du **planning** afin de voir l'état global du projet et son avancement  | Moyenne-Basse | 5 |TODO|
