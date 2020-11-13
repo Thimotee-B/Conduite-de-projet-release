@@ -6,7 +6,7 @@
 
 ### Issues
 
-|  ID  |                            Issue                             | Importance | Difficulté | Etat |
+|  ID  |                            User Story                             | Importance | Difficulté | Etat |
 | :--: | :----------------------------------------------------------: | :-----: | :-----------: | :--: |
 | #14 | En tant que développeur, je souhaite pouvoir modifier une **Task** (description , Definition of done, durée, dépendances) d'un projet afin de redéfinir le travail à effectuer. (Undo-able) | Moyenne-Haute | 3 |TODO|
 | #15 | En tant que développeur, je souhaite pouvoir supprimer une **Task** d'un projet si elle a le status "TODO" afin de l'enlever du travail à faire. (Undo-able) | Moyenne-Haute | 3 |TODO|
