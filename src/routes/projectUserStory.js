@@ -21,7 +21,8 @@ function init(app, db, ObjectId) {
                                 importance: req.body.importance,
                                 difficulte: req.body.difficulte,
                                 plannification: req.body.plannification,
-                                id: updateNbUs
+                                id: updateNbUs,
+                                etat: "TODO"
                             }
                         }
                             }
@@ -56,6 +57,7 @@ function init(app, db, ObjectId) {
             .then(results => {
                 const usPos = parseInt(req.params.pos,10)
                 const usId = results.us[usPos].id
+                const etat = results.us[usPos].etat
                 db.collection("projects").updateOne(
                     { _id : ObjectId(req.params.projectId)},
                     { $pull:  {us:  results.us[usPos]}}
@@ -72,7 +74,8 @@ function init(app, db, ObjectId) {
                                         importance: req.body.importance,
                                         difficulte: req.body.difficulte,
                                         plannification: req.body.plannification,
-                                        id: usId
+                                        id: usId,
+                                        etat: etat
                                     }],
                                     $position: usPos
                                 } 

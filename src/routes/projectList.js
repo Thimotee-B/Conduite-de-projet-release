@@ -19,12 +19,19 @@ function init(app, db) {
             mm = "0" + mm 
         } 
         today = dd + "/" + mm + "/" + yyyy 
+        console.log(req.body.dateEnd)
+        let endDate = '-'
+        if(req.body.dateEnd != ''){
+            const endDateSplit = req.body.dateEnd.split('-')
+            endDate = endDateSplit[2]+'/'+endDateSplit[1]+'/'+endDateSplit[0]
+        }
+        
         db.collection("projects").insertOne(
             {
                 projectName: req.body.projectName,
                 projectDesc: req.body.desc,
                 sprintDelay: req.body.sprintDelay,
-                dateEnd: req.body.dateEnd,
+                dateEnd: endDate,
                 beginDate: today.toString(),
                 role: "Scrum Master",
                 nbMember: 1,
