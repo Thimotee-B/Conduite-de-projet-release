@@ -36,7 +36,7 @@
                 
                 </h5></td>
                 <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
-                <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
+                <td><h5><span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span></h5></td>
                 <td class="modifyUS">
                     <a class="text-warning" data-toggle="modal" data-target="#modifyUSModal<%= project.us[i].id %>">
                         <i class="fas fa-edit"></i>
@@ -122,9 +122,16 @@
                     </div>
                 </div>
                 <td>
-                    <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
+                    <% if (project.us[i].plannification == "-") {%>
+                        <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    <% }else { %>
+                        <p class="text-danger disabled" href="#">
+                            <i class="fas fa-trash-alt"></i>
+                        </p>
+                    <% } %> 
+                    
                 </td>
                 
             </tr>
