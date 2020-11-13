@@ -10,7 +10,6 @@ function init(app, db, ObjectId) {
 
     // Création d'un nouveau Sprint
     app.post("/projectView/:projectId/createSprint", (req, res) => {
-        console.log("ok1")
         const cursor =  db.collection("projects").findOne({"_id":ObjectId(req.params.projectId)})
             .then(results => {
                 const nbSprint = (results.sprint.length != 0) ? results.nbSprint+1 : 1
