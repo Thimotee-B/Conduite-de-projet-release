@@ -25,7 +25,9 @@ function init(app, db, ObjectId) {
                             { $push: 
                         { sprint: 
                             {
-                                id: "Sprint "+nbSprint
+                                id: "Sprint "+nbSprint,
+                                beginDate: req.body.beginDate,
+                                description: req.body.description
                             }
                         }
                             }
