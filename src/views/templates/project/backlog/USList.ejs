@@ -36,7 +36,18 @@
                 
                 </h5></td>
                 <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
-                <td><h5><span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span></h5></td>
+                <td><h5>
+                    <% if (project.us[i].etat == 'TODO') {%>
+                        <span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span>
+                    <% } %>
+                    <% if (project.us[i].etat == 'DOING') {%>
+                        <span class="badge badge-pill badge-info"><%= project.us[i].etat %></span>
+                    <% } %>
+                    <% if (project.us[i].etat == 'DONE') {%>
+                        <span class="badge badge-pill badge-success"><%= project.us[i].etat %></span>
+                    <% } %>
+                    
+                </h5></td>
                 <td class="modifyUS">
                     <a class="text-warning" data-toggle="modal" data-target="#modifyUSModal<%= project.us[i].id %>">
                         <i class="fas fa-edit"></i>
@@ -91,6 +102,18 @@
                                                     <option selected> <%= num %> </option>
                                                 <% }else { %>
                                                         <option><%= num %></option>
+                                                <% } %>  
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="etat">Etat</label>
+                                        <select class="form-control" id="etat" name="etat">
+                                            <% ['TODO', 'DOING', 'DONE'].forEach(function(e){ %>
+                                                <% if (project.us[i].etat == e) {%>
+                                                    <option selected> <%= e %> </option>
+                                                <% }else { %>
+                                                        <option><%= e %></option>
                                                 <% } %>  
                                             <% }) %>
                                         </select>

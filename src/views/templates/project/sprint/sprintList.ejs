@@ -32,7 +32,17 @@
                                     <% } %>
             
                                 </h5></td>
-                                <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
+                                <td><h5>
+                                    <% if (project.us[i].etat == 'TODO') {%>
+                                        <span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span>
+                                    <% } %>
+                                    <% if (project.us[i].etat == 'DOING') {%>
+                                        <span class="badge badge-pill badge-info"><%= project.us[i].etat %></span>
+                                    <% } %>
+                                    <% if (project.us[i].etat == 'DONE') {%>
+                                        <span class="badge badge-pill badge-success"><%= project.us[i].etat %></span>
+                                    <% } %>
+                                </td>
                             </tr>               
                         <%}%>
                     <% } %>
