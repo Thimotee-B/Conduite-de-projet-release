@@ -38,13 +38,15 @@ function init(app, db) {
                 us: [],
                 sprint: [],
                 nbUs: 0,
-                nbSprint: 0
+                nbSprint: 0,
+                nbTask: 0,
+                task: []
             }
         )
-            .then(result => {
-                res.redirect("/projectList")
-            })
-            .catch(error => console.error(error))
+        .then(result => {
+            res.redirect("/projectList")
+        })
+        .catch(error => console.error(error))
     })
 }
 
