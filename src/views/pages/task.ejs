@@ -3,6 +3,7 @@
 
 <head>
     <%- include("../templates/header/headerProject")%>
+    <%- include("../templates/header/headerTask")%>
 </head>
 
 <body id="page-top">
@@ -20,8 +21,15 @@
                 <div class="container-fluid">
                     <%- include("../templates/project/task/heading")%>
                 </div>
-                <div class="container-fluid spacex1" style="padding-right: 5rem;">
-                   
+                <div class="container-fluid spacex1">
+                    <div class="row">
+                        <div class="col-md-2">
+                            task created
+                        </div>
+                        <div class="col-md-10">
+                            <%- include("../templates/project/task/kanban")%>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- End of Main Content -->
