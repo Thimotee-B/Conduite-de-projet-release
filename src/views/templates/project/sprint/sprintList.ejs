@@ -1,23 +1,28 @@
 <% for(var j = 0; j < project.nbSprint; j++) {%>
-   
+    
         <div style="margin-bottom: 2em; ">
+            <div>
+                <h5>
+                    Sprint <%= j+1 %>
+                </h5>
+            </div>
             <table class="table table-hover table-sm table-striped">
                 <thead>
-                    <th class="text-uppercase" style="min-width: 100px;" >Sprint <%= j+1 %></th>
-                    <th scope="col"> </th>
-                    <th scope="col" style="min-width: 50px;"> </th>
-                    <th scope="col"> </th>
-                    <th scope="col"> </th>
+                    <th scope="col">ID US</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Difficulté</th>
+                    <th scope="col">Importance</th>
+                    <th scope="col">Etat</th>
                 </thead>
                 <tbody>
                     <!-- Loop through quotes -->
                     <% for(var i = 0; i < project.us.length; i++) {%>
                         <% if(project.us[i].plannification == project.sprint[j].id){ %>
                             <tr>
-                                <td><span>US#<%= project.us[i].id %></span></td>
+                                <td class="align-middle"><span>US#<%= project.us[i].id %></span></td>
                                 <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
-                                <td><span><%= project.us[i].difficulte %></span></td>
-                                <td><h5>
+                                <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
+                                <td class="align-middle"><h5>
                                     <% if (project.us[i].importance == 'Haute') {%>
                                         <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
                                     <% } %>
@@ -32,7 +37,7 @@
                                     <% } %>
             
                                 </h5></td>
-                                <td><h5>
+                                <td class="align-middle"><h5>
                                     <% if (project.us[i].etat == 'TODO') {%>
                                         <span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span>
                                     <% } %>
@@ -65,23 +70,28 @@
 <% } %>
 
 <div style="margin-bottom: 2em;">
+    <div>
+        <h5>
+            Non plannifiées
+        </h5>
+    </div>
     <table class="table table-hover">
         <thead>
-            <th class="text-uppercase" scope="col">Non plannifiées</th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
+            <th scope="col">ID US</th>
+            <th scope="col">Description</th>
+            <th scope="col">Difficulté</th>
+            <th scope="col">Importance</th>
+            <th scope="col">Etat</th>
         </thead>
         <tbody>
             <!-- Loop through quotes -->
             <% for(var i = 0; i < project.us.length; i++) {%>
                 <% if(project.us[i].plannification == '-'){ %>
                     <tr>
-                        <td><span>US#<%= project.us[i].id %></span></td>
+                        <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
                         <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
-                        <td><span><%= project.us[i].difficulte %></span></td>
-                        <td><h5>
+                        <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
+                        <td class="text-center align-middle"><h5>
                             <% if (project.us[i].importance == 'Haute') {%>
                                 <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
                             <% } %>
@@ -95,7 +105,7 @@
                                 <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
                             <% } %>
                         </h5></td>
-                        <td><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
+                        <td class="text-center align-middle"><h5><span class="badge badge-pill badge-etat">Todo</span></h5></td>
                     </tr>
                 <%}%>
             <% } %>
