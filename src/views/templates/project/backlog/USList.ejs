@@ -1,12 +1,12 @@
-<table class="table table-hover">
+<table class="table table-hover table-sm table-striped">
     <thead>
         <tr>
-            <th scope="col">ID US</th>
+            <th scope="col" class="text-center">ID US</th>
             <th scope="col">Description</th>
-            <th scope="col">Difficulté</th>
-            <th scope="col">Importance</th>
-            <th scope="col">Plannification</th>
-            <th scope="col">Etat</th>
+            <th scope="col" class="text-center">Difficulté</th>
+            <th scope="col" class="text-center">Importance</th>
+            <th scope="col" class="text-center">Plannification</th>
+            <th scope="col" class="text-center">Etat</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -15,29 +15,37 @@
          <!-- Loop through quotes -->
         <% for(var i = 0; i < project.us.length; i++) {%>
             <tr>
-                <td><span>US#<%= project.us[i].id %></span></td>
+                <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
                 <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
-                <td><span><%= project.us[i].difficulte %></span></td>
-                <td><h5>
+                <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
+                <td class="text-center align-middle"><h5>
                     <% if (project.us[i].importance == 'Haute') {%>
-                        <span class="badge badge-pill badge-danger"><%= project.us[i].importance %></span>
+                        <span class="badge badge-pill badge-danger fullWidth"><%= project.us[i].importance %></span>
                     <% } %>
                     <% if (project.us[i].importance == 'Moyenne-Haute') {%>
-                        <span class="badge badge-pill badge-moyenne-haute"><%= project.us[i].importance %></span>
+                        <span class="badge badge-pill badge-moyenne-haute fullWidth"><%= project.us[i].importance %></span>
                     <% } %>
                     <% if (project.us[i].importance == 'Moyenne-Basse') {%>
-                        <span class="badge badge-pill badge-warning"><%= project.us[i].importance %></span>
+                        <span class="badge badge-pill badge-warning fullWidth"><%= project.us[i].importance %></span>
                     <% } %>
                     <% if (project.us[i].importance == 'Basse') {%>
-                        <span class="badge badge-pill badge-success"><%= project.us[i].importance %></span>
+                        <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].importance %></span>
                     <% } %>
-
-                    
-                
                 </h5></td>
-                <td><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
-                <td><h5><span class="badge badge-pill badge-etat"><%= project.us[i].etat %></span></h5></td>
-                <td class="modifyUS">
+                <td class="text-center align-middle px-2"><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
+                <td class="text-center align-middle"><h5>
+                    <% if (project.us[i].etat == 'TODO') {%>
+                        <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
+                    <% } %>
+                    <% if (project.us[i].etat == 'DOING') {%>
+                        <span class="badge badge-pill badge-doing fullWidth"><%= project.us[i].etat %></span>
+                    <% } %>
+                    <% if (project.us[i].etat == 'DONE') {%>
+                        <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
+                    <% } %>
+                    
+                </h5></td>
+                <td class="modifyUS text-center align-middle">
                     <a class="text-warning" data-toggle="modal" data-target="#modifyUSModal<%= project.us[i].id %>">
                         <i class="fas fa-edit"></i>
                     </a>
@@ -96,6 +104,18 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="etat">Etat</label>
+                                        <select class="form-control" id="etat" name="etat">
+                                            <% ['TODO', 'DOING', 'DONE'].forEach(function(e){ %>
+                                                <% if (project.us[i].etat == e) {%>
+                                                    <option selected> <%= e %> </option>
+                                                <% }else { %>
+                                                        <option><%= e %></option>
+                                                <% } %>  
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="plannification">Plannification</label>
                                         <select class="form-control" id="plannification" name="plannification">
                                             <option>-</option>
@@ -121,15 +141,18 @@
                         </div>
                     </div>
                 </div>
-                <td>
+                <td class="text-center align-middle">
                     <% if (project.us[i].plannification == "-") {%>
                         <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     <% }else { %>
-                        <p class="text-danger disabled" href="#">
-                            <i class="fas fa-trash-alt"></i>
-                        </p>
+                        <div class="not-allowed">
+                            <a class="btn disabled" href="#">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                        
                     <% } %> 
                     
                 </td>
