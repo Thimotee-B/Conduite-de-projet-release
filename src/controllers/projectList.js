@@ -14,16 +14,16 @@ function init(app, db) {
         let yyyy = today.getFullYear() 
         if (dd < 10) { 
             dd = "0" + dd 
-        } 
+        }
         if (mm < 10) { 
             mm = "0" + mm 
-        } 
+        }
         today = dd + "/" + mm + "/" + yyyy 
         console.log(req.body.dateEnd)
-        let endDate = '-'
-        if(req.body.dateEnd != ''){
-            const endDateSplit = req.body.dateEnd.split('-')
-            endDate = endDateSplit[2]+'/'+endDateSplit[1]+'/'+endDateSplit[0]
+        let endDate = "-"
+        if(req.body.dateEnd != ""){
+            const endDateSplit = req.body.dateEnd.split("-")
+            endDate = endDateSplit[2]+"/"+endDateSplit[1]+"/"+endDateSplit[0]
         }
         
         db.collection("projects").insertOne(
@@ -40,13 +40,15 @@ function init(app, db) {
                 nbUs: 0,
                 nbSprint: 0,
                 nbTask: 0,
-                task: []
+                task: [],
+                nbRelease: 0,
+                releases: []
             }
         )
-        .then(result => {
-            res.redirect("/projectList")
-        })
-        .catch(error => console.error(error))
+            .then(result => {
+                res.redirect("/projectList")
+            })
+            .catch(error => console.error(error))
     })
 }
 

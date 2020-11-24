@@ -92,15 +92,23 @@
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+    <% if (page == 'release'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
+        <a class="nav-link" href="/projectView/<%= project._id %>/release">
             <i class="far fa-file-archive"></i>
             <span>Release</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <% if (page == 'doc'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
+        <a class="nav-link" href="/projectView/<%= project._id %>/doc">
             <i class="fas fa-book"></i>
             <span>Documentation</span></a>
     </li>
