@@ -57,7 +57,7 @@ function init(app, db, ObjectId) {
                                         }
                                     )
                                     .then((result) => {
-                                        res.render("pages/task.ejs", {project: projectResult, taskList: taskResults})
+                                        res.redirect("/projectView/" + req.params.projectId + "/tasks")
                                     })
                                     .catch((error) => console.error(error))
                             })

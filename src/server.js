@@ -1,4 +1,5 @@
 const express = require("express")
+const fileUpload = require("express-fileupload")
 const app = express()
 const ejs = require("ejs")
 const path = require("path")
@@ -9,14 +10,16 @@ const ObjectId = require("mongodb").ObjectID
 const connectionString = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority"
 
 app.use(express.static(path.join(__dirname, "/public")))
+app.use(fileUpload())
 app.set("view engine", "ejs")
 
-const projectListRoutes = require("./routes/projectList.js")
-const projectViewRoutes = require("./routes/projectView.js")
-const projectBacklogRoutes = require("./routes/projectBacklog.js")
-const projectUserStoryRoutes = require("./routes/projectUserStory.js")
-const projectSprintRoutes = require("./routes/projectSprint.js")
-const projectTasksRoutes = require("./routes/projectTasks.js")
+const projectListRoutes = require("./controllers/projectList.js")
+const projectViewRoutes = require("./controllers/projectView.js")
+const projectBacklogRoutes = require("./controllers/projectBacklog.js")
+const projectUserStoryRoutes = require("./controllers/projectUserStory.js")
+const projectSprintRoutes = require("./controllers/projectSprint.js")
+const projectTasksRoutes = require("./controllers/projectTasks.js")
+const projectReleaseRoutes = require("./controllers/release.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -44,6 +47,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         projectTasksRoutes.init(app, db, ObjectId)
 
         projectSprintRoutes.init(app, db, ObjectId)
+
+        projectReleaseRoutes.init(app, db, ObjectId)
 
         app.listen(3000, function () {
             console.log("listening on 3000")
