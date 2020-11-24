@@ -110,21 +110,25 @@
     <div class="board-column-header">Todo</div>
     <div class="board-column-content-wrapper">
       <div class="board-column-content">
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>1</div>
+        <% for(var i = 0; i < project.task.length; i++) {%>
+        <div class="board-item container">
+          <div class="board-item-content row">
+            <div class="col-md-10">
+              <span>#<%= project.task[i].id %></span>
+            </div>
+            <div class="col-md-1 modifyUS">
+              <a class="text-warning" href="">
+                <i class="fas fa-edit"></i>
+              </a>
+            </div>
+            <div class="col-md-1 modifyUS">
+              <p class="text-danger" href="">
+                <i class="fas fa-trash-alt"></i>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>2</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>3</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>4</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>5</div>
-        </div>
+        <% } %>
       </div>
     </div>
   </div>
