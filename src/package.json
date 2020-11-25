@@ -4,17 +4,17 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "test": "mocha ../tests/testEndToEnd13nov.spec.js",
+    "test": "cypress open",
     "app": "nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cypress": "^6.0.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
-    "mocha": "^8.2.1",
     "mongodb": "^3.6.3",
     "node": "^15.2.0",
     "nodemon": "^2.0.6",
