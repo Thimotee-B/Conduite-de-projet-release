@@ -13,7 +13,6 @@ describe('Page d\'acceuil', () => {
         cy.get('#dateEnd').click();
         cy.get('#dateEnd').type('2020-11-29');
         cy.get('.btn-success').click();
-        cy.get('.modal-content > form').submit();
         cy.url().should('contains', 'http://localhost:3000/projectList');
     })
     it('Création de projet annulée', () => {
