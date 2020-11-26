@@ -16,6 +16,16 @@ function remplirUSForm(US) {
     cy.get('.form-group:nth-child(4) > #plannification').select(US.planification);
 }
 
+function editUS(US) {
+    cy.get('#modifyUSModal1 #entantque').select(US.role);
+    cy.get('#modifyUSModal1 #jesouhaite').clear().type(US.souhait);
+    cy.get('#modifyUSModal1 #afinde').clear().type(US.afinDe);
+    cy.get('#modifyUSModal1 #importance').select(US.importance);
+    cy.get('#modifyUSModal1 #difficulte').select(US.difficulte);
+    cy.get('#modifyUSModal1 #etat').select(US.etat);
+
+}
+
 function URLValide() {
     cy.url().should('include', '/projectView/');
     cy.url().should('include', '/backlog');
@@ -60,10 +70,23 @@ describe('Gestion backlog', () => {
             })
         })
     })
+//Ne fonctionne pas s'il y a plusieurs US (à modifier, mais c'est dur)
+    it('Modification d\'une US', () => {
+        getListUS().children().then(($childrenBefore) => {
+            cy.fixture(fixtureModify).then((US) => {
+                cy.get('.fa-edit').click();
+                editUS(US);
+                cy.get('#modifyUSModal1 .btn-success').click();
+                URLValide();
+                getListUS().get('.ui-sortable-handle')
+                    .should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length).to.equal($childrenAfter.length);
+                })
+            })
+        })
+    })
 
-    it('Modification d\'une US'), () => {
-        
-    }
 
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
@@ -76,6 +99,18 @@ describe('Gestion backlog', () => {
                     .should('not.contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
                 getListUS().children().then(($childrenAfter) => {
                     expect($childrenBefore.length).to.equal($childrenAfter.length);
+                })
+            })
+        })
+    })
+
+    it('Suppression d\'une US', () => {
+        getListUS().children().then(($childrenBefore) => {
+            cy.fixture(fixtureModify).then((US) => {
+                cy.get('.fa-trash-alt').click();
+                URLValide();
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length-1).to.equal($childrenAfter.length);
                 })
             })
         })
