@@ -6,9 +6,9 @@
       <div class="board-column-content-wrapper">
         <div class="board-column-content">
           <% for(var i = 0; i < project.task.length; i++) {%>
-          <% if(project.task[i].etat == "TODO") { %>
-          <%- include("taskItem",{i: i, taskId: project.task[i].id})%>
-          <% } %>
+            <% if(project.task[i].etat == "TODO") { %>
+              <%- include("taskItem",{i: i, taskId: project.task[i].id, state: 'TODO', projectId: project._id})%>
+            <% } %>
           <% } %>
         </div>
       </div>
@@ -20,25 +20,9 @@
       <div class="board-column-content-wrapper">
         <div class="board-column-content">
           <% for(var i = 0; i < project.task.length; i++) {%>
-          <% if(project.task[i].etat == "DOING") { %>
-          <div class="board-item container">
-            <div class="board-item-content row">
-              <div class="col-md-10">
-                <span id="<%= i %>">#<%= project.task[i].id %></span>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <a class="text-warning" href="">
-                  <i class="fas fa-edit"></i>
-                </a>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <p class="text-danger" href="">
-                  <i class="fas fa-trash-alt"></i>
-                </p>
-              </div>
-            </div>
-          </div>
-          <% } %>
+            <% if(project.task[i].etat == "DOING") { %>
+              <%- include("taskItem",{i: i, taskId: project.task[i].id, state: 'DOING'})%>
+            <% } %>
           <% } %>
         </div>
       </div>
@@ -50,25 +34,9 @@
       <div class="board-column-content-wrapper">
         <div class="board-column-content">
           <% for(var i = 0; i < project.task.length; i++) {%>
-          <% if(project.task[i].etat == "REVIEWING-TESTING") { %>
-          <div class="board-item container">
-            <div class="board-item-content row">
-              <div class="col-md-10">
-                <span id="<%= i %>">#<%= project.task[i].id %></span>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <a class="text-warning" href="">
-                  <i class="fas fa-edit"></i>
-                </a>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <p class="text-danger" href="">
-                  <i class="fas fa-trash-alt"></i>
-                </p>
-              </div>
-            </div>
-          </div>
-          <% } %>
+            <% if(project.task[i].etat == "REVIEWING-TESTING") { %>
+              <%- include("taskItem",{i: i, taskId: project.task[i].id, state: 'REVIEWING-TESTING'})%>
+            <% } %>
           <% } %>
         </div>
       </div>
@@ -80,36 +48,24 @@
       <div class="board-column-content-wrapper">
         <div class="board-column-content">
           <% for(var i = 0; i < project.task.length; i++) {%>
-          <% if(project.task[i].etat == "DONE") { %>
-          <div class="board-item container">
-            <div class="board-item-content row">
-              <div class="col-md-10">
-                <span id="<%= i %>">#<%= project.task[i].id %></span>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <a class="text-warning" href="">
-                  <i class="fas fa-edit"></i>
-                </a>
-              </div>
-              <div class="col-md-1 modifyUS">
-                <p class="text-danger" href="">
-                  <i class="fas fa-trash-alt"></i>
-                </p>
-              </div>
-            </div>
-          </div>
-          <% } %>
+            <% if(project.task[i].etat == "DONE") { %>
+              <%- include("taskItem",{i: i, taskId: project.task[i].id, state: 'DONE'})%>
+            <% } %>
           <% } %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% for(var i = 0; i < project.task.length; i++) {%>
+  <%- include("infoTaskModal",{i: i, project: project})%>
+<% } %>
+
 
 <script>
 
   function getTaskId(item) {
-    return item._element.childNodes[1].children[0].children[0].id
+    return item._element.childNodes[1].children[0].children[0].children[0].id
   }
 
   function getColumnName(item) {
@@ -121,18 +77,24 @@
   var itemContainers = [].slice.call(
     document.querySelectorAll(".board-column-content")
   );
-  var columnGrids = [];
-  var boardGrid;
+  var columnGrids = []
+  var boardGrid
 
+  let startItem
+
+  
   // Init the column grids so we can drag those items around.
   itemContainers.forEach(function (container) {
     var grid = new Muuri(container, {
       items: ".board-item",
+      dragRelease:{
+        duration: 300
+      },
       dragEnabled: true,
       dragSort: function () {
         return columnGrids;
       },
-      dragContainer: dragContainer,
+     
       dragAutoScroll: {
         targets: (item) => {
           return [
@@ -142,6 +104,7 @@
         },
       },
     })
+    
       .on("dragInit", function (item) {
         item.getElement().style.width = item.getWidth() + "px";
         item.getElement().style.height = item.getHeight() + "px";
@@ -153,15 +116,15 @@
         let taskPos = getTaskId(item)
         let state = getColumnName(item)
         let redirection = window.location.pathname + "/" + taskPos + "/updateState/" + state
-        window.location.replace(redirection);
-
+        //window.location.replace(redirection);
+        
 
 
       })
       .on("layoutStart", function () {
         boardGrid.refreshItems().layout();
       });
-
+     
     columnGrids.push(grid);
   });
 
@@ -170,4 +133,6 @@
     dragEnabled: true,
     dragHandle: ".board-column-header",
   });
+
+  
 </script>
