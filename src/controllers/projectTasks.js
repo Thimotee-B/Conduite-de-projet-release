@@ -100,7 +100,22 @@ function init(app, db, ObjectId) {
                     .catch((error) => console.error(error))
             })
             .catch((error) => console.error(error))
-            
+    })
+
+
+    app.get("/projectView/:projectId/removeTask/:pos", (req, res) => {
+        const cursor =  db.collection("projects").findOne({"_id":ObjectId(req.params.projectId)})
+            .then(results => {
+                const taskPos = req.params.pos
+                db.collection("projects").updateOne(
+                    { _id : ObjectId(req.params.projectId)},
+                    { $pull:  {task:  results.us[taskPos]}}
+                )
+                    .then(result => {
+                        res.redirect("/projectView/"+req.params.projectId+"/tasks")
+                    })
+                    .catch(error => console.error(error))
+            })
     })
 }
 

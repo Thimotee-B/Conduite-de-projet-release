@@ -1,243 +1,118 @@
-<style>
-   
-  .drag-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-  }
-  .board {
-    position: relative;
-  }
-  .board-column {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0 10px;
-    width: calc(100% / 4);
-    z-index: 1;
-  }
-  .board-column.muuri-item-releasing {
-    z-index: 2;
-  }
-  .board-column.muuri-item-dragging {
-    z-index: 3;
-    cursor: move;
-  }
-  .board-column-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  .board-column-header {
-    position: relative;
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-    padding: 0 20px;
-    text-align: center;
-    background: #333;
-    color: #fff;
-    border-radius: 5px 5px 0 0;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  @media (max-width: 600px) {
-    .board-column-header {
-      text-indent: -1000px;
-    }
-  }
-  .board-column.todo .board-column-header {
-    background: #4A9FF9;
-  }
-  .board-column.working .board-column-header {
-    background: #f9944a;
-  }
-  .board-column.done .board-column-header {
-    background: #2ac06d;
-  }
-  .board-column.testing .board-column-header {
-    background: rgb(255, 91, 3);
-  }
-
-  .board-column-content-wrapper {
-    position: relative;
-    padding: 8px;
-    background: #f0f0f0;
-    height: calc(100vh - 90px);
-    overflow-y: auto;
-    border-radius: 0 0 5px 5px;
-  }
-  .board-column-content {
-    position: relative;
-    min-height: 100%;
-  }
-  .board-item {
-    position: absolute;
-    width: calc(100% - 16px);
-    margin: 8px;
-  }
-  .board-item.muuri-item-releasing {
-    z-index: 9998;
-  }
-  .board-item.muuri-item-dragging {
-    z-index: 9999;
-    cursor: move;
-  }
-  .board-item.muuri-item-hidden {
-    z-index: 0;
-  }
-  .board-item-content {
-    position: relative;
-    padding: 20px;
-    background: #fff;
-    border-radius: 4px;
-    font-size: 17px;
-    cursor: pointer;
-    -webkit-box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.2);
-  }
-  @media (max-width: 600px) {
-    .board-item-content {
-      text-align: center;
-    }
-    .board-item-content span {
-      display: none;
-    }
-  }
-</style>
 <div class="drag-container"></div>
 <div class="board">
-<div class="board-column todo">
-  <div class="board-column-container">
-    <div class="board-column-header">Todo</div>
-    <div class="board-column-content-wrapper">
-      <div class="board-column-content">
-        <% for(var i = 0; i < project.task.length; i++) {%>
+  <div class="board-column todo">
+    <div class="board-column-container">
+      <div class="board-column-header">Todo</div>
+      <div class="board-column-content-wrapper">
+        <div class="board-column-content">
+          <% for(var i = 0; i < project.task.length; i++) {%>
           <% if(project.task[i].etat == "TODO") { %>
-            <div class="board-item container">
-              <div class="board-item-content row">
-                <div class="col-md-10">
-                  <span id="<%= i %>">#<%= project.task[i].id %></span>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <a class="text-warning" href="">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <p class="text-danger" href="">
-                    <i class="fas fa-trash-alt"></i>
-                  </p>
-                </div>
-              </div>
-            </div>
+          <%- include("taskItem",{i: i, taskId: project.task[i].id})%>
           <% } %>
-        <% } %>
+          <% } %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="board-column working">
-  <div class="board-column-container">
-    <div class="board-column-header">DOING</div>
-    <div class="board-column-content-wrapper">
-      <div class="board-column-content">
-        <% for(var i = 0; i < project.task.length; i++) {%>
+  <div class="board-column working">
+    <div class="board-column-container">
+      <div class="board-column-header">DOING</div>
+      <div class="board-column-content-wrapper">
+        <div class="board-column-content">
+          <% for(var i = 0; i < project.task.length; i++) {%>
           <% if(project.task[i].etat == "DOING") { %>
-            <div class="board-item container">
-              <div class="board-item-content row">
-                <div class="col-md-10">
-                  <span id="<%= i %>">#<%= project.task[i].id %></span>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <a class="text-warning" href="">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <p class="text-danger" href="">
-                    <i class="fas fa-trash-alt"></i>
-                  </p>
-                </div>
+          <div class="board-item container">
+            <div class="board-item-content row">
+              <div class="col-md-10">
+                <span id="<%= i %>">#<%= project.task[i].id %></span>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <a class="text-warning" href="">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <p class="text-danger" href="">
+                  <i class="fas fa-trash-alt"></i>
+                </p>
               </div>
             </div>
+          </div>
           <% } %>
-        <% } %>
+          <% } %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="board-column testing">
-  <div class="board-column-container">
-    <div class="board-column-header">REVIEWING-TESTING</div>
-    <div class="board-column-content-wrapper">
-      <div class="board-column-content">
-        <% for(var i = 0; i < project.task.length; i++) {%>
+  <div class="board-column testing">
+    <div class="board-column-container">
+      <div class="board-column-header">REVIEWING-TESTING</div>
+      <div class="board-column-content-wrapper">
+        <div class="board-column-content">
+          <% for(var i = 0; i < project.task.length; i++) {%>
           <% if(project.task[i].etat == "REVIEWING-TESTING") { %>
-            <div class="board-item container">
-              <div class="board-item-content row">
-                <div class="col-md-10">
-                  <span id="<%= i %>">#<%= project.task[i].id %></span>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <a class="text-warning" href="">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <p class="text-danger" href="">
-                    <i class="fas fa-trash-alt"></i>
-                  </p>
-                </div>
+          <div class="board-item container">
+            <div class="board-item-content row">
+              <div class="col-md-10">
+                <span id="<%= i %>">#<%= project.task[i].id %></span>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <a class="text-warning" href="">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <p class="text-danger" href="">
+                  <i class="fas fa-trash-alt"></i>
+                </p>
               </div>
             </div>
+          </div>
           <% } %>
-        <% } %>
+          <% } %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="board-column done">
-  <div class="board-column-container">
-    <div class="board-column-header">DONE</div>
-    <div class="board-column-content-wrapper">
-      <div class="board-column-content">
-        <% for(var i = 0; i < project.task.length; i++) {%>
+  <div class="board-column done">
+    <div class="board-column-container">
+      <div class="board-column-header">DONE</div>
+      <div class="board-column-content-wrapper">
+        <div class="board-column-content">
+          <% for(var i = 0; i < project.task.length; i++) {%>
           <% if(project.task[i].etat == "DONE") { %>
-            <div class="board-item container">
-              <div class="board-item-content row">
-                <div class="col-md-10">
-                  <span id="<%= i %>">#<%= project.task[i].id %></span>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <a class="text-warning" href="">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                </div>
-                <div class="col-md-1 modifyUS">
-                  <p class="text-danger" href="">
-                    <i class="fas fa-trash-alt"></i>
-                  </p>
-                </div>
+          <div class="board-item container">
+            <div class="board-item-content row">
+              <div class="col-md-10">
+                <span id="<%= i %>">#<%= project.task[i].id %></span>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <a class="text-warning" href="">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+              <div class="col-md-1 modifyUS">
+                <p class="text-danger" href="">
+                  <i class="fas fa-trash-alt"></i>
+                </p>
               </div>
             </div>
+          </div>
           <% } %>
-        <% } %>
+          <% } %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <script>
 
-  function getTaskId(item){
-    return  item._element.childNodes[1].children[0].children[0].id
+  function getTaskId(item) {
+    return item._element.childNodes[1].children[0].children[0].id
   }
 
-  function getColumnName(item){
+  function getColumnName(item) {
     return item.getGrid().getElement().parentNode.parentNode.children[0].innerText
   }
 
@@ -277,10 +152,10 @@
         item.getGrid().refreshItems([item]);
         let taskPos = getTaskId(item)
         let state = getColumnName(item)
-        let redirection = window.location.pathname+"/"+taskPos+"/updateState/"+state
+        let redirection = window.location.pathname + "/" + taskPos + "/updateState/" + state
         window.location.replace(redirection);
 
-        
+
 
       })
       .on("layoutStart", function () {
@@ -296,4 +171,3 @@
     dragHandle: ".board-column-header",
   });
 </script>
-
