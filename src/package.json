@@ -4,7 +4,9 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "test": "cypress open",
+    "cy:run" : "cypress run",
+    "cy:record" : "cypress run --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
+    "cy:open": "cypress open",
     "app": "nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",

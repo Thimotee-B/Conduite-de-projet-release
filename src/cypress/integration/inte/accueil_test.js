@@ -48,5 +48,4 @@ describe('Page d\'accueil', () => {
             })
         })
     })
-
 })
