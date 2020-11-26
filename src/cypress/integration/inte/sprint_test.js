@@ -1,6 +1,7 @@
 describe('Gestion sprint', () => {
     it('Charge la page d\'acceuil', () => {
         cy.visit('/')
+        cy.url().should('include', '/projectList')
     })
     it('Charge la page de sprint', () => {
         cy.get('.clickable-row:nth-child(1) > td:nth-child(1)').click();
