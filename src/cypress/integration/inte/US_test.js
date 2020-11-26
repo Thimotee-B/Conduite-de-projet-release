@@ -41,13 +41,13 @@ function getListUS() {
 }
 
 describe('Gestion backlog', () => {
-    it('Charge la page d\'acceuil', () => {
+    it('Charge la page d\'acceuil et du projet test', () => {
         cy.visit('/')
         cy.url().should('include', '/projectList')
+        cy.get('.clickable-row').contains('Projet test').click();
     })
 
     it('Charge la page de backlog', () => {
-        cy.get('.clickable-row').contains('Projet test').click();
         cy.url().should('include', '/projectView/');
         cy.get('.nav-item').should('contain', 'Backlog');
         cy.get('.nav-item').contains('Backlog').click();
@@ -67,7 +67,7 @@ describe('Gestion backlog', () => {
             })
         })
     })
-    
+
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
