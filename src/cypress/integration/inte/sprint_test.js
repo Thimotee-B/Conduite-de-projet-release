@@ -4,7 +4,7 @@ describe('Gestion sprint', () => {
         cy.url().should('include', '/projectList')
     })
     it('Charge la page de sprint', () => {
-        cy.get('.clickable-row').contains('Projet Test').click();
+        cy.get('.clickable-row').contains('Projet test').click();
         cy.url().should('include', '/projectView/');
         cy.get('.nav-item').should('contain', 'Sprints');
         cy.get('.nav-item').contains('Sprints').click();

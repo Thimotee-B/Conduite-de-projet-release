@@ -9,13 +9,9 @@ describe('Page d\'accueil', () => {
     it('Création de projet validée', () => {
         cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
-            cy.get('#projectName').click();
             cy.get('#projectName').type(ProjectCreatedName);
-            cy.get('#projectDesc').click();
             cy.get('#projectDesc').type(ProjectDesc);
-            cy.get('#sprintDelay').click();
             cy.get('#sprintDelay').type('{backspace}4');
-            cy.get('#dateEnd').click();
             cy.get('#dateEnd').type('2020-11-29');
             cy.get('.btn-success').click();
             cy.url().should('contains', 'http://localhost:3000/projectList');
@@ -29,12 +25,9 @@ describe('Page d\'accueil', () => {
     it('Création de projet annulée', () => {
         cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
-            cy.get('#projectName').click();
             cy.get('#projectName').type(ProjectNotCreatedName);
             cy.get('#projectDesc').type(ProjectDesc);
-            cy.get('#sprintDelay').click();
             cy.get('#sprintDelay').type('{backspace}5');
-            cy.get('#dateEnd').click();
             cy.get('#dateEnd').type('1996-12-09');
             cy.get('.btn-danger').click();
             cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenAfter) => {
