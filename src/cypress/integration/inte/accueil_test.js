@@ -35,9 +35,6 @@ describe('Page d\'accueil', () => {
             cy.get('#sprintDelay').click();
             cy.get('#sprintDelay').type('{backspace}5');
             cy.get('#dateEnd').click();
-            cy.get('#dateEnd').type('0001-12-09');
-            cy.get('#dateEnd').type('0019-12-09');
-            cy.get('#dateEnd').type('0199-12-09');
             cy.get('#dateEnd').type('1996-12-09');
             cy.get('.btn-danger').click();
             cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenAfter) => {
