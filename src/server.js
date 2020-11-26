@@ -7,7 +7,7 @@ const bodyParser = require("body-parser")
 const MongoClient = require("mongodb").MongoClient
 const ObjectId = require("mongodb").ObjectID
 
-const connectionString = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority"
+const connectionString ="mongodb://127.0.0.1:27017/" //"mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority" 
 
 app.use(express.static(path.join(__dirname, "/public")))
 app.use(fileUpload())
