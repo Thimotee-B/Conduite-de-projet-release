@@ -3,6 +3,7 @@ describe('Gestion sprint', () => {
         cy.visit('/')
         cy.url().should('include', '/projectList')
     })
+    
     it('Charge la page de sprint', () => {
         cy.get('.clickable-row').contains('Projet test').click();
         cy.url().should('include', '/projectView/');
@@ -11,6 +12,7 @@ describe('Gestion sprint', () => {
         cy.url().should('include', '/projectView/');
         cy.url().should('include', '/sprint');
     })
+
     it('Création de sprint', () => {
         cy.get('.container-fluid').get('.spacex1').children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
@@ -27,6 +29,7 @@ describe('Gestion sprint', () => {
             })
         })
     })
+
     it('Création de sprint annulé', () => {
         cy.get('.container-fluid').get('.spacex1').children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();

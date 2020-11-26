@@ -11,35 +11,41 @@ function remplirProjetForm(name, desc, sprint, date){
     cy.get('#dateEnd').type(date);
 }
 
+function getListProj(){
+    return cy.get('.table').get('.table-hover').get('tbody');
+}
+
 
 describe('Page d\'accueil', () => {
     it('Charge la page d\'accueil', () => {
         cy.visit('/')
-        cy.url().should('include', '/projectList')
+        cy.url().should('contains', '/projectList')
     })
+
     it('Création de projet validée', () => {
-        cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenBefore) => {
+        getListProj().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
             remplirProjetForm(projectCreatedName, projectDesc, sprintDelay, date);
             cy.get('.btn-success').click();
             cy.url().should('contains', '/projectList');
-            cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenAfter) => {
+            getListProj().children().then(($childrenAfter) => {
                 expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
-                cy.get('.table').get('.table-hover').get('tbody').should('contain', projectCreatedName)
             })
+            getListProj().should('contain', projectCreatedName)
         })
-
     })
+
     it('Création de projet annulée', () => {
-        cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenBefore) => {
+        getListProj().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
             remplirProjetForm(projectNotCreatedName, projectDesc, sprintDelay, date);
             cy.get('.btn-danger').click();
             cy.url().should('contains', '/projectList');
-            cy.get('.table').get('.table-hover').get('tbody').children().then(($childrenAfter) => {
+            getListProj().children().then(($childrenAfter) => {
                 expect($childrenBefore.length).to.equal($childrenAfter.length);
-                cy.get('.table').get('.table-hover').get('tbody').should('not.contain', projectNotCreatedName)
             })
+            getListProj().should('not.contain', projectNotCreatedName)
         })
     })
+    
 })

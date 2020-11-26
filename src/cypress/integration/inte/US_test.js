@@ -45,6 +45,7 @@ describe('Gestion backlog', () => {
         cy.visit('/')
         cy.url().should('include', '/projectList')
     })
+
     it('Charge la page de backlog', () => {
         cy.get('.clickable-row').contains('Projet test').click();
         cy.url().should('include', '/projectView/');
@@ -52,6 +53,7 @@ describe('Gestion backlog', () => {
         cy.get('.nav-item').contains('Backlog').click();
         URLValide();
     })
+
     it('Création d\'une US validée', () => {
         getListUS().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
@@ -65,6 +67,7 @@ describe('Gestion backlog', () => {
             })
         })
     })
+    
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
