@@ -61,6 +61,10 @@ describe('Gestion backlog', () => {
         })
     })
 
+    it('Modification d\'une US'), () => {
+        
+    }
+
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
             cy.fixture(fixtureNotCreate).then((US) => {
