@@ -19,7 +19,7 @@ const projectBacklogRoutes = require("./controllers/projectBacklog.js")
 const projectUserStoryRoutes = require("./controllers/projectUserStory.js")
 const projectSprintRoutes = require("./controllers/projectSprint.js")
 const projectTasksRoutes = require("./controllers/projectTasks.js")
-const projectReleaseRoutes = require("./controllers/release.js")
+const releaseController = require("./controllers/release_controller.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -48,7 +48,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         projectSprintRoutes.init(app, db, ObjectId)
 
-        projectReleaseRoutes.init(app, db, ObjectId)
+        releaseController.init(app, db, ObjectId)
 
         app.listen(3000, function () {
             console.log("listening on 3000")
