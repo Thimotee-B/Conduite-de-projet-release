@@ -57,25 +57,25 @@ describe('Gestion backlog', () => {
             cy.get('.btn-sm').click();
             remplirUSForm(roleCreation, jeSouhaiteCreated, afinDeCreated, importanceCreation, difficultCreation, planificationCreation);
             cy.get('.modal-footer:nth-child(2) > .btn-success').click();
+            URLValide();
             getListUS().get('.ui-sortable-handle')
                 .should('contain', enTantQue + roleCreation + jeSouhaite + jeSouhaiteCreated + afinDe + afinDeCreated);
             getListUS().children().then(($childrenAfter) => {
                 expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
             })
         })
-        URLValide()
     })
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
             cy.get('.btn-sm').click();
             remplirUSForm(roleCreation, jeSouhaiteAnnul, afinDeAnnul, importanceCreation, difficultCreation, planificationCreation);
             cy.get('.modal-footer:nth-child(2) > .btn-danger').click();
+            URLValide();
             getListUS().get('.ui-sortable-handle')
                 .should('not.contain', enTantQue + roleCreation + jeSouhaite + jeSouhaiteAnnul + afinDe + afinDeAnnul);
             getListUS().children().then(($childrenAfter) => {
                 expect($childrenBefore.length).to.equal($childrenAfter.length);
             })
         })
-        URLValide();
     })
 })
