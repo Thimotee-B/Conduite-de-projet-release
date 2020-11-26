@@ -11,16 +11,16 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="title">Titre de la release:</label>
+                        <label for="title">Titre de la release:<span class="red">*</span></label>
                         <input class="form-control rounded-0" type="text" id="title" name="title" placeholder="release <%=project.projectName%> version 1" required>
                     </div>
                     <div class="form-group">
-                        <label for="description">Description:</label>
+                        <label for="description">Description:<span class="red">*</span></label>
                         <textarea class="form-control rounded-0" id="description" name="description"
                             placeholder="&bull; correction du bug ..." rows="3" maxlength="2000" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="releaseFile">Sélectionnez un fichier: (format <kbd>.zip</kbd> obligatoire)</label>
+                        <label for="releaseFile">Sélectionnez un fichier: (format <kbd>.zip</kbd> obligatoire)<span class="red">*</span></label>
                         <input class="form-control rounded-0" type="file" id="releaseFile" name="releaseFile" required>
                     </div>
                 </div>

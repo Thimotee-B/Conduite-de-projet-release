@@ -14,7 +14,7 @@
     left: 0;
     top: 0;
     padding: 0 10px;
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     z-index: 1;
   }
   .board-column.muuri-item-releasing {
@@ -57,6 +57,10 @@
   .board-column.done .board-column-header {
     background: #2ac06d;
   }
+  .board-column.testing .board-column-header {
+    background: rgb(255, 91, 3);
+  }
+
   .board-column-content-wrapper {
     position: relative;
     padding: 8px;
@@ -110,69 +114,117 @@
     <div class="board-column-header">Todo</div>
     <div class="board-column-content-wrapper">
       <div class="board-column-content">
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>1</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>2</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>3</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>4</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>5</div>
-        </div>
+        <% for(var i = 0; i < project.task.length; i++) {%>
+          <% if(project.task[i].etat == "TODO") { %>
+            <div class="board-item container">
+              <div class="board-item-content row">
+                <div class="col-md-10">
+                  <span id="<%= i %>">#<%= project.task[i].id %></span>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <a class="text-warning" href="">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <p class="text-danger" href="">
+                    <i class="fas fa-trash-alt"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
     </div>
   </div>
 </div>
 <div class="board-column working">
   <div class="board-column-container">
-    <div class="board-column-header">Working</div>
+    <div class="board-column-header">DOING</div>
     <div class="board-column-content-wrapper">
       <div class="board-column-content">
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>6</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>7</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>8</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>9</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>10</div>
-        </div>
+        <% for(var i = 0; i < project.task.length; i++) {%>
+          <% if(project.task[i].etat == "DOING") { %>
+            <div class="board-item container">
+              <div class="board-item-content row">
+                <div class="col-md-10">
+                  <span id="<%= i %>">#<%= project.task[i].id %></span>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <a class="text-warning" href="">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <p class="text-danger" href="">
+                    <i class="fas fa-trash-alt"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="board-column testing">
+  <div class="board-column-container">
+    <div class="board-column-header">REVIEWING-TESTING</div>
+    <div class="board-column-content-wrapper">
+      <div class="board-column-content">
+        <% for(var i = 0; i < project.task.length; i++) {%>
+          <% if(project.task[i].etat == "REVIEWING-TESTING") { %>
+            <div class="board-item container">
+              <div class="board-item-content row">
+                <div class="col-md-10">
+                  <span id="<%= i %>">#<%= project.task[i].id %></span>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <a class="text-warning" href="">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <p class="text-danger" href="">
+                    <i class="fas fa-trash-alt"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
     </div>
   </div>
 </div>
 <div class="board-column done">
   <div class="board-column-container">
-    <div class="board-column-header">Done</div>
+    <div class="board-column-header">DONE</div>
     <div class="board-column-content-wrapper">
       <div class="board-column-content">
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>11</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>12</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>13</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>14</div>
-        </div>
-        <div class="board-item">
-          <div class="board-item-content"><span>Item #</span>15</div>
-        </div>
+        <% for(var i = 0; i < project.task.length; i++) {%>
+          <% if(project.task[i].etat == "DONE") { %>
+            <div class="board-item container">
+              <div class="board-item-content row">
+                <div class="col-md-10">
+                  <span id="<%= i %>">#<%= project.task[i].id %></span>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <a class="text-warning" href="">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+                <div class="col-md-1 modifyUS">
+                  <p class="text-danger" href="">
+                    <i class="fas fa-trash-alt"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
     </div>
   </div>
@@ -180,6 +232,16 @@
 </div>
 
 <script>
+
+  function getTaskId(item){
+    return  item._element.childNodes[1].children[0].children[0].id
+  }
+
+  function getColumnName(item){
+    return item.getGrid().getElement().parentNode.parentNode.children[0].innerText
+  }
+
+
   var dragContainer = document.querySelector(".drag-container");
   var itemContainers = [].slice.call(
     document.querySelectorAll(".board-column-content")
@@ -213,7 +275,13 @@
         item.getElement().style.width = "";
         item.getElement().style.height = "";
         item.getGrid().refreshItems([item]);
-        console.log(item)
+        let taskPos = getTaskId(item)
+        let state = getColumnName(item)
+        let redirection = window.location.pathname+"/"+taskPos+"/updateState/"+state
+        window.location.replace(redirection);
+
+        
+
       })
       .on("layoutStart", function () {
         boardGrid.refreshItems().layout();
