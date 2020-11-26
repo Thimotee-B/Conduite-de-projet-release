@@ -5,7 +5,8 @@ describe('Gestion sprint', () => {
     it('Charge la page de sprint', () => {
         cy.get('.clickable-row:nth-child(1) > td:nth-child(1)').click();
         cy.url().should('include', '/projectView/');
-        cy.get('.nav-item:nth-child(6) > .nav-link').click();
+        cy.get('.nav-item').should('contain', 'Sprints');
+        cy.get('.nav-item').contains('Sprints').click();
         cy.url().should('include', '/projectView/'); 
         cy.url().should('include', '/sprint'); 
     })
@@ -18,6 +19,7 @@ describe('Gestion sprint', () => {
         cy.get('.btn-success').click();
         cy.url().should('include', '/projectView/'); 
         cy.url().should('include', '/sprint');
+        cy.get('.container-fluid').get('.spacex1').should('contain', 'Sprint');
         //On devrait regarder s'il y a un sprint en plus automatiquement?        
     })
     it('Création de sprint annulé', () => {
