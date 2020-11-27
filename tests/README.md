@@ -3,7 +3,7 @@ Le code pour les tests se trouve dans `\src\cypress\integration`
 
 Les fichiers `.json` présents dans `\src\cypress\fixtures\` servent au remplissage des différents formulaires
 
-Il est possible de voir les résultats des tests cypress effectués à l'adresse `https://dashboard.cypress.io/projects/5b9i23/runs/1/overview`
+Il est possible de voir les résultats des tests cypress effectués à l'adresse [`https://dashboard.cypress.io/projects/5b9i23/runs`](https://dashboard.cypress.io/projects/5b9i23/runs)
 
 ## Lancer les tests
 
@@ -36,176 +36,25 @@ Il est possible de voir les résultats des tests cypress effectués à l'adresse
 
 
 ## Dernier résultat
+```
+    (Run Finished)
 
-  (Run Starting)
 
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
   ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Cypress:    6.0.0                                                                              │
-  │ Browser:    Electron 87 (headless)                                                             │
-  │ Specs:      4 found (end2end\setup.js, inte\accueil_test.js, inte\sprint_test.js, inte\US_test │
-  │             .js)                                                                               │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-────────────────────────────────────────────────────────────────────────────────────────────────────
-
-  Running:  end2end\setup.js                                                                (1 of 4)
-
-
-  SETUP
-    √ Création du projet SETUP pour les tests (3548ms)
-
-
-  1 passing (4s)
-
-
-  (Results)
-
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Tests:        1                                                                                │
-  │ Passing:      1                                                                                │
-  │ Failing:      0                                                                                │
-  │ Pending:      0                                                                                │
-  │ Skipped:      0                                                                                │
-  │ Screenshots:  0                                                                                │
-  │ Video:        true                                                                             │
-  │ Duration:     3 seconds                                                                        │
-  │ Spec Ran:     end2end\setup.js                                                                 │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-  (Video)
-
-  -  Started processing:  Compressing to 32 CRF
-  -  Finished processing: E:\PC\Documents\Cours\CDPProject\Conduite-de-projet-dev\src    (0 seconds)
-                          \cypress\videos\end2end\setup.js.mp4
-
-
-────────────────────────────────────────────────────────────────────────────────────────────────────
-
-  Running:  inte\accueil_test.js                                                            (2 of 4)
-
-
-  Page d'accueil
-    √ Charge la page d'accueil (962ms)
-    √ Création de projet validée (1814ms)
-    √ Création de projet annulée (1610ms)
-
-
-  3 passing (4s)
-
-
-  (Results)
-
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Tests:        3                                                                                │
-  │ Passing:      3                                                                                │
-  │ Failing:      0                                                                                │
-  │ Pending:      0                                                                                │
-  │ Skipped:      0                                                                                │
-  │ Screenshots:  0                                                                                │
-  │ Video:        true                                                                             │
-  │ Duration:     4 seconds                                                                        │
-  │ Spec Ran:     inte\accueil_test.js                                                             │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-  (Video)
-
-  -  Started processing:  Compressing to 32 CRF
-  -  Finished processing: E:\PC\Documents\Cours\CDPProject\Conduite-de-projet-dev\src    (0 seconds)
-                          \cypress\videos\inte\accueil_test.js.mp4
-
-
-────────────────────────────────────────────────────────────────────────────────────────────────────
-
-  Running:  inte\sprint_test.js                                                             (3 of 4)
-
-
-  Gestion sprint
-    √ Charge la page d'acceuil et du projet test (2052ms)
-    √ Charge la page de sprint (184ms)
-    √ Création de sprint validée (1200ms)
-    √ Création de sprint annulée (972ms)
-
-
-  4 passing (4s)
-
-
-  (Results)
-
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Tests:        4                                                                                │
-  │ Passing:      4                                                                                │
-  │ Failing:      0                                                                                │
-  │ Pending:      0                                                                                │
-  │ Skipped:      0                                                                                │
-  │ Screenshots:  0                                                                                │
-  │ Video:        true                                                                             │
-  │ Duration:     4 seconds                                                                        │
-  │ Spec Ran:     inte\sprint_test.js                                                              │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-  (Video)
-
-  -  Started processing:  Compressing to 32 CRF
-  -  Finished processing: E:\PC\Documents\Cours\CDPProject\Conduite-de-projet-dev\src    (0 seconds)
-                          \cypress\videos\inte\sprint_test.js.mp4
-
-
-────────────────────────────────────────────────────────────────────────────────────────────────────
-
-  Running:  inte\US_test.js                                                                 (4 of 4)
-
-
-  Gestion backlog
-    √ Charge la page d'acceuil et du projet test (1229ms)
-    √ Charge la page de backlog (183ms)
-    √ Création d'une US validée (1701ms)
-    √ Modification d'une US (2189ms)
-    √ Création d'une US annulée (1769ms)
-    √ Suppression d'une US (351ms)
-
-
-  6 passing (7s)
-
-
-  (Results)
-
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Tests:        6                                                                                │
-  │ Passing:      6                                                                                │
-  │ Failing:      0                                                                                │
-  │ Pending:      0                                                                                │
-  │ Skipped:      0                                                                                │
-  │ Screenshots:  0                                                                                │
-  │ Video:        true                                                                             │
-  │ Duration:     7 seconds                                                                        │
-  │ Spec Ran:     inte\US_test.js                                                                  │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-
-  (Video)
-
-  -  Started processing:  Compressing to 32 CRF
-  -  Finished processing: E:\PC\Documents\Cours\CDPProject\Conduite-de-projet-dev\src    (0 seconds)
-                          \cypress\videos\inte\US_test.js.mp4
-
-
-====================================================================================================
-
-  (Run Finished)
-
-
-       Spec                                              Tests  Passing  Failing  Pending  Skipped
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ √  end2end\setup.js                         00:03        1        1        -        -        - │
+  │ √  end2end\end2end_test.js                  00:09        8        8        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ √  inte\0setup.js                           00:02        1        1        -        -        - │
   ├────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ √  inte\accueil_test.js                     00:04        3        3        -        -        - │
   ├────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ √  inte\sprint_test.js                      00:04        4        4        -        -        - │
+  │ √  inte\sprint_test.js                      00:03        4        4        -        -        - │
   ├────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ √  inte\US_test.js                          00:07        6        6        -        -        - │
   └────────────────────────────────────────────────────────────────────────────────────────────────┘
-    √  All specs passed!                        00:19       14       14        -        -        -
+    √  All specs passed!                        00:27       22       22        -        -        -
+
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+```
+cc
