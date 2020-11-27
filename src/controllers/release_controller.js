@@ -6,8 +6,8 @@ const projectModel = require("../models/project_model")
 
 function init(app, db, ObjectId) {
     app.get("/projectView/:projectId/release", async (req, res) => {
-        const result = await releaseModel.getReleaseFromProjectId(db, ObjectId(req.params.projectId))
-        res.render("pages/release.ejs", {project: result})
+        const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
+        res.render("pages/release.ejs", {project: project})
     })
     
     app.post("/projectView/:projectId/createRelease", async (req, res) => {
@@ -25,14 +25,12 @@ function init(app, db, ObjectId) {
         if (!fs.existsSync(releasePath)) {
             fs.mkdir(releasePath, function (err) {
                 if (err) {
-                    console.log(err)
                     return res.status(500).send(err)
                 }
             })
         }   
         rfile.mv(releasePathFull, function(err) {
             if (err) {
-                console.log("pas bon" + err)
                 return res.status(500).send(err)
             }
         })
