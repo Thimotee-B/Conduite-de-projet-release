@@ -2,21 +2,6 @@ const helper = require('../../helper.js');
 const fixtureCreate = 'sprint/sprintCreated';
 const fixtureNotCreate = 'sprint/sprintCancelled';
 
-function URLValide() {
-    cy.url().should('include', '/projectView/');
-    cy.url().should('include', '/sprint');
-}
-
-function getListSprint() {
-    return cy.get('.container-fluid').get('.spacex1');
-}
-
-function remplirSprintForm(sprint) {
-    cy.get('#beginDate').type(sprint.date);
-    cy.get('#description').type(sprint.desc);
-}
-
-
 describe('Gestion sprint', () => {
     it('Charge la page d\'acceuil et du projet test', () => {
         cy.visit('/')
