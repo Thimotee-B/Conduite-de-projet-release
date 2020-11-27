@@ -71,7 +71,10 @@
   function getColumnName(item) {
     return item.getGrid().getElement().parentNode.parentNode.children[0].innerText
   }
-
+  function prevent(){
+    console.log('ok')
+    event.preventDefault();
+  }
 
   var dragContainer = document.querySelector(".drag-container");
   var itemContainers = [].slice.call(
@@ -81,12 +84,13 @@
   var boardGrid
 
   let startItem
-
+  let savedItem = new Map()
   
   // Init the column grids so we can drag those items around.
   itemContainers.forEach(function (container) {
     var grid = new Muuri(container, {
       items: ".board-item",
+      
       dragRelease:{
         duration: 300
       },
@@ -116,16 +120,13 @@
         let taskPos = getTaskId(item)
         let state = getColumnName(item)
         let redirection = window.location.pathname + "/" + taskPos + "/updateState/" + state
-        //window.location.replace(redirection);
-        
-
-
+        //window.location.replace(redirection)
       })
       .on("layoutStart", function () {
         boardGrid.refreshItems().layout();
-      });
-     
-    columnGrids.push(grid);
+      })   
+
+      columnGrids.push(grid);
   });
 
   // Init board grid so we can drag those columns around.
@@ -133,6 +134,8 @@
     dragEnabled: true,
     dragHandle: ".board-column-header",
   });
+
+
 
   
 </script>

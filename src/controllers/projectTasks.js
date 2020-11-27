@@ -29,7 +29,6 @@ function init(app, db, ObjectId) {
                 const dod = results.task[taskPos].dod
                 const usRef = results.task[taskPos].usRef
                 const duree = results.task[taskPos].duree
-
                 db.collection("projects").updateOne(
                     { _id : ObjectId(req.params.projectId)},
                     { $pull:  {task:  results.task[taskPos]}}
@@ -85,7 +84,7 @@ function init(app, db, ObjectId) {
                                             dep: req.body.dep,
                                             description: req.body.description,
                                             dod: dod,
-                                            usRef: [],
+                                            usRef: req.body.usRef,
                                             duree: req.body.duree,
                                             etat: "TODO",
                                         },
@@ -104,11 +103,9 @@ function init(app, db, ObjectId) {
 
 
     app.post("/projectView/:projectId/removeTask/:pos", (req, res) => {
-        console.log('clicked')
         const cursor =  db.collection("projects").findOne({"_id":ObjectId(req.params.projectId)})
             .then(results => {
                 const taskPos = req.params.pos
-                console.log(taskPos)
                 db.collection("projects").updateOne(
                     { _id : ObjectId(req.params.projectId)},
                     { $pull:  {task:  results.task[taskPos]}}
