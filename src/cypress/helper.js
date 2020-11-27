@@ -23,6 +23,16 @@ function getListUS() {
         .get('.ui-sortable');
 }
 
+function getListRelease() {
+    return cy.get('.container-fluid')
+        .get('.spacex1')
+        .get('.table')
+        .get('.table-hover')
+        .get('.table-sm')
+        .get('.table-striped')
+        .get('.ui-sortable');
+}
+
 function remplirSprintForm(sprint) {
     cy.get('#beginDate').type(sprint.date);
     cy.get('#description').type(sprint.desc);
@@ -48,6 +58,12 @@ function remplirUSEdit(US) {
 
 }
 
+function remplirReleaseForm(release){
+cy.get('#title').type(release.nom);
+cy.get('#description').type(release.desc);
+cy.get('#releaseFile').attachFile(release.file);
+}
+
 function URLSprint() {
     cy.url().should('include', '/projectView/');
     cy.url().should('include', '/sprint');
@@ -58,15 +74,24 @@ function URLBacklog() {
     cy.url().should('include', '/backlog');
 }
 
+function URLRelease() {
+    cy.url().should('include', '/projectView/');
+    cy.url().should('include', '/release');
+}
+
 module.exports = {
     remplirProjetForm,
     getListProj,
     getListSprint,
     getListUS,
+    getListRelease,
     remplirProjetForm,
     remplirSprintForm,
     remplirUSForm,
     remplirUSEdit,
+    remplirReleaseForm,
     URLSprint,
-    URLBacklog
+    URLBacklog,
+    URLRelease,
+
 }
