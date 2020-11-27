@@ -17,7 +17,7 @@ describe('Gestion des releases', () => {
         helper.URLRelease();
     })
 
-    it('Upload une release validée', () => {
+    it('Ajout d\'une release validée', () => {
         helper.getListRelease().children().then(($childrenBefore) => {
             console.log($childrenBefore);
             cy.fixture(fixtureCreate).then((release) => {
@@ -32,21 +32,21 @@ describe('Gestion des releases', () => {
             })
             helper.getListRelease().children().then(($childrenAfter) => {
                 expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
-            })   
+            })
         })
     })
-    it('Telechargement d\'une release',() =>{
-        cy.url().then(($url) =>{
+    it('Telechargement d\'une release', () => {
+        cy.url().then(($url) => {
             console.log($url);
             cy.downloadFile($url + '/download/release.zip', 'cypress/download/test', 'release.zip');
         })
-        cy.readFile('cypress/download/test/release.zip').then(($contentDL)=>{
-            cy.readFile('cypress/upload/release.zip').then(($contenUP)=>{
+        cy.readFile('cypress/download/test/release.zip').then(($contentDL) => {
+            cy.readFile('cypress/upload/release.zip').then(($contenUP) => {
                 expect($contentDL).to.equal($contenUP);
             })
         })
     })
-    it('Upload une release annulée', () => {
+    it('Ajout d\'une release annulée', () => {
         helper.getListRelease().children().then(($childrenBefore) => {
             console.log($childrenBefore);
             cy.fixture(fixtureNotCreate).then((release) => {
@@ -61,8 +61,16 @@ describe('Gestion des releases', () => {
             })
             helper.getListRelease().children().then(($childrenAfter) => {
                 expect($childrenBefore.length).to.equal($childrenAfter.length);
-            })   
+            })
         })
     })
-
+    it('Suppression d\'une release', () => {
+        helper.getListRelease().children().then(($childrenBefore) => {
+            cy.get('.fa-trash-alt').click();
+            helper.URLRelease();
+            helper.getListRelease().children().then(($childrenAfter) => {
+                expect($childrenBefore.length - 1).to.equal($childrenAfter.length);
+            })
+        })
+    })
 })

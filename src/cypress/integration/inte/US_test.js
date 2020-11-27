@@ -36,7 +36,7 @@ describe('Gestion backlog', () => {
             })
         })
     })
-//Ne fonctionne pas s'il y a plusieurs US (à modifier, mais c'est dur)
+    //Ne fonctionne pas s'il y a plusieurs US (à modifier, mais c'est dur)
     it('Modification d\'une US', () => {
         helper.getListUS().children().then(($childrenBefore) => {
             cy.fixture(fixtureModify).then((US) => {
@@ -72,12 +72,10 @@ describe('Gestion backlog', () => {
 
     it('Suppression d\'une US', () => {
         helper.getListUS().children().then(($childrenBefore) => {
-            cy.fixture(fixtureModify).then((US) => {
-                cy.get('.fa-trash-alt').click();
-                helper.URLBacklog();
-                helper.getListUS().children().then(($childrenAfter) => {
-                    expect($childrenBefore.length-1).to.equal($childrenAfter.length);
-                })
+            cy.get('.fa-trash-alt').click();
+            helper.URLBacklog();
+            helper.getListUS().children().then(($childrenAfter) => {
+                expect($childrenBefore.length - 1).to.equal($childrenAfter.length);
             })
         })
     })
