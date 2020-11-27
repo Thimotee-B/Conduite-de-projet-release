@@ -38,6 +38,21 @@
                         <% } %>
                         
                     </div>
+                    <div class="form-group checkbox">
+                        <label for="checkbox">User Story relative à la Task:</label>
+                        <% if (project.nbUs == 0) {%>
+                            <p name="checkbox">Aucune US créée</p>
+                        <% } else {%>
+                            <div class="checkbox" name="checkbox2" id="checkbox2">
+                            <% for(var i = 0; i < project.us.length; i++) {%>
+                                <label style="margin-right: 1em;">
+                                    <input type="checkbox" name="usRef[]" value="<%=project.us[i].id%>"> US#<%=project.us[i].id%>
+                                </label>
+                            <% } %>
+                            </div>
+                        <% } %>
+                        
+                    </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">

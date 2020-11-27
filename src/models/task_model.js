@@ -8,7 +8,8 @@ function updateTaskNumber(db, projectId, taskNumber) {
         .catch(err => console.error(err))
 }
 
-function insertTask(db, 
+function insertTask(
+    db, 
     projectId, 
     taskId, 
     description,
@@ -30,12 +31,52 @@ function insertTask(db,
                     etat: "TODO",
                 },
             },
-        }
-    )
+        })
         .catch(err => console.error(err))
+}
+
+function updateTaskByPos(
+    db,
+    projectId,
+    taskPos,
+    taskId,
+    dep,
+    description,
+    dod,
+    usRef,
+    duree,
+    etat
+) {
+    db.collection("projects").updateOne(
+        { _id : projectId},
+        { $push:  {
+            task: {
+                $each: [{
+                    id: taskId,
+                    dep: dep,
+                    description: description,
+                    dod: dod,
+                    usRef: usRef,
+                    duree: duree,
+                    etat: etat
+                }],
+                $position: taskPos
+            } 
+        }
+    })
+    .catch(err => console.error(err))
+}
+
+function deleteTaskByPos(db, project, pos) {
+    db.collection("projects").updateOne(
+        { _id : project._id},
+        { $pull:  {task:  project.task[pos]}}
+    ).catch(err => console.error(err))
 }
 
 module.exports = {
     updateTaskNumber,
-    insertTask
+    insertTask,
+    updateTaskByPos,
+    deleteTaskByPos
 }
