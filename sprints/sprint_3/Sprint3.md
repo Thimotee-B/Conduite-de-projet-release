@@ -22,4 +22,9 @@
 | #37 | En tant qu'utilisateur, je souhaite pouvoir modifier mes informations personnelles telles que mon prénom, nom et ajouter une photo de profil afin de mettre à jour mes informations. | Basse | 1 |TODO|
 | #38 | En tant que Scrum Master, je souhaite pouvoir ajouter des fichiers de documentation afin de centraliser la documentation de mon projet. A ces fichiers s'ajouteront le numéro de la version de release correspondante (à entrer par le scrum master) ainsi que la date de publication (générée automatiquement) | Haute | 3 |TODO|
 | #39 | En tant qu'utilisateur, je souhaite avoir accès à la documentation liée à la release publiée afin de pouvoir la télécharger. | Moyenne-Haute | 2 |TODO|
+| #16 | En tant que développeur, je souhaite avoir accès à un kanban (avec comme colones : Todo, Doing, Reviewing/Testing, Done) afin de changer d'état ma tâche. | Moyenne-Basse | 8 |TODO|
+| #20 | En tant que développeur, je souhaite pouvoir voir l'état global des **tests** unitaires et d'intégration à l'aide d'un élément graphique (barre de progression, pastille de couleur) afin d'avoir un aperçu rapide du code testé.  | Moyenne-Basse | 3 |TODO|
+| #23 | En tant que Scrum Master, je souhaite pouvoir créer un **planning** des tâches afin d'associer temporairement des développeurs aux tâches pour m'aider à planifier le projet dans son ensemble. | Moyenne-Haute | 3 |TODO|
+| #40 | En tant que développeur, je souhaite pouvoir, dans le kanban, indiquer le nom du test que je fais ainsi que son état (non implémenté, implémenté non testé, test non passé, test passé) que je peux modifier à tout moment afin d'avoir un suivi des tests. A noté que si la tâche passe en "Done", le test sera marqué comme "test passé". | Moyenne-Basse | 3 |TODO|
+
 

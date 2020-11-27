@@ -12,9 +12,9 @@ function init(app, db, ObjectId) {
     
     app.post("/projectView/:projectId/createRelease", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-            
         const updateNbRelease = project.releases.length != 0 ? project.nbRelease + 1 : 1
         const rfile = req.files.releaseFile
+
         if (!rfile || Object.keys(rfile).length === 0) {
             return res.status(400).send("No file were uploaded.")
         }
@@ -28,19 +28,19 @@ function init(app, db, ObjectId) {
                     return res.status(500).send(err)
                 }
             })
-        }
-                
+        }   
         rfile.mv(releasePathFull, function(err) {
             if (err) {
                 return res.status(500).send(err)
             }
         })
+
         const today = new Date()
         const date = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear()
         
         await releaseModel.updateReleaseNumber(db, ObjectId(req.params.projectId), updateNbRelease)
-        
-        await releaseModel.insertRelease(db, 
+        await releaseModel.insertRelease(
+            db, 
             ObjectId(req.params.projectId),
             updateNbRelease,
             req.body.title,
