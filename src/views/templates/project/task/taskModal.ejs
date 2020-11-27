@@ -39,7 +39,7 @@
                             <p name="checkbox">Aucune Task créée</p>
                         <% } else {%>
                             <div class="checkbox" name="checkbox" id="checkbox">
-                            <% for(var i = 0; i < project.nbTask; i++) {%>
+                            <% for(var i = 0; i < project.task.length; i++) {%>
                                 <label style="margin-right: 1em;">
                                     <input type="checkbox" name="dep[]" value="<%=project.task[i].id%>"> T#<%=project.task[i].id%>
                                 </label>

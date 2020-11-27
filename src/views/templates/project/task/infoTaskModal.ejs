@@ -1,0 +1,70 @@
+<div class="modal fade" id="infoTaskModal<%= i %>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Task #<%= project.task[i].id%></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form action="/projectView/<%=project._id%>/removeTask/<%=i%>" method="POST">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="description"><h5 class="font-weight-bold">Description:</h5></label>
+                        <p id="description" name="description">
+                            <%=project.task[i].description%>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="dod"><h5 class="font-weight-bold">Definition of done</h5></label>
+                        <% for(var j = 0; j < project.task[i].dod.length; j++) {%>
+                            <div class="form-check" id="dod" name="dod">
+                            
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label">
+                                    <%=project.task[i].dod[j]%>
+                                </label>
+                              </div>
+                        <% } %>
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="duree"><h5 class="font-weight-bold">Durée:</h5></label>
+                        <p><%=project.task[i].duree%> demi-jour/Homme</p>
+                    </div>
+                    <div class="form-group checkbox">
+                        <label for="list"><h5 class="font-weight-bold">Dépendences</h5></label>
+                        <% if (project.task[i].dep == null || project.task[i].dep.length == 0) {%>
+                            <p name="list">Aucune Task</p>
+                        <% } else {%>
+                            <div class="list" name="list" id="list">
+                                <ul>
+                            
+                                  
+                                <% for(var k = 0; k < project.task[i].dep.length; k++) {%>
+                                    <li>
+                                       
+                                        <p>T#<%=project.task[i].dep[k]%></p>
+                                       
+                                    </li>
+                                    
+                                <% } %>
+                                </ul>
+                            </div>
+                        <% } %>
+                        
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Valider</button>
+                    
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

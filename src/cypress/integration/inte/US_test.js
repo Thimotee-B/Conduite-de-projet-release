@@ -2,27 +2,28 @@ const enTantQue = 'En tant que ';
 const jeSouhaite = ', je souhaite ';
 const afinDe = ' afin de ';
 
-const roleCreation = 'Développeur';
-const jeSouhaiteCreated = 'faire quelque chose';
-const afinDeCreated = 'pouvoir faire des trucs';
-const importanceCreation = 'Moyenne-Haute';
-const difficultCreation = '5';
-const planificationCreation = '-';
+const fixtureCreate = 'US\\USCreated.json'
+const fixtureNotCreate = 'US\\USCancelled.json'
+const fixtureModify = 'US\\USUpdated.json'
 
-const jeSouhaiteAnnul = 'ne pas faire quelque chose';
-const afinDeAnnul = 'ne pas pouvoir faire des trucs';
 
-const jeSouhaiteModified = 'faire autre chose';
+function remplirUSForm(US) {
+    cy.get('.modal-body:nth-child(1) #entantque').select(US.role);
+    cy.get('.modal-body:nth-child(1) #jesouhaite').type(US.souhait);
+    cy.get('.modal-body:nth-child(1) #afinde').type(US.afinDe);
+    cy.get('.modal-body:nth-child(1) #importance').select(US.importance);
+    cy.get('.modal-body:nth-child(1) #difficulte').select(US.difficulte);
+    cy.get('.form-group:nth-child(4) > #plannification').select(US.planification);
+}
 
-function remplirUSForm(role, souhait, afinDe, importance, difficulte, planification) {
-    cy.get('.modal-body:nth-child(1) #entantque').select(role);
-    cy.get('.modal-body:nth-child(1) #jesouhaite').click();
-    cy.get('.modal-body:nth-child(1) #jesouhaite').type(souhait);
-    cy.get('.modal-body:nth-child(1) #afinde').click();
-    cy.get('.modal-body:nth-child(1) #afinde').type(afinDe);
-    cy.get('.modal-body:nth-child(1) #importance').select(importance);
-    cy.get('.modal-body:nth-child(1) #difficulte').select(difficulte);
-    cy.get('.form-group:nth-child(4) > #plannification').select(planification);
+function editUS(US) {
+    cy.get('#modifyUSModal1 #entantque').select(US.role);
+    cy.get('#modifyUSModal1 #jesouhaite').clear().type(US.souhait);
+    cy.get('#modifyUSModal1 #afinde').clear().type(US.afinDe);
+    cy.get('#modifyUSModal1 #importance').select(US.importance);
+    cy.get('#modifyUSModal1 #difficulte').select(US.difficulte);
+    cy.get('#modifyUSModal1 #etat').select(US.etat);
+
 }
 
 function URLValide() {
@@ -56,28 +57,61 @@ describe('Gestion backlog', () => {
 
     it('Création d\'une US validée', () => {
         getListUS().children().then(($childrenBefore) => {
-            cy.get('.btn-sm').click();
-            remplirUSForm(roleCreation, jeSouhaiteCreated, afinDeCreated, importanceCreation, difficultCreation, planificationCreation);
-            cy.get('.modal-footer:nth-child(2) > .btn-success').click();
-            URLValide();
-            getListUS().get('.ui-sortable-handle')
-                .should('contain', enTantQue + roleCreation + jeSouhaite + jeSouhaiteCreated + afinDe + afinDeCreated);
-            getListUS().children().then(($childrenAfter) => {
-                expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
+            cy.fixture(fixtureCreate).then((US) => {
+                cy.get('.btn-sm').click();
+                remplirUSForm(US);
+                cy.get('.modal-footer:nth-child(2) > .btn-success').click();
+                URLValide();
+                getListUS().get('.ui-sortable-handle')
+                    .should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
+                })
+            })
+        })
+    })
+//Ne fonctionne pas s'il y a plusieurs US (à modifier, mais c'est dur)
+    it('Modification d\'une US', () => {
+        getListUS().children().then(($childrenBefore) => {
+            cy.fixture(fixtureModify).then((US) => {
+                cy.get('.fa-edit').click();
+                editUS(US);
+                cy.get('#modifyUSModal1 .btn-success').click();
+                URLValide();
+                getListUS().get('.ui-sortable-handle')
+                    .should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length).to.equal($childrenAfter.length);
+                })
             })
         })
     })
 
+
     it('Création d\'une US annulée', () => {
         getListUS().children().then(($childrenBefore) => {
-            cy.get('.btn-sm').click();
-            remplirUSForm(roleCreation, jeSouhaiteAnnul, afinDeAnnul, importanceCreation, difficultCreation, planificationCreation);
-            cy.get('.modal-footer:nth-child(2) > .btn-danger').click();
-            URLValide();
-            getListUS().get('.ui-sortable-handle')
-                .should('not.contain', enTantQue + roleCreation + jeSouhaite + jeSouhaiteAnnul + afinDe + afinDeAnnul);
-            getListUS().children().then(($childrenAfter) => {
-                expect($childrenBefore.length).to.equal($childrenAfter.length);
+            cy.fixture(fixtureNotCreate).then((US) => {
+                cy.get('.btn-sm').click();
+                remplirUSForm(US);
+                cy.get('.modal-footer:nth-child(2) > .btn-danger').click();
+                URLValide();
+                getListUS().get('.ui-sortable-handle')
+                    .should('not.contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length).to.equal($childrenAfter.length);
+                })
+            })
+        })
+    })
+
+    it('Suppression d\'une US', () => {
+        getListUS().children().then(($childrenBefore) => {
+            cy.fixture(fixtureModify).then((US) => {
+                cy.get('.fa-trash-alt').click();
+                URLValide();
+                getListUS().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length-1).to.equal($childrenAfter.length);
+                })
             })
         })
     })

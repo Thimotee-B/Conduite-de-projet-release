@@ -1,17 +1,14 @@
-const projectCreatedName = 'Création de projet avec cypress';
-const projectNotCreatedName = 'Projet pas crée';
-const projectDesc = 'On crée un projet test';
-const sprintDelay = '{backspace}4';
-const date = '2020-11-29';
+const fixtureCreate = 'project\\projectCreated.json';
+const fixtureNotCreate = 'project\\projectCancelled.json'
 
-function remplirProjetForm(name, desc, sprint, date){
-    cy.get('#projectName').type(name);
-    cy.get('#projectDesc').type(desc);
-    cy.get('#sprintDelay').type(sprint);
-    cy.get('#dateEnd').type(date);
+function remplirProjetForm(projet) {
+    cy.get('#projectName').type(projet.name);
+    cy.get('#projectDesc').type(projet.desc);
+    cy.get('#sprintDelay').type(projet.sprint);
+    cy.get('#dateEnd').type(projet.date);
 }
 
-function getListProj(){
+function getListProj() {
     return cy.get('.table').get('.table-hover').get('tbody');
 }
 
@@ -24,28 +21,31 @@ describe('Page d\'accueil', () => {
 
     it('Création de projet validée', () => {
         getListProj().children().then(($childrenBefore) => {
-            cy.get('.btn-sm').click();
-            remplirProjetForm(projectCreatedName, projectDesc, sprintDelay, date);
-            cy.get('.btn-success').click();
-            cy.url().should('contains', '/projectList');
-            getListProj().children().then(($childrenAfter) => {
-                expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
+            cy.fixture(fixtureCreate).then((projet) => {
+                cy.get('.btn-sm').click();
+                remplirProjetForm(projet);
+                cy.get('.btn-success').click();
+                cy.url().should('contains', '/projectList');
+                getListProj().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
+                })
+                getListProj().should('contain', projet.name)
             })
-            getListProj().should('contain', projectCreatedName)
         })
     })
 
     it('Création de projet annulée', () => {
         getListProj().children().then(($childrenBefore) => {
-            cy.get('.btn-sm').click();
-            remplirProjetForm(projectNotCreatedName, projectDesc, sprintDelay, date);
-            cy.get('.btn-danger').click();
-            cy.url().should('contains', '/projectList');
-            getListProj().children().then(($childrenAfter) => {
-                expect($childrenBefore.length).to.equal($childrenAfter.length);
+            cy.fixture(fixtureNotCreate).then((projet) => {
+                cy.get('.btn-sm').click();
+                remplirProjetForm(projet);
+                cy.get('.btn-danger').click();
+                cy.url().should('contains', '/projectList');
+                getListProj().children().then(($childrenAfter) => {
+                    expect($childrenBefore.length).to.equal($childrenAfter.length);
+                })
+                getListProj().should('not.contain', projet.name)
             })
-            getListProj().should('not.contain', projectNotCreatedName)
         })
     })
-    
 })

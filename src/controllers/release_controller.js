@@ -11,12 +11,10 @@ function init(app, db, ObjectId) {
     })
     
     app.post("/projectView/:projectId/createRelease", async (req, res) => {
-        // Récupère le projet
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-            
-        //Maj nbRelease dans projects
         const updateNbRelease = project.releases.length != 0 ? project.nbRelease + 1 : 1
         const rfile = req.files.releaseFile
+
         if (!rfile || Object.keys(rfile).length === 0) {
             return res.status(400).send("No file were uploaded.")
         }
@@ -31,20 +29,20 @@ function init(app, db, ObjectId) {
                     return res.status(500).send(err)
                 }
             })
-        }
-                
+        }   
         rfile.mv(releasePathFull, function(err) {
             if (err) {
                 console.log("pas bon" + err)
                 return res.status(500).send(err)
             }
         })
+
         const today = new Date()
         const date = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear()
         
         await releaseModel.updateReleaseNumber(db, ObjectId(req.params.projectId), updateNbRelease)
-        // ajoute la release dans le project
-        await releaseModel.insertRelease(db, 
+        await releaseModel.insertRelease(
+            db, 
             ObjectId(req.params.projectId),
             updateNbRelease,
             req.body.title,
