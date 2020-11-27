@@ -1,20 +1,6 @@
-const fixtureCreate = 'sprint\\sprintCreated'
-const fixtureNotCreate = 'sprint\\sprintCancelled'
-
-function URLValide() {
-    cy.url().should('include', '/projectView/');
-    cy.url().should('include', '/sprint');
-}
-
-function getListSprint() {
-    return cy.get('.container-fluid').get('.spacex1');
-}
-
-function remplirSprintForm(sprint) {
-    cy.get('#beginDate').type(sprint.date);
-    cy.get('#description').type(sprint.desc);
-}
-
+const helper = require('../../helper.js');
+const fixtureCreate = 'sprint/sprintCreated';
+const fixtureNotCreate = 'sprint/sprintCancelled';
 
 describe('Gestion sprint', () => {
     it('Charge la page d\'acceuil et du projet test', () => {
@@ -27,18 +13,18 @@ describe('Gestion sprint', () => {
     it('Charge la page de sprint', () => {
         cy.get('.nav-item').should('contain', 'Sprints');
         cy.get('.nav-item').contains('Sprints').click();
-        URLValide();
+        helper.URLSprint();
     })
 
     it('Création de sprint validée', () => {
-        getListSprint().children().then(($childrenBefore) => {
+        helper.getListSprint().children().then(($childrenBefore) => {
             cy.fixture(fixtureCreate).then((sprint) => {
                 cy.get('.btn-sm').click();
-                remplirSprintForm(sprint);
+                helper.remplirSprintForm(sprint);
                 cy.get('.btn-success').click();
-                URLValide();
-                getListSprint().should('contain', 'Sprint');
-                getListSprint().children().then(($childrenAfter) => {
+                helper.URLSprint();
+                helper.getListSprint().should('contain', 'Sprint');
+                helper.getListSprint().children().then(($childrenAfter) => {
                     expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
                 })
             })
@@ -46,13 +32,13 @@ describe('Gestion sprint', () => {
     })
 
     it('Création de sprint annulée', () => {
-        getListSprint().children().then(($childrenBefore) => {
+        helper.getListSprint().children().then(($childrenBefore) => {
             cy.fixture(fixtureNotCreate).then((sprint) => {
                 cy.get('.btn-sm').click();
-                remplirSprintForm(sprint);
+                helper.remplirSprintForm(sprint);
                 cy.get('.btn-danger').click();
-                URLValide();
-                getListSprint().children().then(($childrenAfter) => {
+                helper.URLSprint();
+                helper.getListSprint().children().then(($childrenAfter) => {
                     expect($childrenBefore.length).to.equal($childrenAfter.length);
                 })
             })
