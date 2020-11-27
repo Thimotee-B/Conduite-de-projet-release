@@ -46,5 +46,23 @@ describe('Gestion des releases', () => {
             })
         })
     })
+    it('Upload une release annulée', () => {
+        helper.getListRelease().children().then(($childrenBefore) => {
+            console.log($childrenBefore);
+            cy.fixture(fixtureNotCreate).then((release) => {
+                cy.get('.btn-sm').click();
+                helper.remplirReleaseForm(release);
+                cy.get('.btn-danger').click();
+                helper.URLRelease();
+                helper.getListUS().get('.ui-sortable-handle')
+                    .should('not.contain', release.nom);
+                helper.getListUS().get('.ui-sortable-handle')
+                    .should('not.contain', release.desc);
+            })
+            helper.getListRelease().children().then(($childrenAfter) => {
+                expect($childrenBefore.length).to.equal($childrenAfter.length);
+            })   
+        })
+    })
 
 })
