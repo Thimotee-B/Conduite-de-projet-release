@@ -10,9 +10,9 @@
             </thead>
             <tbody>
                  <!-- Loop through quotes -->
-                <% for(var i = 0; i < taskList.length; i++) {%>
+                <% for(var i = 0; i < project.task.length; i++) {%>
                     <tr>
-                        <td>T#<%= taskList[i].id %></td>
+                        <td>T#<%= project.task[i].id %></td>
                         <td class="modifyUS">
                             <a class="text-warning" href="">
                                 <i class="fas fa-edit"></i>

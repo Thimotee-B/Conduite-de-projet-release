@@ -11,42 +11,38 @@ const connectionString = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb
 
 app.use(express.static(path.join(__dirname, "/public")))
 app.use(fileUpload())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.set("view engine", "ejs")
 
-const projectListRoutes = require("./controllers/projectList.js")
-const projectViewRoutes = require("./controllers/projectView.js")
-const projectBacklogRoutes = require("./controllers/projectBacklog.js")
-const projectUserStoryRoutes = require("./controllers/projectUserStory.js")
-const projectSprintRoutes = require("./controllers/projectSprint.js")
-const projectTasksRoutes = require("./controllers/projectTasks.js")
+const listController = require("./controllers/list_controller.js")
+const viewController = require("./controllers/view_controller.js")
+const backlogController = require("./controllers/backlog_controller.js")
+const userStoryController = require("./controllers/userStory_controller.js")
+const sprintController = require("./controllers/sprint_controller.js")
 const releaseController = require("./controllers/release_controller.js")
+const taskController = require("./controllers/task_controller.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
         console.log("Connected to Database")
-
-        const dataBaseName = "MAIN_DATABASE"
-        const db = client.db(dataBaseName)
-
-        app.set("view engine", "ejs")
-        app.use(bodyParser.urlencoded({ extended: true }))
-        app.use(bodyParser.json())
+        const db = client.db("MAIN_DATABASE")
 
         app.get("/", (req, res) => {
             res.redirect("/projectList")
         })
 
-        projectListRoutes.init(app, db)
+        listController.init(app, db)
 
-        projectViewRoutes.init(app, db, ObjectId)
+        viewController.init(app, db, ObjectId)
 
-        projectBacklogRoutes.init(app, db, ObjectId)
+        backlogController.init(app, db, ObjectId)
 
-        projectUserStoryRoutes.init(app, db, ObjectId)
+        userStoryController.init(app, db, ObjectId)
         
-        projectTasksRoutes.init(app, db, ObjectId)
+        taskController.init(app, db, ObjectId)
 
-        projectSprintRoutes.init(app, db, ObjectId)
+        sprintController.init(app, db, ObjectId)
 
         releaseController.init(app, db, ObjectId)
 
