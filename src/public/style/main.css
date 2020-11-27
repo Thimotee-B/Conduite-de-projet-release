@@ -26,6 +26,9 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+.red{
+    color: red;
+}
 
 /* USEFUL */
 .spacex1{
@@ -41,4 +44,36 @@
 .badge-etat{
     background-color: rgb(184, 184, 184);
     color: white;
+}
+.badge-doing{
+    background-color: rgb(179, 221, 179);
+    color: white;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+#accordionSidebar{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+#wrapper{
+    margin-left: 14rem;
+}
+.not-allowed{
+    cursor: not-allowed;
+}
+.disabled{
+    color: rgb(206, 170, 170);
+}
+
+
+
+@media (max-width: 768px){
+    #wrapper{
+        margin-left: 6.5rem;
+    }
 }

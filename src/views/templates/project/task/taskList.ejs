@@ -1,11 +1,32 @@
-<div class="clickable-row" data-toggle="modal" data-target="#taskModal<%= project.sprint.id %>" scope="col"">
+<div class="container">
+    <div id="taskListDiv">
+        <table class="table table-hover table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                 <!-- Loop through quotes -->
+                <% for(var i = 0; i < project.task.length; i++) {%>
+                    <tr>
+                        <td>T#<%= project.task[i].id %></td>
+                        <td class="modifyUS">
+                            <a class="text-warning" href="">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <p class="text-danger" href="">
+                                <i class="fas fa-trash-alt"></i>
+                            </p>
+                        </td>
+                    </tr>
+                <% } %>
 
+            </tbody>
+        </table>
+    </div>
 </div>
-<%- include("taskModal",{project: project, i: i})%>
-<script>
-    jQuery(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.location = $(this).data("target");
-        });
-    })
-</script>

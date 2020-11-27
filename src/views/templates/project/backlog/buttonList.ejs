@@ -1,13 +1,3 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <form class="form-inline">
-        <button type="button" class="btn btn-sm plusBtn" data-toggle="modal" data-target="#createUSModal">
-            <img src="/assets/plus-sign-in-a-white-circle.png" class="plusImg">
-            Créer une User Story
-        </button>
-    </form>
-</div>
-
-
 <div class="modal fade" id="createUSModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,10 +18,10 @@
                             <option>Product Owner</option>
                             <option>Utilisateur</option>
                         </select>
-                        <label for="jesouhaite">Je souhaite:</label>
+                        <label for="jesouhaite">Je souhaite:<span class="red">*</span></label>
                         <textarea class="form-control rounded-0" id="jesouhaite" name="jesouhaite"
                             placeholder="avoir accès à ..." rows="3" maxlength="500" required></textarea>
-                        <label for="afinde">Afin de:</label>
+                        <label for="afinde">Afin de:<span class="red">*</span></label>
                         <textarea class="form-control rounded-0" id="afinde" name="afinde" placeholder="pouvoir me connecter ..." rows="3" maxlength="500" required></textarea>
                     </div>
                     <div class="form-group">

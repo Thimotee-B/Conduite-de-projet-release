@@ -4,7 +4,9 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "test": "mocha ../tests/testEndToEnd13nov.spec.js",
+    "cy:run": "cypress run",
+    "cy:record": "cypress run --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
+    "cy:open": "cypress open",
     "app": "nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
@@ -13,13 +15,16 @@
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "mocha": "^8.2.1",
+    "express-fileupload": "^1.2.0",
     "mongodb": "^3.6.3",
     "node": "^15.2.0",
     "nodemon": "^2.0.6",
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "cypress": "^6.0.0",
+    "cypress-downloadfile": "^1.2.0",
+    "cypress-file-upload": "^4.1.1",
     "eslint": "^7.13.0"
   }
 }

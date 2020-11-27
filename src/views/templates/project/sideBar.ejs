@@ -8,6 +8,12 @@
         </div>
         <p class="my-2"> gestion de projet</p>
     </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+        <a class="nav-link" href="/projectList">
+            <i class="fas fa-arrow-left"></i>
+            <span>Liste des projets</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -72,35 +78,30 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link" href="#">
             <i class="far fa-check-square"></i>
             <span>Tests</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+    <% if (page == 'release'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
+        <a class="nav-link" href="/projectView/<%= project._id %>/release">
             <i class="far fa-file-archive"></i>
             <span>Release</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <% if (page == 'doc'){ %>
+        <li class="nav-item active">
+    <%} else{%>
+        <li class="nav-item">
+    <%}%>
+        <a class="nav-link" href="/projectView/<%= project._id %>/doc">
             <i class="fas fa-book"></i>
             <span>Documentation</span></a>
     </li>
@@ -125,6 +126,12 @@
             <i class="fas fa-users"></i>
             <span>&Eacute;quipe</span></a>
     </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Charts -->
+    
 
 
 </ul>
