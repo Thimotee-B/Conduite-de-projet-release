@@ -12,6 +12,7 @@ function init(app, db, ObjectId) {
     
     app.post("/projectView/:projectId/createRelease", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
+            
         const updateNbRelease = project.releases.length != 0 ? project.nbRelease + 1 : 1
         const rfile = req.files.releaseFile
 
@@ -25,14 +26,12 @@ function init(app, db, ObjectId) {
         if (!fs.existsSync(releasePath)) {
             fs.mkdir(releasePath, function (err) {
                 if (err) {
-                    console.log(err)
                     return res.status(500).send(err)
                 }
             })
         }   
         rfile.mv(releasePathFull, function(err) {
             if (err) {
-                console.log("pas bon" + err)
                 return res.status(500).send(err)
             }
         })
@@ -41,8 +40,8 @@ function init(app, db, ObjectId) {
         const date = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear()
         
         await releaseModel.updateReleaseNumber(db, ObjectId(req.params.projectId), updateNbRelease)
-        await releaseModel.insertRelease(
-            db, 
+        
+        await releaseModel.insertRelease(db, 
             ObjectId(req.params.projectId),
             updateNbRelease,
             req.body.title,
