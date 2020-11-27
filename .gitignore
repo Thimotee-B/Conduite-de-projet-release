@@ -5,3 +5,4 @@ tests/package-lock.json
 src/upload/releases/*
 !src/upload/releases/.gitkeep
 /src/cypress/videos
+/src/cypress/download
