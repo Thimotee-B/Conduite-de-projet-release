@@ -1,4 +1,5 @@
 const helper = require('../../helper.js');
+require('cypress-downloadfile/lib/downloadFileCommand');
 const fixtureCreate = 'release/releaseCreated';
 const fixtureNotCreate = 'release/releaseCancelled';
 
@@ -34,4 +35,16 @@ describe('Gestion des releases', () => {
             })   
         })
     })
+    it('Telechargement d\'une release',() =>{
+        cy.url().then(($url) =>{
+            console.log($url);
+            cy.downloadFile($url + '/download/release.zip', 'cypress/download/test', 'release.zip');
+        })
+        cy.readFile('cypress/download/test/release.zip').then(($contentDL)=>{
+            cy.readFile('cypress/upload/release.zip').then(($contenUP)=>{
+                expect($contentDL).to.equal($contenUP);
+            })
+        })
+    })
+
 })
