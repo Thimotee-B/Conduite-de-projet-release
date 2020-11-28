@@ -16,7 +16,7 @@
         <% for(var i = 0; i < project.us.length; i++) {%>
             <tr>
                 <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
-                <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                <td class="text-center align-middle"><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                 <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
                 <td class="text-center align-middle"><h5>
                     <% if (project.us[i].importance == 'Haute') {%>
@@ -34,13 +34,10 @@
                 </h5></td>
                 <td class="text-center align-middle px-2"><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
                 <td class="text-center align-middle"><h5>
-                    <% if (project.us[i].etat == 'TODO') {%>
+                    <% if (project.us[i].etat == 'FERMEE') {%>
                         <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
                     <% } %>
-                    <% if (project.us[i].etat == 'DOING') {%>
-                        <span class="badge badge-pill badge-doing fullWidth"><%= project.us[i].etat %></span>
-                    <% } %>
-                    <% if (project.us[i].etat == 'DONE') {%>
+                    <% if (project.us[i].etat == 'OUVERTE') {%>
                         <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
                     <% } %>
                     
@@ -106,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="etat">Etat</label>
                                         <select class="form-control" id="etat" name="etat">
-                                            <% ['TODO', 'DOING', 'DONE'].forEach(function(e){ %>
+                                            <% ['OUVERTE', 'FERMEE'].forEach(function(e){ %>
                                                 <% if (project.us[i].etat == e) {%>
                                                     <option selected> <%= e %> </option>
                                                 <% }else { %>

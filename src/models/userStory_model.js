@@ -30,7 +30,7 @@ function insertUserStory(
                     importance: importance,
                     difficulte: difficulte,
                     plannification: plannification,
-                    etat: "TODO"
+                    etat: "FERMEE"
                 }
             }
         }
