@@ -19,7 +19,6 @@ function init(app, db) {
         )
         res.redirect("/projectList")
     })
-
 }
 
 function getTodayDate(){

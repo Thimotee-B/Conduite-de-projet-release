@@ -24,6 +24,7 @@ function insertProject(
             beginDate: beginDate,
             dateEnd: endDate,
             role: "Scrum Master",
+            roleList: ["Scrum Master","Product Owner", "Développeur","Utilisateur"],
             nbMember: 1,
             us: [],
             sprint: [],

@@ -23,6 +23,7 @@ const userStoryController = require("./controllers/userStory_controller.js")
 const sprintController = require("./controllers/sprint_controller.js")
 const releaseController = require("./controllers/release_controller.js")
 const taskController = require("./controllers/task_controller.js")
+const roleController = require("./controllers/role_controller.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -46,6 +47,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         sprintController.init(app, db, ObjectId)
 
         releaseController.init(app, db, ObjectId)
+
+        roleController.init(app, db, ObjectId)
 
         app.listen(3000, function () {
             console.log("listening on 3000")
