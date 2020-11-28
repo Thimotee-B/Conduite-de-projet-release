@@ -62,7 +62,7 @@
     </li>
    
     <!-- Nav Item - Utilities Collapse Menu -->
-    <% if (page == 'task'){ %>
+    <% if (page == 'tasks'){ %>
         <li class="nav-item active">
     <%} else{%>
         <li class="nav-item">
@@ -106,27 +106,29 @@
             <span>Documentation</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <% if (role == 'Scrum Master'){ %>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Administration
-    </div>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Administration
+        </div>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Planning</span></a>
-    </li>
-     <!-- Nav Item - Charts -->
-     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-users"></i>
-            <span>&Eacute;quipe</span></a>
-    </li>
-
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Planning</span></a>
+        </li>
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-users"></i>
+                <span>&Eacute;quipe</span></a>
+        </li>
+    <%}%>
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
