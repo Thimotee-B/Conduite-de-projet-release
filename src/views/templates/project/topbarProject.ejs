@@ -47,9 +47,15 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <% for(var roleIndex = 0; roleIndex < project.role.length; roleIndex++) {%>
-                <a class="dropdown-item" href="/projectView/<%=project._id%>/updateRole/<%=project.roleList[roleIndex]%>/<%=page%>">
-                    <%= project.roleList[roleIndex]%>
-                </a>
+                    <% if(project.role == project.roleList[roleIndex]){%>
+                        <a class="dropdown-item text-bold" href="/projectView/<%=project._id%>/updateRole/<%=project.roleList[roleIndex]%>/<%=page%>">
+                            <strong><%= project.roleList[roleIndex]%></strong>
+                        </a>
+                    <%} else{%>
+                        <a class="dropdown-item " href="/projectView/<%=project._id%>/updateRole/<%=project.roleList[roleIndex]%>/<%=page%>">
+                            <%= project.roleList[roleIndex]%>
+                        </a>
+                    <%}%>
                 <%}%>
             </div>
         </li>

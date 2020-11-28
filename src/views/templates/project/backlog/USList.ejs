@@ -139,17 +139,18 @@
                     </div>
                 </div>
                 <td class="text-center align-middle">
-                    <% if (project.us[i].plannification == "-") {%>
-                        <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    <% }else { %>
-                        <div class="not-allowed">
-                            <a class="btn disabled" href="#">
+                    <% if (project.role == "Scrum Master" || project.role == "Développeur") {%>
+                        <% if (project.us[i].plannification == "-") {%>
+                            <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
-                        </div>
-                        
+                        <% }else { %>
+                            <div class="not-allowed">
+                                <a class="btn disabled" href="#">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        <% } %>    
                     <% } %> 
                     
                 </td>
