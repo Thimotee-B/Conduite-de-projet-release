@@ -1,10 +1,12 @@
  <!-- Page Heading -->
  <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Release</h1>
+    <%if (project.role == "Scrum Master"){%>
     <form class="form-inline">
         <button type="button" class="btn btn-sm plusBtn" data-toggle="modal" data-target="#releaseModal">
             <img src="/assets/plus-sign-in-a-white-circle.png" class="plusImg">
             Upload a release
         </button>
     </form>
+    <%}%>
 </div>
