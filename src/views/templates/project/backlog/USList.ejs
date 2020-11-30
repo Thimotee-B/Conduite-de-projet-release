@@ -1,12 +1,12 @@
-<table class="table table-hover table-sm table-striped">
+<table id="USListTable" class="table table-hover table-sm table-striped">
     <thead>
         <tr>
-            <th scope="col" class="text-center">ID US</th>
-            <th scope="col">Description</th>
-            <th scope="col" class="text-center">Difficulté</th>
-            <th scope="col" class="text-center">Importance</th>
-            <th scope="col" class="text-center">Plannification</th>
-            <th scope="col" class="text-center">Etat</th>
+            <th scope="col" class="text-center sortable">ID US</th>
+            <th scope="col" class="text-center sortable">Description</th>
+            <th scope="col" class="text-center sortable">Difficulté</th>
+            <th scope="col" class="text-center sortable">Importance</th>
+            <th scope="col" class="text-center sortable">Plannification</th>
+            <th scope="col" class="text-center sortable">Etat</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -15,7 +15,7 @@
          <!-- Loop through quotes -->
         <% for(var i = 0; i < project.us.length; i++) {%>
             <tr>
-                <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
+                <td class="text-center align-middle"><span><%= project.us[i].id %></span></td>
                 <td class="text-center align-middle"><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                 <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
                 <td class="text-center align-middle"><h5>
@@ -170,10 +170,6 @@
                 
             </tr>
         <% } %>
-        <script>
-            jQuery(document).ready(function($) {
-                $('tbody').sortable();
-            });
-        </script>
+        
     </tbody>
 </table>
