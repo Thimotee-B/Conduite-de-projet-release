@@ -24,6 +24,7 @@ function insertProject(
             beginDate: beginDate,
             dateEnd: endDate,
             role: "Scrum Master",
+            roleList: ["Scrum Master","Product Owner", "Développeur","Utilisateur"],
             nbMember: 1,
             us: [],
             sprint: [],
@@ -37,8 +38,30 @@ function insertProject(
     )
 }
 
+function updateProject(
+    db,
+    projectId, 
+    name,
+    description,
+    sprintDelay
+) {
+    return db.collection("projects").updateOne(
+        { _id : projectId},
+        { $set:  
+            {
+                projectName: name,
+                projectDesc: description,
+                sprintDelay: sprintDelay
+            }
+        },
+        { upsert: true}
+    ).catch(error => console.error(error))
+}
+
+
 module.exports = {
     getProjectId,
     getAllProject,
-    insertProject
+    insertProject,
+    updateProject
 }

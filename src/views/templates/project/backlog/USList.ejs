@@ -1,12 +1,12 @@
-<table class="table table-hover table-sm table-striped">
+<table id="USListTable" class="table table-hover table-sm table-striped">
     <thead>
         <tr>
-            <th scope="col" class="text-center">ID US</th>
-            <th scope="col">Description</th>
-            <th scope="col" class="text-center">Difficulté</th>
-            <th scope="col" class="text-center">Importance</th>
-            <th scope="col" class="text-center">Plannification</th>
-            <th scope="col" class="text-center">Etat</th>
+            <th scope="col" class="text-center sortable">ID US</th>
+            <th scope="col" class="text-center sortable">Description</th>
+            <th scope="col" class="text-center sortable">Difficulté</th>
+            <th scope="col" class="text-center sortable">Importance</th>
+            <th scope="col" class="text-center sortable">Plannification</th>
+            <th scope="col" class="text-center sortable">Etat</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -15,8 +15,8 @@
          <!-- Loop through quotes -->
         <% for(var i = 0; i < project.us.length; i++) {%>
             <tr>
-                <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
-                <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                <td class="text-center align-middle"><span><%= project.us[i].id %></span></td>
+                <td class="text-center align-middle"><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                 <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
                 <td class="text-center align-middle"><h5>
                     <% if (project.us[i].importance == 'Haute') {%>
@@ -34,13 +34,10 @@
                 </h5></td>
                 <td class="text-center align-middle px-2"><span class="plannificationBacklog"><i class="far fa-calendar-check"></i> <%= project.us[i].plannification %></span></td>
                 <td class="text-center align-middle"><h5>
-                    <% if (project.us[i].etat == 'TODO') {%>
+                    <% if (project.us[i].etat == 'FERMEE') {%>
                         <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
                     <% } %>
-                    <% if (project.us[i].etat == 'DOING') {%>
-                        <span class="badge badge-pill badge-doing fullWidth"><%= project.us[i].etat %></span>
-                    <% } %>
-                    <% if (project.us[i].etat == 'DONE') {%>
+                    <% if (project.us[i].etat == 'OUVERTE') {%>
                         <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
                     <% } %>
                     
@@ -62,7 +59,11 @@
                             <form action="/projectView/<%=project._id%>/updateUS/<%= i %>" method="POST">
                                 <!-- Modal body -->
                                 <div class="modal-body">
+                                    <% if(project.role == 'Scrum Master' || project.role == 'Développeur'){%>
                                     <div class="form-group">
+                                    <% }else{ %>
+                                        <div class="form-group" style="display: none;">
+                                    <% } %>
                                         <label for="entantque">En tant que</label>
                                         <select class="form-control" id="entantque" name="entantque">
                                             <% ['Scrum Master', 'Développeur', 'Product Owner', 'Utilisateur'].forEach(function(user){ %>
@@ -79,6 +80,7 @@
                                         <label for="afinde">Afin de</label>
                                         <textarea class="form-control rounded-0" id="afinde" name="afinde" placeholder="pouvoir me connecter ..." rows="3" maxlength="500"><%= project.us[i].afinde %></textarea>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="importance">Importance</label>
                                         <select class="form-control" id="importance" name="importance">
@@ -91,6 +93,12 @@
                                             <% }) %>
                                         </select>
                                     </div>
+                                    <% if(project.role == 'Scrum Master' || project.role == 'Développeur'){%>
+                                        <div>
+                                            
+                                    <% }else{ %>
+                                        <div style="display: none;">
+                                    <% } %>
                                     <div class="form-group">
                                         <label for="difficulte">Difficulté</label>
                                         <select class="form-control" id="difficulte" name="difficulte">
@@ -106,7 +114,7 @@
                                     <div class="form-group">
                                         <label for="etat">Etat</label>
                                         <select class="form-control" id="etat" name="etat">
-                                            <% ['TODO', 'DOING', 'DONE'].forEach(function(e){ %>
+                                            <% ['OUVERTE', 'FERMEE'].forEach(function(e){ %>
                                                 <% if (project.us[i].etat == e) {%>
                                                     <option selected> <%= e %> </option>
                                                 <% }else { %>
@@ -128,6 +136,8 @@
                                             <% } %>
                                         </select>
                                     </div>
+                                    </div>
+                                    
                 
                                 </div>
                                 <!-- Modal footer -->
@@ -142,27 +152,24 @@
                     </div>
                 </div>
                 <td class="text-center align-middle">
-                    <% if (project.us[i].plannification == "-") {%>
-                        <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    <% }else { %>
-                        <div class="not-allowed">
-                            <a class="btn disabled" href="#">
+                    <% if (project.role == "Scrum Master" || project.role == "Développeur") {%>
+                        <% if (project.us[i].plannification == "-") {%>
+                            <a class="text-danger" href="/projectView/<%=project._id%>/removeUS/<%=i%>">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
-                        </div>
-                        
+                        <% }else { %>
+                            <div class="not-allowed">
+                                <a class="btn disabled" href="#">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        <% } %>    
                     <% } %> 
                     
                 </td>
                 
             </tr>
         <% } %>
-        <script>
-            jQuery(document).ready(function($) {
-                $('tbody').sortable();
-            });
-        </script>
+        
     </tbody>
 </table>

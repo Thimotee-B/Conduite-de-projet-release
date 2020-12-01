@@ -9,14 +9,14 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <%- include("../templates/project/sideBar", {page:'release'})%>
+        <%- include("../templates/project/sideBar", {page:'release', role: project.role})%>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
                 <%- include("../templates/project/release/releaseModal")%>
-                <%- include("../templates/project/topbarProject")%>
+                <%- include("../templates/project/topbarProject",{page: 'release'})%>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <%- include("../templates/project/release/heading")%>
