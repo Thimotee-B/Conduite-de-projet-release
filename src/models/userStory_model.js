@@ -1,5 +1,5 @@
 function updateUserStoryNumber(db, projectId, userStoryNumber) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id: projectId },
         { $set: { nbUs: userStoryNumber } },
         { upsert: true }
@@ -18,7 +18,7 @@ function insertUserStory(
     difficulte,
     plannification
 ) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : projectId},
         { $push: 
             { us: 
@@ -30,7 +30,9 @@ function insertUserStory(
                     importance: importance,
                     difficulte: difficulte,
                     plannification: plannification,
-                    etat: "FERMEE"
+                    etat: "FERMEE",
+                    taskTotal: 0,
+                    taskDone: 0
                 }
             }
         }
@@ -49,9 +51,11 @@ function insertUserStoryAtPos(
     importance,
     difficulte,
     plannification,
-    etat
+    etat, 
+    taskTotal,
+    taskDone
 ) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : projectId},
         { $push: { 
             us: {
@@ -63,7 +67,9 @@ function insertUserStoryAtPos(
                     importance: importance,
                     difficulte: difficulte,
                     plannification: plannification,
-                    etat: etat
+                    etat: etat,
+                    taskTotal: taskTotal,
+                    taskDone: taskDone
                 }],
                 $position: pos
             }
@@ -74,12 +80,15 @@ function insertUserStoryAtPos(
 }
 
 function deleteUserStoryAtPos(db, project, pos) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : project._id},
         { $pull:  {us:  project.us[pos]}}
     )
         .catch(error => console.error(error))
 }
+
+
+
 
 module.exports = {
     updateUserStoryNumber,
