@@ -14,13 +14,7 @@ function getListSprint() {
 }
 
 function getListUS() {
-    return cy.get('.container-fluid')
-        .get('.spacex1')
-        .get('.table')
-        .get('.table-hover')
-        .get('.table-sm')
-        .get('.table-striped')
-        .get('.ui-sortable');
+    return cy.get('#USListTable').get('tbody')
 }
 
 function getListRelease() {
