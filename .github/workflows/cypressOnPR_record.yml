@@ -1,8 +1,5 @@
-name: TestE2E/Inte on push
+name: Cypress Record PR
 on:
-  push:
-    branches: 
-      - Thim
   pull_request:
     branches:
       - main
@@ -27,5 +24,7 @@ jobs:
         with:
           working-directory: src
           project: ./tests
+          record: true
           start : npm run app:test
-          
+        env:
+        CYPRESS_RECORD_KEY: 68943b85-8553-41ae-9bbe-2d64ec97be63
