@@ -1,28 +1,33 @@
 # TESTS
-Le code pour les tests se trouve dans `\src\cypress\integration`
+Le code pour les tests se trouve dans `src/tests`
 
-Les fichiers `.json` présents dans `\src\cypress\fixtures\` servent au remplissage des différents formulaires
+## Cypress 
+
+Les fichiers `.json` présents dans `/src/tests/cypress/fixtures` servent au remplissage des différents formulaires
 
 Il est possible de voir les résultats des tests cypress effectués à l'adresse [`https://dashboard.cypress.io/projects/5b9i23/runs`](https://dashboard.cypress.io/projects/5b9i23/runs)
 
-## Lancer les tests
+### Lancer les tests
 
-### Pour lancer les tests en mode headless (sans affichage) et sans enregistrement
-- aller dans `\src`
+Les tests cypress se lancent automatiquement **à chaque push** sur les branches de developpement (Thim, xav, wilfriedaugeard) à l'aide de `github action`
+Les tests cypress se lancent automatiquement et sont enregistrer dans la dashboard cypress **à chaque  pull request** sur la branche main à l'aide de `github action`
+
+#### Pour lancer les tests en mode headless (sans affichage) et sans enregistrement
+- aller dans `/src`
 - installer les dépendances (`npm install`)
 - lancer le serveur (`npm run app`)
 - lancer la commande (`npm run cy:run`)
 - le resultats des tests s'affichera dans le terminal
 
-### Pour lancer les tests en mode headless (sans affichage) et avec enregistrement
-- aller dans `\src`
+#### Pour lancer les tests en mode headless (sans affichage) et avec enregistrement
+- aller dans `/src`
 - installer les dépendances (`npm install`)
 - lancer le serveur (`npm run app`)
 - lancer la commande (`npm run cy:record`)
 - le resultats des tests s'affichera dans le terminal et sur le site internet
 
-### Pour lancer les tests avec affichage
-- aller dans `\src`
+#### Pour lancer les tests avec affichage
+- aller dans `/src`
 - installer les dépendances (`npm install`)
 - lancer le serveur (`npm run app`)
 - lancer la commande (`npm run cy:open`)
