@@ -1,5 +1,5 @@
 function updateTaskNumber(db, projectId, taskNumber) {
-    db.collection("projects")
+    return db.collection("projects")
         .updateOne(
             { _id: projectId },
             { $set: { nbTask: taskNumber } },
@@ -15,9 +15,10 @@ function insertTask(
     description,
     duree,
     dod,
-    dep
+    dep,
+    usRef
 ) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id: projectId },
         {
             $push: {
@@ -26,7 +27,7 @@ function insertTask(
                     dep: dep,
                     description: description,
                     dod: dod,
-                    usRef: [],
+                    usRef: usRef,
                     duree: duree,
                     etat: "TODO",
                 },
@@ -47,7 +48,7 @@ function updateTaskByPos(
     duree,
     etat
 ) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : projectId},
         { $push:  {
             task: {
@@ -68,11 +69,14 @@ function updateTaskByPos(
 }
 
 function deleteTaskByPos(db, project, pos) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : project._id},
         { $pull:  {task:  project.task[pos]}}
     ).catch(err => console.error(err))
 }
+
+
+
 
 module.exports = {
     updateTaskNumber,

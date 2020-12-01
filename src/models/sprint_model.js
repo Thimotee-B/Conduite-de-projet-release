@@ -1,5 +1,5 @@
 function updateSprintNumber(db, projectId, nbSprint) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : projectId},
         { $set:  {nbSprint:  nbSprint}},
         { upsert: true}
@@ -7,7 +7,7 @@ function updateSprintNumber(db, projectId, nbSprint) {
 }
 
 function insertSprint(db, projectId, id, beginDate, description) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : projectId},
         { $push: 
             { sprint: 

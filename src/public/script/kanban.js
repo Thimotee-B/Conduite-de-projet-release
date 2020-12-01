@@ -39,6 +39,7 @@ itemContainers.forEach(function (container) {
     .on("dragInit", function (item) {
       item.getElement().style.width = item.getWidth() + "px";
       item.getElement().style.height = item.getHeight() + "px";
+      startItem = getColumnName(item)
     })
     .on("dragReleaseEnd", function (item) {
       item.getElement().style.width = "";
@@ -47,7 +48,10 @@ itemContainers.forEach(function (container) {
       let taskPos = getTaskId(item)
       let state = getColumnName(item)
       let redirection = window.location.pathname + "/" + taskPos + "/updateState/" + state
-      //window.location.replace(redirection)
+      if(startItem != state){
+        window.location.replace(redirection)
+      }
+      
     })
     .on("layoutStart", function () {
       boardGrid.refreshItems().layout();

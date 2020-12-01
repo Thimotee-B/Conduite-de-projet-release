@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <% for(var i = 0; i < project.nbSprint; i++) {%>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="float-left">
+                            <h4><%=project.sprint[i].id%></h4>
+                        </div>
+                        
+                        <div class="float-right">
+                            <%let cptDone = 0 %>
+                            <%let cptTotal = 0 %>
+                            <% for(var j = 0; j < project.us.length; j++) {%>
+                                <% if(project.us[j].plannification == project.sprint[i].id){%>
+                                    <%cptDone += project.us[j].taskDone %>
+                                    <%cptTotal += project.us[j].taskTotal %>
+                                <%}%>        
+                            <%}%>
+                            <% if(cptTotal == 0){%>
+                                0%
+                            <%}else{%> 
+                                <%= cptDone/cptTotal*100%>%
+                            <%}%> 
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <% for(var j = 0; j < project.us.length; j++) {%>
+                            <% if(project.us[j].plannification == project.sprint[i].id){%>
+                                
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="float-left">US#<%=project.us[j].id%></div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="progress">
+                                            <% if(cptTotal == 0){%>
+                                                <div class="progress-bar  bg-success progress-bar-striped progress-bar-animated" style="width:0%">0%</div>
+                                            <%}else{%> 
+                                                <div class="progress-bar  bg-success progress-bar-striped progress-bar-animated" style="width:<%=project.us[j].taskDone/project.us[j].taskTotal*100%>%"><%=project.us[j].taskDone/project.us[j].taskTotal*100%>%</div>
+                                            <%}%> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+    </div>
+</div>

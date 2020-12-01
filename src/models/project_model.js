@@ -16,7 +16,7 @@ function insertProject(
     beginDate,
     endDate,
 ) {
-    db.collection("projects").insertOne(
+    return db.collection("projects").insertOne(
         {
             projectName: name,
             projectDesc: description,
