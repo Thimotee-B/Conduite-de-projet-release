@@ -28,10 +28,10 @@ describe('Gestion backlog', () => {
                 helper.remplirUSForm(US);
                 cy.get('.modal-footer:nth-child(2) > .btn-success').click();
                 helper.URLBacklog();
-                helper.getListUS().get('.ui-sortable-handle')
-                    .should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                helper.getListUS().should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
                 helper.getListUS().children().then(($childrenAfter) => {
-                    expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
+                    if ($childrenBefore>1)
+                        expect($childrenBefore.length + 1).to.equal($childrenAfter.length);
                 })
             })
         })
@@ -44,8 +44,7 @@ describe('Gestion backlog', () => {
                 helper.remplirUSEdit(US);
                 cy.get('#modifyUSModal1 .btn-success').click();
                 helper.URLBacklog();
-                helper.getListUS().get('.ui-sortable-handle')
-                    .should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                helper.getListUS().should('contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
                 helper.getListUS().children().then(($childrenAfter) => {
                     expect($childrenBefore.length).to.equal($childrenAfter.length);
                 })
@@ -61,8 +60,7 @@ describe('Gestion backlog', () => {
                 helper.remplirUSForm(US);
                 cy.get('.modal-footer:nth-child(2) > .btn-danger').click();
                 helper.URLBacklog();
-                helper.getListUS().get('.ui-sortable-handle')
-                    .should('not.contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
+                helper.getListUS().should('not.contain', enTantQue + US.role + jeSouhaite + US.souhait + afinDe + US.afinDe);
                 helper.getListUS().children().then(($childrenAfter) => {
                     expect($childrenBefore.length).to.equal($childrenAfter.length);
                 })
@@ -75,7 +73,8 @@ describe('Gestion backlog', () => {
             cy.get('.fa-trash-alt').click();
             helper.URLBacklog();
             helper.getListUS().children().then(($childrenAfter) => {
-                expect($childrenBefore.length - 1).to.equal($childrenAfter.length);
+                if ($childrenBefore>1)
+                    expect($childrenBefore.length - 1).to.equal($childrenAfter.length);
             })
         })
     })

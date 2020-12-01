@@ -1,4 +1,4 @@
-const fixtureCreate = 'setup\\setupProjet.json';
+const fixtureCreate = 'setup/setupProjet.json';
 
 function remplirProjetForm(projet) {
     cy.get('#projectName').type(projet.name);
