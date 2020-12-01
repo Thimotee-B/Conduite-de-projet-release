@@ -25,9 +25,9 @@ describe('Gestion des releases', () => {
                 helper.remplirReleaseForm(release);
                 cy.get('.btn-success').click();
                 helper.URLRelease();
-                helper.getListUS().get('.ui-sortable-handle')
+                helper.getListRelease().get('.ui-sortable-handle')
                     .should('contain', release.nom);
-                helper.getListUS().get('.ui-sortable-handle')
+                helper.getListRelease().get('.ui-sortable-handle')
                     .should('contain', release.desc);
             })
             helper.getListRelease().children().then(($childrenAfter) => {
@@ -54,9 +54,9 @@ describe('Gestion des releases', () => {
                 helper.remplirReleaseForm(release);
                 cy.get('.btn-danger').click();
                 helper.URLRelease();
-                helper.getListUS().get('.ui-sortable-handle')
+                helper.getListRelease().get('.ui-sortable-handle')
                     .should('not.contain', release.nom);
-                helper.getListUS().get('.ui-sortable-handle')
+                helper.getListRelease().get('.ui-sortable-handle')
                     .should('not.contain', release.desc);
             })
             helper.getListRelease().children().then(($childrenAfter) => {
