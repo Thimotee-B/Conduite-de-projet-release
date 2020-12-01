@@ -1,0 +1,19 @@
+name: TestE2E/Inte on push
+on:
+  push:
+    branches: 
+      - Thim
+
+jobs:
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: src
+          start : npm run app:test
+          
