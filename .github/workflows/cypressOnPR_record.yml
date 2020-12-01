@@ -27,4 +27,4 @@ jobs:
           record: true
           start : npm run app:test
         env:
-        CYPRESS_RECORD_KEY: 68943b85-8553-41ae-9bbe-2d64ec97be63
+          CYPRESS_RECORD_KEY: 68943b85-8553-41ae-9bbe-2d64ec97be63
