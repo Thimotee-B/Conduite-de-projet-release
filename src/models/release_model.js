@@ -1,5 +1,5 @@
 function updateReleaseNumber(db, projectId, releaseNumber) {
-    db.collection("projects")
+    return db.collection("projects")
         .updateOne(
             { _id: projectId },
             { $set: { nbRelease: releaseNumber } },
@@ -16,7 +16,7 @@ function insertRelease(db,
     name,
     date
 ) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id: projectId },
         {
             $push: {
@@ -35,7 +35,7 @@ function insertRelease(db,
 }
 
 function deleteReleaseAtPos(db, project, pos) {
-    db.collection("projects").updateOne(
+    return db.collection("projects").updateOne(
         { _id : project._id},
         { $pull:  {releases:  project.releases[pos]}}
     )
