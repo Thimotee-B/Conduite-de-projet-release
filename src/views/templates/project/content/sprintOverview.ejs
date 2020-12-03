@@ -20,7 +20,8 @@
                             <% if(cptTotal == 0){%>
                                 0%
                             <%}else{%> 
-                                <%= cptDone/cptTotal*100%>%
+                                <% let res = cptDone/cptTotal*100%>
+                                <%= res.toFixed(2)%>%
                             <%}%> 
                         </div>
                     </div>
@@ -37,7 +38,9 @@
                                             <% if(project.us[j].taskTotal == 0){%>
                                                 <div class="progress-bar  bg-success progress-bar-striped progress-bar-animated" style="width:0%">0%</div>
                                             <%}else{%> 
-                                                <div class="progress-bar  bg-success progress-bar-striped progress-bar-animated" style="width:<%=project.us[j].taskDone/project.us[j].taskTotal*100%>%"><%=project.us[j].taskDone/project.us[j].taskTotal*100%>%</div>
+                                                <% let res = project.us[j].taskDone/project.us[j].taskTotal*100%>
+                                                <% res = res.toFixed(2)%>
+                                                <div class="progress-bar  bg-success progress-bar-striped progress-bar-animated" style="width:<%=res%>%"><%=res%>%</div>
                                             <%}%> 
                                             
                                         </div>
