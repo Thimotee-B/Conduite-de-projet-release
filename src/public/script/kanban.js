@@ -1,5 +1,5 @@
 function getTaskId(item) {
-  return item._element.childNodes[1].children[0].children[0].children[0].id
+  return item._element.childNodes[1].children[0].children[0].id
 }
 function getColumnName(item) {
   return item.getGrid().getElement().parentNode.parentNode.children[0].innerText

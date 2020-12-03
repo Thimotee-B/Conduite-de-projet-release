@@ -59,6 +59,7 @@
 </div>
 <% for(var i = 0; i < project.task.length; i++) {%>
   <%- include("infoTaskModal",{i: i, project: project})%>
+  <%- include("modifyTaskModal",{i: i, project: project})%>
 <% } %>
 
 
