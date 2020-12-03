@@ -1,6 +1,4 @@
 src/node_modules/
-tests/node_modules
-tests/package-lock.json
 src/upload/releases/*
 !src/upload/releases/.gitkeep
 /src/tests/cypress/videos

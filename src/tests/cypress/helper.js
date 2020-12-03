@@ -1,30 +1,24 @@
+function getListProj() {
+    return cy.get('#projectTable');
+}
+
+function getListSprint() {
+    return cy.get('#sprintListTable');
+}
+
+function getListUS() {
+    return cy.get('#USListTable');
+}
+
+function getListRelease() {
+    return cy.get('#releaseListTable');
+}
+
 function remplirProjetForm(projet) {
     cy.get('#projectName').type(projet.name);
     cy.get('#projectDesc').type(projet.desc);
     cy.get('#sprintDelay').type(projet.sprint);
     cy.get('#dateEnd').type(projet.date);
-}
-
-function getListProj() {
-    return cy.get('.table').get('.table-hover').get('tbody');
-}
-
-function getListSprint() {
-    return cy.get('.container-fluid').get('.spacex1');
-}
-
-function getListUS() {
-    return cy.get('#USListTable').get('tbody')
-}
-
-function getListRelease() {
-    return cy.get('.container-fluid')
-        .get('.spacex1')
-        .get('.table')
-        .get('.table-hover')
-        .get('.table-sm')
-        .get('.table-striped')
-        .get('.ui-sortable');
 }
 
 function remplirSprintForm(sprint) {
