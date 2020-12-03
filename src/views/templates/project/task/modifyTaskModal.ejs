@@ -29,20 +29,27 @@
                         <% } else {%>
                             <div class="checkbox" name="checkbox" id="checkbox">
                             <% for(var j = 0; j < project.task.length; j++) {%>
-                                <div style="margin-right: 1em">
-                                    <% for(var x = 0; x < project.task[i].dep.length; x++){%>
-                                        <% if(project.task[i].dep[x] == project.task[j].id){ %>
-                                            <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>" checked> T#<%=project.task[j].id%>
-                                        <%}else{%>
+                                <% if(j != i){ %>
+                                    <div style="margin-right: 1em">
+                                        <% if(project.task[i].dep.length != 0){ %>
+                                            <%let find = false%>
+                                            <% for(var x = 0; x < project.task[i].dep.length; x++){%>
+                                                <% if(project.task[i].dep[x] == project.task[j].id) %>
+                                                        <% find = true; break%>
+                                            <%}%>
+                                            <% if(find){ %>
+                                                <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>" checked> T#<%=project.task[j].id%>
+                                            <%}else{%>
+                                                <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>"> T#<%=project.task[j].id%>
+                                            <%}%>
+                                        <% } else {%>
                                             <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>"> T#<%=project.task[j].id%>
-                                        <%}%>
-                                    <%}%>
-                                </div>
-                                
+                                        <% } %>  
+                                    </div>
+                                <% } %>  
                             <% } %>
                             </div>
-                        <% } %>
-                        
+                        <% } %>                       
                     </div>
                     <div class="form-group checkbox">
                         <label for="checkbox">User Story relative à la Task:</label>
@@ -50,11 +57,24 @@
                             <p name="checkbox">Aucune US créée</p>
                         <% } else {%>
                             <div class="checkbox" name="checkbox2" id="checkbox2">
-                            <% for(var i = 0; i < project.us.length; i++) {%>
-                                <label style="margin-right: 1em;">
-                                    <input type="checkbox" name="usRef[]" value="<%=project.us[i].id%>"> US#<%=project.us[i].id%>
-                                </label>
-                            <% } %>
+                                <% for(var j = 0; j < project.us.length; j++) {%>
+                                    <div style="margin-right: 1em">
+                                        <% if(project.task[i].usRef.length != 0){ %>
+                                            <%let find = false%>
+                                            <% for(var x = 0; x < project.task[i].usRef.length; x++){%>
+                                                <% if(project.task[i].usRef[x] == project.us[j].id) %>
+                                                    <% find = true; break%>
+                                            <%}%>
+                                            <% if(find){ %>
+                                                <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>" checked> US#<%=project.us[j].id%>
+                                            <%}else{%>
+                                                <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>"> US#<%=project.us[j].id%>
+                                            <%}%>
+                                        <% } else {%>
+                                            <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>"> US#<%=project.us[j].id%>
+                                        <% } %>   
+                                    </div>
+                                <% } %>
                             </div>
                         <% } %>
                         
