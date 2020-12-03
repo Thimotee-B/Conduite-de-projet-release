@@ -11,6 +11,7 @@ function init(app, db, ObjectId) {
     app.post("/projectView/:projectId/createTask", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
         const updateNbTask = project.task.length != 0 ? project.nbTask + 1 : 1
+        const dod = cleanDod(req.body.dod)
         await taskModel.updateTaskNumber(db, ObjectId(req.params.projectId), updateNbTask)
         await taskModel.insertTask(
             db,
@@ -18,7 +19,7 @@ function init(app, db, ObjectId) {
             updateNbTask.toString(),
             req.body.description,
             req.body.duree,
-            req.body.dod.split("/"),
+            dod,
             (req.body.dep == null ? [] : req.body.dep),
             (req.body.usRef == null ? [] : req.body.usRef),
         )
@@ -34,6 +35,7 @@ function init(app, db, ObjectId) {
         const taskId = project.task[taskPos].id
         const etat = project.task[taskPos].etat
         const oldUsRef = project.task[taskPos].usRef
+        const dod = cleanDod(req.body.dod)
 
         await taskModel.deleteTaskByPos(db, project, taskPos)
         await taskModel.updateTaskByPos(
@@ -43,7 +45,7 @@ function init(app, db, ObjectId) {
             taskId,
             (req.body.dep == null ? [] : req.body.dep),
             req.body.description,
-            req.body.dod.split("/"),
+            dod,
             (req.body.usRef == null ? [] : req.body.usRef),
             req.body.duree,
             etat
@@ -106,7 +108,6 @@ function init(app, db, ObjectId) {
 async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
     for(let x=0; x<usRef.length; x++){
         if(!oldUsRef.includes(usRef[x])){
-            console.log(usRef[x]+" in "+oldUsRef)
             for(let i=0; i<project.us.length; i++){ // search us position
                 if(project.us[i].id == usRef[x]){
                     let us = project.us[i]
@@ -135,6 +136,22 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
     }
 }
 
+function removeItemAll(arr, value) {
+    let i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value || arr[i] === ' ') {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+}
+
+function cleanDod(dod){
+    let split = dod.split('/')
+    return removeItemAll(split, '')
+}
 
 async function updateUSTaskInfo(db, project, objectId, us, taskTotal, taskDone, pos){
     const usId           = us.id
@@ -167,7 +184,6 @@ async function updateTaskInfoByUSRef(db, project, objectId, usRef, taskTotalToAd
     for(let x=0; x<usRef.length; x++){
         for(let i=0; i<project.us.length; i++){
             if(project.us[i].id == usRef[x]){
-                console.log(usRef[x])
                 updateUSTaskInfo(db, project, objectId, project.us[i], project.us[i].taskTotal+taskTotalToAdd, project.us[i].taskDone+taskDoneToAdd, i)
                 break
             }
