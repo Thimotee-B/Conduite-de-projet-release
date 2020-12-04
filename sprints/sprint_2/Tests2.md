@@ -36,7 +36,7 @@ Les tests cypress se lancent automatiquement et sont enregistrer dans la dashboa
 - cliquer sur Run integration specs
   - alternativement il est possible de lancer les séries de tests de manière indépendante (accueil, sprint et US), il est cependant obligatoire de lancer `0setup` une fois juste avant puisque certains tests requièrent un setup.
 - le navigateur s'ouvre et les tests s'executent, il est possible de voir les résultats sur la gauche du navigateur
-### Tests de validation/End to end
+### Tests de validation
 | Nom du test | Déroulement | Résultat | US |
 |:-------------|:-------------|:----------|:----:|
 | Page d'acceuil : chargement de la page d'accueil | - La page d'accueil s'affiche | La page d'accueil est affichée avec la liste des projets déjà crée | #02
@@ -53,6 +53,8 @@ Les tests cypress se lancent automatiquement et sont enregistrer dans la dashboa
 | Gestion backlog : Création d'US annulée | - Depuis la page "Backlog" du projet, cliquer sur le bouton "créer une User Story"<br> - Remplir le formulaire de l'US <br> Cliquer sur le bouton "annuler" | L'utilisateur reste sur la page backlog du projet avec les US présentes, aucune US n'est créée, la liste reste identique| #03
 | Gestion backlog : Supression d'US | - Depuis la page "Backlog" du projet, cliquer sur le bouton "Supression" (poubelle rouge) d'une US (une US doit être présente)<br>| L'utilisateur reste sur la page backlog du projet avec les US présentes, l'US supprimée n'apparaît plus parmis les US.| #05 
 
+
+Le test `end2end_test.js` reprend tous les tests précendents "d'une passe"
 
 
 
