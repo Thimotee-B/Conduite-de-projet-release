@@ -13,4 +13,4 @@
 - (US#10) Affichage du cout total d'un sprint en fonction des US associés
 
 ## Télécharger l'archive
-https://tinyurl.com/CDP-eq6-v1-0-0
+https://tinyurl.com/CDP-g1eq6-v1-0-0
