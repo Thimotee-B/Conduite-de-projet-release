@@ -9,7 +9,7 @@ function init(app, db, ObjectId) {
         await userStoryModel.insertUserStory(
             db,
             ObjectId(req.params.projectId),
-            updateNbUs,
+            updateNbUs.toString(),
             req.body.entantque,
             req.body.jesouhaite,
             req.body.afinde,

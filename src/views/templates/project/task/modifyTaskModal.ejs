@@ -1,0 +1,92 @@
+<div class="modal fade" id="modifyTaskModal<%= i %>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modifier Task #<%= project.task[i].id%></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="/projectView/<%=project._id%>/updateTask/<%=i%>" method="POST">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="description">Description:<span class="red">*</span></label>
+                        <textarea class="form-control rounded-0" id="description" name="description"
+                            rows="3" maxlength="500" required><%=project.task[i].description%></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="dod">Definition of done (séparer les éléments par <kbd>/</kbd>):<span class="red">*</span></label>
+                        <textarea class="form-control rounded-0" id="dod" name="dod" placeholder="Documenter / Tester / Review ..." rows="3" maxlength="500" required><% for (let x=0; x < project.task[i].dod.length; x++){%><%=project.task[i].dod[x]%>/<%}%></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="duree">Durée (en demi-jour/Homme):<span class="red">*</span></label>
+                        <input type="number" min="1" id="duree" name="duree" value="<%=project.task[i].duree%>" required>
+                    </div>
+                    <div class="form-group checkbox">
+                        <label for="checkbox">Dépendences</label>
+                        <% if (project.nbTask == 0) {%>
+                            <p name="checkbox">Aucune Task créée</p>
+                        <% } else {%>
+                            <div class="checkbox" name="checkbox" id="checkbox">
+                            <% for(var j = 0; j < project.task.length; j++) {%>
+                                <% if(j != i){ %>
+                                    <div style="margin-right: 1em">
+                                        <% if(project.task[i].dep.length != 0){ %>
+                                            <%let find = false%>
+                                            <% for(var x = 0; x < project.task[i].dep.length; x++){%>
+                                                <% if(project.task[i].dep[x] == project.task[j].id) %>
+                                                        <% find = true; break%>
+                                            <%}%>
+                                            <% if(find){ %>
+                                                <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>" checked> T#<%=project.task[j].id%>
+                                            <%}else{%>
+                                                <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>"> T#<%=project.task[j].id%>
+                                            <%}%>
+                                        <% } else {%>
+                                            <input type="checkbox" name="dep[]" value="<%=project.task[j].id%>"> T#<%=project.task[j].id%>
+                                        <% } %>  
+                                    </div>
+                                <% } %>  
+                            <% } %>
+                            </div>
+                        <% } %>                       
+                    </div>
+                    <div class="form-group checkbox">
+                        <label for="checkbox">User Story relative à la Task:</label>
+                        <% if (project.nbUs == 0) {%>
+                            <p name="checkbox">Aucune US créée</p>
+                        <% } else {%>
+                            <div class="checkbox" name="checkbox2" id="checkbox2">
+                                <% for(var j = 0; j < project.us.length; j++) {%>
+                                    <div style="margin-right: 1em">
+                                        <% if(project.task[i].usRef.length != 0){ %>
+                                            <%let find = false%>
+                                            <% for(var x = 0; x < project.task[i].usRef.length; x++){%>
+                                                <% if(project.task[i].usRef[x] == project.us[j].id) %>
+                                                    <% find = true; break%>
+                                            <%}%>
+                                            <% if(find){ %>
+                                                <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>" checked> US#<%=project.us[j].id%>
+                                            <%}else{%>
+                                                <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>"> US#<%=project.us[j].id%>
+                                            <%}%>
+                                        <% } else {%>
+                                            <input type="checkbox" name="usRef[]" value="<%=project.us[j].id%>"> US#<%=project.us[j].id%>
+                                        <% } %>   
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                        
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Valider</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
