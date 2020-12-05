@@ -30,7 +30,7 @@ function insertUserStory(
                     importance: importance,
                     difficulte: difficulte,
                     plannification: plannification,
-                    etat: "FERMEE",
+                    etat: "PLANIFIEE",
                     taskTotal: 0,
                     taskDone: 0
                 }
