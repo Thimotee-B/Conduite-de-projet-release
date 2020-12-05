@@ -64,13 +64,4 @@ describe('Gestion des releases', () => {
             })
         })
     })
-    it('Suppression d\'une release', () => {
-        helper.getListRelease().children().then(($childrenBefore) => {
-            cy.get('.fa-trash-alt').click();
-            helper.URLRelease();
-            helper.getListRelease().children().then(($childrenAfter) => {
-                expect($childrenBefore.length - 1).to.equal($childrenAfter.length);
-            })
-        })
-    })
 })
