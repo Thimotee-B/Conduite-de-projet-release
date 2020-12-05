@@ -1,5 +1,5 @@
-const projectModel = require("../models/project_model")
-const taskModel = require("../models/task_model")
+const projectModel   = require("../models/project_model")
+const taskModel      = require("../models/task_model")
 const userStoryModel = require("../models/userStory_model")
 
 function init(app, db, ObjectId) {
@@ -79,10 +79,10 @@ function init(app, db, ObjectId) {
             duree,
             req.params.state
         )
-        if(req.params.state == 'DONE'){
+        if(req.params.state == "DONE"){
             updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, 1)
         }else{
-            if(etat == 'DONE'){
+            if(etat == "DONE"){
                 updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, -1)
             }
 
@@ -95,7 +95,7 @@ function init(app, db, ObjectId) {
         const taskPos = req.params.pos
         const usRef = project.task[taskPos].usRef
         const etat = project.task[taskPos].etat
-        if(etat == 'DONE'){
+        if(etat == "DONE"){
             updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1,-1)
         }else{
             updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1, 0)
@@ -112,7 +112,7 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
                 if(project.us[i].id == usRef[x]){
                     let us = project.us[i]
                     let taskDone =  us.taskDone
-                    if(state == 'DONE')
+                    if(state == "DONE")
                         taskDone+=1
                     updateUSTaskInfo(db, project, objectId, us, us.taskTotal+1, taskDone, i)
                     break
@@ -126,7 +126,7 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
                 if(project.us[i].id == oldUsRef[x]){
                     let us = project.us[i]
                     let taskDone =  us.taskDone
-                    if(state == 'DONE')
+                    if(state == "DONE")
                         taskDone-=1
                     updateUSTaskInfo(db, project, objectId, us, us.taskTotal-1, taskDone, i)
                     break
@@ -137,20 +137,20 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
 }
 
 function removeItemAll(arr, value) {
-    let i = 0;
+    let i = 0
     while (i < arr.length) {
-      if (arr[i] === value || arr[i] === ' ') {
-        arr.splice(i, 1);
-      } else {
-        ++i;
-      }
+        if (arr[i] === value || arr[i] === " ") {
+            arr.splice(i, 1)
+        } else {
+            ++i
+        }
     }
-    return arr;
+    return arr
 }
 
 function cleanDod(dod){
-    let split = dod.split('/')
-    return removeItemAll(split, '')
+    let split = dod.split("/")
+    return removeItemAll(split, "")
 }
 
 async function updateUSTaskInfo(db, project, objectId, us, taskTotal, taskDone, pos){

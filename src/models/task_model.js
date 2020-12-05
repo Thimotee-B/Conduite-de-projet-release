@@ -64,8 +64,8 @@ function updateTaskByPos(
                 $position: taskPos
             } 
         }
-    })
-    .catch(err => console.error(err))
+        })
+        .catch(err => console.error(err))
 }
 
 function deleteTaskByPos(db, project, pos) {

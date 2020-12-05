@@ -1,29 +1,30 @@
-const express = require("express")
-const fileUpload = require("express-fileupload")
-const app = express()
-const ejs = require("ejs")
-const path = require("path")
-const bodyParser = require("body-parser")
-const MongoClient = require("mongodb").MongoClient
-const ObjectId = require("mongodb").ObjectID
-
+const MongoClient       = require("mongodb").MongoClient
+const ObjectId          = require("mongodb").ObjectID
+const fileUpload        = require("express-fileupload")
+const bodyParser        = require("body-parser")
+const express           = require("express")
+const path              = require("path")
+const app               = express()
+//const ejs = require("ejs")
 //const connectionString = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority" 
-const connectionString = "mongodb://127.0.0.1:27017";
+const connectionString  = "mongodb://127.0.0.1:27017"
+const port              = 3000
 
+// eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, "/public")))
 app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set("view engine", "ejs")
 
-const listController = require("./controllers/list_controller.js")
-const viewController = require("./controllers/view_controller.js")
-const backlogController = require("./controllers/backlog_controller.js")
-const userStoryController = require("./controllers/userStory_controller.js")
-const sprintController = require("./controllers/sprint_controller.js")
-const releaseController = require("./controllers/release_controller.js")
-const taskController = require("./controllers/task_controller.js")
-const roleController = require("./controllers/role_controller.js")
+const listController        = require("./controllers/list_controller.js")
+const viewController        = require("./controllers/view_controller.js")
+const backlogController     = require("./controllers/backlog_controller.js")
+const userStoryController   = require("./controllers/userStory_controller.js")
+const sprintController      = require("./controllers/sprint_controller.js")
+const releaseController     = require("./controllers/release_controller.js")
+const taskController        = require("./controllers/task_controller.js")
+const roleController        = require("./controllers/role_controller.js")
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
@@ -50,8 +51,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         roleController.init(app, db, ObjectId)
 
-        app.listen(3000, function () {
-            console.log("listening on 3000")
+        app.listen(port, function () {
+            console.log("listening on "+port)
         })
     })
     .catch(console.error)

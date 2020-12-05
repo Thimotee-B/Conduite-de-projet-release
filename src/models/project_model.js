@@ -33,6 +33,9 @@ function insertProject(
             nbTask: 0,
             task: [],
             nbRelease: 0,
+            nbReleaseMajeur: 0,
+            nbReleaseMineur: 0,
+            nbReleaseBug: 0,
             releases: []
         }
     )
@@ -57,6 +60,8 @@ function updateProject(
         { upsert: true}
     ).catch(error => console.error(error))
 }
+
+
 
 
 module.exports = {
