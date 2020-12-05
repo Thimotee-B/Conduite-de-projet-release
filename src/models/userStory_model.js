@@ -88,11 +88,40 @@ function deleteUserStoryAtPos(db, project, pos) {
 }
 
 
+async function updateUSState(db, project, usPos, state){
+    const id = project.us[usPos].id
+    const entantque = project.us[usPos].entantque
+    const jesouhaite = project.us[usPos].jesouhaite
+    const afinde = project.us[usPos].afinde
+    const importance = project.us[usPos].importance
+    const difficulte = project.us[usPos].difficulte
+    const plannification = project.us[usPos].plannification
+    const taskTotal = project.us[usPos].taskTotal
+    const taskDone = project.us[usPos].taskDone   
+    
+    await deleteUserStoryAtPos(db, project, usPos)
+    return await insertUserStoryAtPos(
+        db,
+        project._id,
+        id,
+        usPos,
+        entantque,
+        jesouhaite,
+        afinde,
+        importance,
+        difficulte,
+        plannification,
+        state,
+        taskTotal,
+        taskDone
+    )
+}
 
 
 module.exports = {
     updateUserStoryNumber,
     insertUserStory,
     insertUserStoryAtPos,
-    deleteUserStoryAtPos
+    deleteUserStoryAtPos,
+    updateUSState
 }

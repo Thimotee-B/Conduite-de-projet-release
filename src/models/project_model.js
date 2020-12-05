@@ -61,12 +61,26 @@ function updateProject(
     ).catch(error => console.error(error))
 }
 
-
-
+function updateEndDate(
+    db, 
+    projectId,
+    dateEnd
+){
+    return db.collection("projects").updateOne(
+        { _id : projectId},
+        { $set:  
+            {
+                dateEnd: dateEnd,
+            }
+        },
+        { upsert: true}
+    ).catch(error => console.error(error))
+}
 
 module.exports = {
     getProjectId,
     getAllProject,
     insertProject,
-    updateProject
+    updateProject,
+    updateEndDate
 }

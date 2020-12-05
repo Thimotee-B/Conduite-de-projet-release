@@ -23,7 +23,7 @@ function init(app, db, ObjectId) {
             (req.body.dep == null ? [] : req.body.dep),
             (req.body.usRef == null ? [] : req.body.usRef),
         )
-        updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), (req.body.usRef == null ? [] : req.body.usRef), 1, 0)
+        await updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), (req.body.usRef == null ? [] : req.body.usRef), 1, 0)
         
         res.redirect("/projectView/" + req.params.projectId + "/tasks")
 
@@ -50,7 +50,7 @@ function init(app, db, ObjectId) {
             req.body.duree,
             etat
         )
-        updateUsRef(db, project, ObjectId(req.params.projectId), (req.body.usRef == null ? [] : req.body.usRef), oldUsRef, etat)
+        await updateUsRef(db, project, ObjectId(req.params.projectId), (req.body.usRef == null ? [] : req.body.usRef), oldUsRef, etat)
         
         res.redirect("/projectView/" + req.params.projectId + "/tasks")
 
@@ -80,10 +80,10 @@ function init(app, db, ObjectId) {
             req.params.state
         )
         if(req.params.state == "DONE"){
-            updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, 1)
+            await updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, 1)
         }else{
             if(etat == "DONE"){
-                updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, -1)
+                await updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, 0, -1)
             }
 
         }
@@ -96,14 +96,17 @@ function init(app, db, ObjectId) {
         const usRef = project.task[taskPos].usRef
         const etat = project.task[taskPos].etat
         if(etat == "DONE"){
-            updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1,-1)
+            await updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1,-1)
         }else{
-            updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1, 0)
+            await updateTaskInfoByUSRef(db, project, ObjectId(req.params.projectId), usRef, -1, 0)
         }
         await taskModel.deleteTaskByPos(db, project, taskPos)
         res.redirect("/projectView/"+req.params.projectId+"/tasks")
     })
 }
+
+
+
 
 async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
     for(let x=0; x<usRef.length; x++){
@@ -114,7 +117,7 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
                     let taskDone =  us.taskDone
                     if(state == "DONE")
                         taskDone+=1
-                    updateUSTaskInfo(db, project, objectId, us, us.taskTotal+1, taskDone, i)
+                    await updateUSTaskInfo(db, project, objectId, us, us.taskTotal+1, taskDone, i)
                     break
                 }
             }
@@ -128,7 +131,7 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
                     let taskDone =  us.taskDone
                     if(state == "DONE")
                         taskDone-=1
-                    updateUSTaskInfo(db, project, objectId, us, us.taskTotal-1, taskDone, i)
+                    await updateUSTaskInfo(db, project, objectId, us, us.taskTotal-1, taskDone, i)
                     break
                 }
             }
@@ -184,7 +187,7 @@ async function updateTaskInfoByUSRef(db, project, objectId, usRef, taskTotalToAd
     for(let x=0; x<usRef.length; x++){
         for(let i=0; i<project.us.length; i++){
             if(project.us[i].id == usRef[x]){
-                updateUSTaskInfo(db, project, objectId, project.us[i], project.us[i].taskTotal+taskTotalToAdd, project.us[i].taskDone+taskDoneToAdd, i)
+                await updateUSTaskInfo(db, project, objectId, project.us[i], project.us[i].taskTotal+taskTotalToAdd, project.us[i].taskDone+taskDoneToAdd, i)
                 break
             }
         }
