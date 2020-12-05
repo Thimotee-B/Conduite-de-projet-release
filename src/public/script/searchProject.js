@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 $(document).ready(function(){
     $("#searchProjetInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#projectTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
+        let value = $(this).val().toLowerCase()
+        $("#projectTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+    })
+})
   

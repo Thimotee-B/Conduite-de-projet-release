@@ -23,9 +23,7 @@ function init(app, db, ObjectId) {
 
     app.get("/projectView/:projectId/removeUS/:pos", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-        console.log(project.task[0])
         await removeUsRefFromTask(db, project, req.params.projectId,req.params.pos)
-        console.log(project.task[0])
         await userStoryModel.deleteUserStoryAtPos(db, project, req.params.pos)
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
@@ -68,7 +66,6 @@ async function removeUsRefFromTask(db, project, objectId, pos){
                 const dod           = project.task[taskPos].dod
                 let usRef         = project.task[taskPos].usRef
                 usRef.splice(j,1)
-                console.log(usRef)
                 const duree         = project.task[taskPos].duree
                 const etat          = project.task[taskPos].etat
                 const taskTotal     = project.task[taskPos].taskTotal

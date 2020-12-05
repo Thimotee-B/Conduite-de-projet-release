@@ -15,18 +15,18 @@ function init(app, db, ObjectId) {
         const updateNbRelease = project.releases.length != 0 ? project.nbRelease + 1 : 1
         
         let version = req.body.version
-        let vMajeur = project.nbReleaseMajeur + (version == 'majeur' ? 1 : 0) 
-        let vMineur = project.nbReleaseMineur + (version == 'mineur' ? 1 : 0)
-        let vBug    = project.nbReleaseBug + (version == 'bug' ? 1 : 0)
+        let vMajeur = project.nbReleaseMajeur + (version == "majeur" ? 1 : 0) 
+        let vMineur = project.nbReleaseMineur + (version == "mineur" ? 1 : 0)
+        let vBug    = project.nbReleaseBug + (version == "bug" ? 1 : 0)
         
-        if(version == 'majeur'){
+        if(version == "majeur"){
             vMineur = 0
             vBug = 0
         }
-        if(version == 'mineur'){
+        if(version == "mineur"){
             vBug = 0
         }
-        version = vMajeur+'.'+vMineur+'.'+vBug
+        version = vMajeur+"."+vMineur+"."+vBug
 
 
         const rfile = req.files.releaseFile
@@ -35,6 +35,7 @@ function init(app, db, ObjectId) {
             return res.status(400).send("No file were uploaded.")
         }
 
+        // eslint-disable-next-line no-undef
         const releasePath = path.join(__dirname, "/../upload/releases/", req.params.projectId, "/")
         const releasePathFull = releasePath + rfile.name
                 
@@ -75,6 +76,7 @@ function init(app, db, ObjectId) {
     })
 
     app.get("/projectView/:projectId/release/download/:filename", async (req, res) => {
+        // eslint-disable-next-line no-undef
         const p = path.join(__dirname, "../upload/releases/", req.params.projectId, req.params.filename)
         if (!fs.existsSync(p)) {
             return res.status(404).send("file not found")

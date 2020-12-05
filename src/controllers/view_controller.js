@@ -7,7 +7,7 @@ function init(app, db, ObjectId) {
         
     })
     app.post("/projectView/:projectId/updateProject", async (req, res) => {
-        const project = await projectModel.updateProject(
+        await projectModel.updateProject(
             db, 
             ObjectId(req.params.projectId), 
             req.body.projectName, 
