@@ -13,6 +13,10 @@ var boardGrid
 let startItem
 let savedItem = new Map()
 
+let authorizedRole = ['Scrum Master', 'Développeur']
+let role = document.querySelector(".dropdown-menu-right > .text-bold > strong").innerText
+let authorizedDrag = authorizedRole.includes(role) 
+
 // Init the column grids so we can drag those items around.
 itemContainers.forEach(function (container) {
   var grid = new Muuri(container, {
@@ -21,7 +25,7 @@ itemContainers.forEach(function (container) {
     dragRelease:{
       duration: 300
     },
-    dragEnabled: true,
+    dragEnabled: authorizedDrag,
     dragSort: function () {
       return columnGrids;
     },
