@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th scope="col" class="text-center">Titre</th>
+            <th scope="col" class="text-center">Version</th>
             <th scope="col" class="text-center">Description</th>
             <th scope="col" class="text-center">Publication</th>
             <th scope="col" class="text-center">Télécharger</th>
@@ -12,6 +13,7 @@
         <% for(var i = 0; i < project.releases.length; i++) {%>
             <tr>
                 <td class="text-center align-middle"><span><%= project.releases[i].title %></span></td>
+                <td class="text-center align-middle"><span><%= project.releases[i].version %></span></td>
                 <td class="text-center align-middle"><span><%= project.releases[i].description %></span></td>
                 <td class="text-center align-middle"><span><%= project.releases[i].date %></span></td>
                 <td class="text-center align-middle">

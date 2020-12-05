@@ -13,6 +13,22 @@ function init(app, db, ObjectId) {
     app.post("/projectView/:projectId/createRelease", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
         const updateNbRelease = project.releases.length != 0 ? project.nbRelease + 1 : 1
+        
+        let version = req.body.version
+        let vMajeur = project.nbReleaseMajeur + (version == 'majeur' ? 1 : 0) 
+        let vMineur = project.nbReleaseMineur + (version == 'mineur' ? 1 : 0)
+        let vBug    = project.nbReleaseBug + (version == 'bug' ? 1 : 0)
+        
+        if(version == 'majeur'){
+            vMineur = 0
+            vBug = 0
+        }
+        if(version == 'mineur'){
+            vBug = 0
+        }
+        version = vMajeur+'.'+vMineur+'.'+vBug
+
+
         const rfile = req.files.releaseFile
 
         if (!rfile || Object.keys(rfile).length === 0) {
@@ -38,12 +54,13 @@ function init(app, db, ObjectId) {
         const today = new Date()
         const date = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear()
         
-        await releaseModel.updateReleaseNumber(db, ObjectId(req.params.projectId), updateNbRelease)
+        await releaseModel.updateReleaseNumber(db, ObjectId(req.params.projectId), updateNbRelease, vMajeur, vMineur, vBug)
         await releaseModel.insertRelease(
             db, 
             ObjectId(req.params.projectId),
             updateNbRelease,
             req.body.title,
+            version,
             req.body.description,
             rfile.name,
             date
