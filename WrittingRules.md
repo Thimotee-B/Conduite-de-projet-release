@@ -35,7 +35,7 @@ Le backlog s'écrit dans le fichier `README.md`. Chaque issue du backlog doit se
 - Importance: `Haute`, `Moyenne-Haute`, `Moyenne-Basse` ou `Basse`
 - Le coût, s'exprimant en entier suivant la suite de fibonacci: `1,2,3,5,8,13,21...`
 - Plannification de la forme: `Sprint <numéro du sprint>` 
-- Etat: `TODO`,`DOING`,`DONE`
+- Etat: `PLANIFIEE`,`OUVERTE`,`FERMEE`
 
 
 
