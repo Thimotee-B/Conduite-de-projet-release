@@ -1,5 +1,7 @@
 <div class="container">
     <div class="row">
+        <span id="nbSprint" class="d-none"><%=project.nbSprint%></span>
+        <% let coutTotal = 0 %>
         <% for(var i = 0; i < project.nbSprint; i++) {%>
             <div class="col">
                 <div class="card border-left-primary shadow h-100">
@@ -25,6 +27,9 @@
                                 <% let res = cptDone/cptTotal*100%>
                                 <%= res.toFixed(2)%>%
                             <%}%> 
+                            <% coutTotal += cptTotal %>
+                            <span id="usDoneCout<%=i%>" class="d-none"><%=cptDone%></span>
+                            <span id="usTotalCout<%=i%>" class="d-none"><%=cptTotal%></span>
                             <span class="tooltiptext">
                                 v&eacute;locit&eacute;: <%=cptDone%>/<%=cptTotal%>
                             </span>
@@ -57,5 +62,6 @@
                 </div>
             </div>
         <%}%>
+        <span id="allUsTotalCout" class="d-none"><%=coutTotal%></span>
     </div>
 </div>

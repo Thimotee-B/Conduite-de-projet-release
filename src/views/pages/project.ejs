@@ -3,6 +3,9 @@
 
 <head>
     <%- include("../templates/header/headerProject")%>
+    <script src="/vendor/chart.js/Chart.min.js" defer></script>
+    <script src="/script/burndownchart.js" type="text/javascript" defer></script>
+
 </head>
 
 <body id="page-top">
@@ -26,7 +29,12 @@
                             <%- include("../templates/project/content/sprintOverview")%>
                         </div>
                     </div>
-                    
+                    <div class="row spacex1">
+                        <div class="col-md-6">
+                            <%- include("../templates/project/content/burnDownChart")%>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- End of Main Content -->
