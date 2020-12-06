@@ -21,6 +21,15 @@ function insertDoc(db,
         .catch(err => console.error(err))
 }
 
+function deleteDocAtPos(db, project, pos) {
+    return db.collection("projects").updateOne(
+        { _id : project._id},
+        { $pull:  {doc:  project.doc[pos]}}
+    )
+        .catch(error => console.error(error))
+}
+
 module.exports = {
-    insertDoc
+    insertDoc,
+    deleteDocAtPos
 }

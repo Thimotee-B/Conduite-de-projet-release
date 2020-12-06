@@ -7,7 +7,7 @@ function init(app, db, ObjectId) {
         res.render("pages/doc.ejs", {project: project})
     })
 
-    app.post("/projectView/:projectId/docAdd", async (req, res) => {
+    app.post("/projectView/:projectId/createDoc", async (req, res) => {
         const projectId = ObjectId(req.params.projectId)
         const title = req.body.title
         const content = req.body.content
@@ -24,6 +24,12 @@ function init(app, db, ObjectId) {
             release
         )
         res.redirect("/projectView/" + req.params.projectId + "/doc")
+    })
+
+    app.get("/projectView/:projectId/removeDoc/:pos", async (req, res) => {
+        const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
+        await docModel.deleteDocAtPos(db, project, req.params.pos)
+        res.redirect("/projectView/"+req.params.projectId+"/doc")
     })
 }
 
