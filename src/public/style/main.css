@@ -95,13 +95,14 @@
     border-radius: 50%;
     display: inline-block;
 }
-.tooltip {
+
+.tooltip1 {
   position: relative;
   display: inline-block;
-  opacity: 1;
+  opacity: 1; 
 }
 
-.tooltip .tooltiptext {
+.tooltiptext {
   visibility: hidden;
   width: 120px;
   background-color: black;
@@ -120,7 +121,7 @@
   transition: opacity 1s;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip1:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
