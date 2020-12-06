@@ -34,4 +34,18 @@
             </div>
         <% } %>
     </div>
+    <div class="col-lg-4">
+        <div class="card mb-4 py-3 border-bottom-primary sticky-top">
+            <div class="card-body">
+                <p>
+                    Menu : 
+                </p>
+                <ul>
+                    <% for(var i = 0; i < project.doc.length; i++) {%>
+                            <li><a href="#collapseCard<%=i%>"><%= project.doc[i].title %></a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
