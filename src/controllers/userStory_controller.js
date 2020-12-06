@@ -1,6 +1,5 @@
 const projectModel = require("../models/project_model")
 const userStoryModel = require("../models/userStory_model")
-const taskModel = require("../models/task_model")
 
 function init(app, db, ObjectId) {
     app.post("/projectView/:projectId/createUS", async (req, res) => {
@@ -23,7 +22,7 @@ function init(app, db, ObjectId) {
 
     app.get("/projectView/:projectId/removeUS/:pos", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-        await removeUsRefFromTask(db, project, req.params.projectId,req.params.pos)
+        await userStoryModel.removeUsRefFromTask(db, project, req.params.projectId,req.params.pos)
         await userStoryModel.deleteUserStoryAtPos(db, project, req.params.pos)
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
@@ -54,42 +53,6 @@ function init(app, db, ObjectId) {
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
 }
-
-async function removeUsRefFromTask(db, project, objectId, pos){
-    for(let i = 0; i<project.task.length; i++){
-        for(let j=0; j<project.task[i].usRef.length; j++){
-            if(project.task[i].usRef[j] == project.us[pos].id){
-                const taskPos       = i
-                const taskId        = project.task[taskPos].id
-                const dep           = project.task[taskPos].dep
-                const description   = project.task[taskPos].description
-                const dod           = project.task[taskPos].dod
-                let usRef         = project.task[taskPos].usRef
-                usRef.splice(j,1)
-                const duree         = project.task[taskPos].duree
-                const etat          = project.task[taskPos].etat
-                const taskTotal     = project.task[taskPos].taskTotal
-                const taskDone     = project.task[taskPos].taskDone
-                await taskModel.deleteTaskByPos(db, project, taskPos)
-                await taskModel.updateTaskByPos(
-                    db,
-                    objectId,
-                    taskPos,
-                    taskId,
-                    dep,
-                    description,
-                    dod,
-                    usRef,
-                    duree,
-                    etat,
-                    taskTotal,
-                    taskDone
-                )
-            }
-        }
-    }
-}
-
 
 module.exports = {
     init

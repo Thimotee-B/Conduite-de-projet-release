@@ -32,7 +32,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         const db = client.db("MAIN_DATABASE")
 
         app.get("/", (req, res) => {
-            res.redirect("/projectList")
+            res.render("pages/login.ejs")
         })
 
         listController.init(app, db)
