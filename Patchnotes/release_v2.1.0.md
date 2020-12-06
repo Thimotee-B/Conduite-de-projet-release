@@ -19,9 +19,11 @@
 - (US#08) Possibilité de changer l'importance des US en tant que PO
 - (US#09) Possibilité de trier les US par catégorie (ID, difficulté, priorité, sprint, état)
 - (US#13) Possibilité de modifier le projet en tant que SM
-- (US#15) Possibilité de suprimmer une task (si elle est en TODO)
+- (US#15) Possibilité de suprimmer une task (si elle est en état TODO)
+- (US#14) Possibilité de modifier une task
 - (US#35) Possibilité de rechercher les projets auquel je participe via son nom
-- (US#30) Ajout d'élément d'interface pour montrer l'avancement des différent sprints
+- (US#30-34) Ajout d'éléments d'interface pour montrer l'avancement des différent sprints et du projet
+- (US#29) Possibilité de publier une release
 
 #### Autre (aucune us)
 - Correction d'un bug qui parfois n'affichait pas les projets/sprints/US/tasks crées sans actualiser la page
