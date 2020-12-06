@@ -22,10 +22,7 @@ function init(app, db, ObjectId) {
 
     app.get("/projectView/:projectId/removeUS/:pos", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-        console.log("====================")
-        console.log(project.task[0])
         await userStoryModel.removeUsRefFromTask(db, project, req.params.projectId,req.params.pos)
-        console.log(project.task[0])
         await userStoryModel.deleteUserStoryAtPos(db, project, req.params.pos)
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
@@ -56,7 +53,6 @@ function init(app, db, ObjectId) {
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
 }
-
 
 module.exports = {
     init

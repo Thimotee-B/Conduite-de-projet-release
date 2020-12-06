@@ -33,6 +33,9 @@ function insertProject(
             nbTask: 0,
             task: [],
             nbRelease: 0,
+            nbReleaseMajeur: 0,
+            nbReleaseMineur: 0,
+            nbReleaseBug: 0,
             releases: []
         }
     )
@@ -58,10 +61,26 @@ function updateProject(
     ).catch(error => console.error(error))
 }
 
+function updateEndDate(
+    db, 
+    projectId,
+    dateEnd
+){
+    return db.collection("projects").updateOne(
+        { _id : projectId},
+        { $set:  
+            {
+                dateEnd: dateEnd,
+            }
+        },
+        { upsert: true}
+    ).catch(error => console.error(error))
+}
 
 module.exports = {
     getProjectId,
     getAllProject,
     insertProject,
-    updateProject
+    updateProject,
+    updateEndDate
 }

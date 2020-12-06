@@ -1,15 +1,21 @@
 <div class="board-item container ">
     <div class="board-item-content row" >
-        <div class="col-md-10" data-toggle="modal" data-target="#infoTaskModal<%= i %>">
-            <span id="<%= i %>">#<%= taskId %></span>
-        </div>
-        <div class="col-md-2">
-            <td class="modifyUS text-center align-middle">
-                <a class="text-warning" data-toggle="modal" data-target="#modifyTaskModal<%= i %>">
-                    <i class="fas fa-edit"></i>
-                </a>
-            </td>
-        </div>
+        <% if(project.role == 'Scrum Master' || project.role == 'Développeur'){%>
+            <div class="col-md-10" data-toggle="modal" data-target="#infoTaskModal<%= i %>">
+                <span id="<%= i %>">#<%= taskId %></span>
+            </div>
+            <div class="col-md-2">
+                <td class="modifyUS text-center align-middle">
+                    <a class="text-warning" data-toggle="modal" data-target="#modifyTaskModal<%= i %>">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </div>
+        <% }else{ %>
+            <div class="col" data-toggle="modal" data-target="#infoTaskModal<%= i %>">
+                <span id="<%= i %>">#<%= taskId %></span>
+            </div>
+        <% } %>
     </div>
 </div>
 

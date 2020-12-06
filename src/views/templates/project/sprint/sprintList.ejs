@@ -8,8 +8,8 @@
             </div>
             <table class="table table-hover table-sm table-striped">
                 <thead>
-                    <th scope="col" class="text-center">ID US</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" class="text-center" style="min-width: 5em;">ID US</th>
+                    <th scope="col" class="text-center">Description</th>
                     <th scope="col" class="text-center">Difficulté</th>
                     <th scope="col" class="text-center">Importance</th>
                     <th scope="col" class="text-center">Etat</th>
@@ -38,10 +38,13 @@
             
                                 </h5></td>
                                 <td class="align-middle text-center"><h5>
-                                    <% if (project.us[i].etat == 'FERMEE') {%>
+                                    <% if (project.us[i].etat == 'PLANIFIEE') {%>
                                         <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
                                     <% } %>
                                     <% if (project.us[i].etat == 'OUVERTE') {%>
+                                        <span class="badge badge-pill badge-warning fullWidth"><%= project.us[i].etat %></span>
+                                    <% } %>
+                                    <% if (project.us[i].etat == 'FERMEE') {%>
                                         <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
                                     <% } %>
                                 </td>

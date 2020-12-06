@@ -12,12 +12,24 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="title">Titre de la release:<span class="red">*</span></label>
-                        <input class="form-control rounded-0" type="text" id="title" name="title" placeholder="release <%=project.projectName%> version 1" required>
+                        <input class="form-control rounded-0" type="text" id="title" name="title" placeholder="Release <%=project.projectName%> - sprint 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="version">Type de release:<span class="red">*</span></label><br>
+                        
+                        <input type="radio" id="majeur" name="version" value="majeur" checked>
+                        <label for="majeur">Majeur</label>
+                        
+                        <input type="radio" id="mineur" name="version" value="mineur">
+                        <label for="mineur">Mineur</label>
+                        
+                        <input type="radio" id="bug" name="version" value="bug">
+                        <label for="bug">Bug</label>
                     </div>
                     <div class="form-group">
                         <label for="description">Description:<span class="red">*</span></label>
                         <textarea class="form-control rounded-0" id="description" name="description"
-                            placeholder="&bull; correction du bug ..." rows="3" maxlength="2000" required></textarea>
+                            placeholder="&bull; Correction du bug ..." rows="3" maxlength="2000" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="releaseFile">Sélectionnez un fichier: (format <kbd>.zip</kbd> obligatoire)<span class="red">*</span></label>

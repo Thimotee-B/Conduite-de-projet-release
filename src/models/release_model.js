@@ -1,17 +1,27 @@
-function updateReleaseNumber(db, projectId, releaseNumber) {
+function updateReleaseNumber(
+    db, 
+    projectId, 
+    releaseNumber, 
+    nbReleaseMajeur,
+    nbReleaseMineur,
+    nbReleaseBug
+) {
+
     return db.collection("projects")
         .updateOne(
             { _id: projectId },
-            { $set: { nbRelease: releaseNumber } },
+            { $set: { nbRelease: releaseNumber,  nbReleaseMajeur: nbReleaseMajeur, nbReleaseMineur:nbReleaseMineur, nbReleaseBug:nbReleaseBug} },
             { upsert: true }
         )
         .catch(err => console.error(err))
 }
 
+
 function insertRelease(db, 
     projectId, 
     releaseId, 
     title,
+    version,
     description,
     name,
     date
@@ -23,6 +33,7 @@ function insertRelease(db,
                 releases: {
                     id: releaseId,
                     title: title,
+                    version: version,
                     description: description,
                     fileName: name,
                     link: "../upload/releases/" + projectId + "/" + name,
