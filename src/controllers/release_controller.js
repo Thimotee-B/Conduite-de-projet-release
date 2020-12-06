@@ -66,7 +66,7 @@ function init(app, db, ObjectId) {
             rfile.name,
             date
         )
-        res.redirect("/projectView/" + req.params.projectId + "/release")            
+        res.redirect("/projectView/" + req.params.projectId + "/release")
     })
 
     app.get("/projectView/:projectId/removeRelease/:pos", async (req, res) => {

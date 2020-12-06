@@ -36,7 +36,8 @@ function insertProject(
             nbReleaseMajeur: 0,
             nbReleaseMineur: 0,
             nbReleaseBug: 0,
-            releases: []
+            releases: [],
+            doc: []
         }
     )
 }
