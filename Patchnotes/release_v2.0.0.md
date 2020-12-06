@@ -20,4 +20,4 @@
 - Amélioration de l'interface
 - Correction de bugs
 ## Télécharger l'archive
-https://tinyurl.com/CDP-eq6-v2-0-0
+https://tinyurl.com/CDP-g1eq6-v2-0-0
