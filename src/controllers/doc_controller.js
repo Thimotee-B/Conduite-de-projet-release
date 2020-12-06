@@ -7,13 +7,12 @@ function init(app, db, ObjectId) {
         res.render("pages/doc.ejs", {project: project})
     })
 
-    app.post("/projectView/:projectId/doc", async (req, res) => {
-        const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
-
+    app.post("/projectView/:projectId/docAdd", async (req, res) => {
         const projectId = ObjectId(req.params.projectId)
         const title = req.body.title
         const content = req.body.content
-        const release = "" // TODO: récupérer la current release ou truc comme ça
+        // TODO: récupérer la current release ou truc comme ça
+        const release = ""
         const today = new Date()
         const date = today.getDate() + "/" + (today.getMonth()+1) + "/" + today.getFullYear()
         await docModel.insertDoc(
@@ -24,7 +23,7 @@ function init(app, db, ObjectId) {
             date,
             release
         )
-        res.render("pages/doc.ejs", {project: project})
+        res.redirect("/projectView/" + req.params.projectId + "/doc")
     })
 }
 

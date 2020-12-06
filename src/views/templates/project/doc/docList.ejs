@@ -1,32 +1,29 @@
-<table class="table table-hover table-sm table-striped">
-    <thead>
-        <tr>
-            <th scope="col" class="text-center">Titre</th>
-            <th scope="col" class="text-center">Version</th>
-            <th scope="col" class="text-center">Description</th>
-            <th scope="col" class="text-center">Publication</th>
-            <th scope="col" class="text-center">Télécharger</th>
-        </tr>
-    </thead>
-    <tbody id="releaseListTable">
-         <!-- Loop through quotes -->
-        <% for(var i = 0; i < project.releases.length; i++) {%>
-            <tr>
-                <td class="text-center align-middle"><span><%= project.releases[i].title %></span></td>
-                <td class="text-center align-middle"><span><%= project.releases[i].version %></span></td>
-                <td class="text-center align-middle"><span><%= project.releases[i].description %></span></td>
-                <td class="text-center align-middle"><span><%= project.releases[i].date %></span></td>
-                <td class="text-center align-middle">
-                    <a href="release/download/<%=project.releases[i].fileName %>" class="text-success">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </td>
-            </tr>
+<div class="row">
+    <div class="col-lg-8">
+        <% for(var i = 0; i < project.doc.length; i++) {%>
+            <div class="card mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"><%= project.doc[i].title %></h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                            aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Informations :</div>
+                            <a class="dropdown-item" href="#">Date : <%= project.doc[i].date %> </a>
+                            <a class="dropdown-item" href="#">Release : <%= project.doc[i].release %></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <%- project.doc[i].content %>
+                </div>
+            </div>
         <% } %>
-        <script>
-            jQuery(document).ready(function($) {
-                $('tbody').sortable();
-            });
-        </script>
-    </tbody>
-</table>
+    </div>
+</div>
