@@ -1,0 +1,32 @@
+<table class="table table-hover table-sm table-striped">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">Titre</th>
+            <th scope="col" class="text-center">Version</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Publication</th>
+            <th scope="col" class="text-center">Télécharger</th>
+        </tr>
+    </thead>
+    <tbody id="releaseListTable">
+         <!-- Loop through quotes -->
+        <% for(var i = 0; i < project.releases.length; i++) {%>
+            <tr>
+                <td class="text-center align-middle"><span><%= project.releases[i].title %></span></td>
+                <td class="text-center align-middle"><span><%= project.releases[i].version %></span></td>
+                <td class="text-center align-middle"><span><%= project.releases[i].description %></span></td>
+                <td class="text-center align-middle"><span><%= project.releases[i].date %></span></td>
+                <td class="text-center align-middle">
+                    <a href="release/download/<%=project.releases[i].fileName %>" class="text-success">
+                        <i class="fas fa-download"></i>
+                    </a>
+                </td>
+            </tr>
+        <% } %>
+        <script>
+            jQuery(document).ready(function($) {
+                $('tbody').sortable();
+            });
+        </script>
+    </tbody>
+</table>
