@@ -13,11 +13,6 @@
             "error",
             4
         ],
-        "linebreak-style": [
-            "error",
-            "windows",
-            "linux"
-        ],
         "quotes": [
             "error",
             "double"

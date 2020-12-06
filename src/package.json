@@ -4,14 +4,17 @@
   "description": "Projet de Conduite de Projet",
   "main": "server.js",
   "scripts": {
-    "cy:run": "cypress run",
-    "cy:record": "cypress run --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
-    "cy:open": "cypress open",
-    "app": "nodemon server.js"
+    "cy:run": "cypress run --project ./tests",
+    "cy:record": "cypress run --project ./tests --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
+    "cy:open": "cypress open --project ./tests",
+    "app": "nodemon server.js",
+    "app:test": "nodemon server_test.js",
+    "start": "echo [nodemon] go brrbrr & nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",

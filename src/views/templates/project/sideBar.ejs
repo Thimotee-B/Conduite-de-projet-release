@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-rocket"></i>
         </div>
-        <p class="my-2"> gestion de projet</p>
+        <p class="my-2 sidebar-brand-text"> gestion de projet</p>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
@@ -24,7 +24,7 @@
     <%} else{%>
         <li class="nav-item">
     <%}%>
-        <a class="nav-link" href="/projectView/<%= project._id %>">
+        <a class="nav-link" href="/projectView/<%= project._id %>/accueil">
             <i class="fab fa-elementor"></i>
             <span>Accueil</span></a>
     </li>
@@ -62,7 +62,7 @@
     </li>
    
     <!-- Nav Item - Utilities Collapse Menu -->
-    <% if (page == 'task'){ %>
+    <% if (page == 'tasks'){ %>
         <li class="nav-item active">
     <%} else{%>
         <li class="nav-item">
@@ -106,32 +106,32 @@
             <span>Documentation</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <% if (role == 'Scrum Master'){ %>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Administration
-    </div>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Administration
+        </div>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Planning</span></a>
-    </li>
-     <!-- Nav Item - Charts -->
-     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-users"></i>
-            <span>&Eacute;quipe</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Nav Item - Charts -->
+     
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Planning</span></a>
+            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-users"></i>
+                <span>&Eacute;quipe</span></a>
+        </li>
+    <%}%>
     
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
 
 
 </ul>

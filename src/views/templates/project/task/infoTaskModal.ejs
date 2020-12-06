@@ -60,7 +60,7 @@
                         <% } else {%>
                             <div class="list" name="list" id="list">
                                 <ul>
-                                <% for(var k = 0; k < project.task[i].dep.length; k++) {%>
+                                <% for(var k = 0; k < project.task[i].usRef.length; k++) {%>
                                     <li>
                                         <p>US#<%=project.task[i].usRef[k]%></p>
                                     </li>
@@ -74,10 +74,12 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Valider</button>
-                    <% if (project.task[i].etat == 'TODO'){%>
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                    <% } else {%>
-                        <button type="" class="btn btn-danger" disabled>Supprimer</button>
+                    <% if(project.role == 'Scrum Master' || project.role == 'Développeur'){%>
+                        <% if (project.task[i].etat == 'TODO'){%>
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <% } else {%>
+                            <button type="" class="btn btn-danger" disabled>Supprimer</button>
+                        <% } %>
                     <% } %>
                 </div>
             </form>

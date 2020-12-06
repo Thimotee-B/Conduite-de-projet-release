@@ -1,8 +1,6 @@
 src/node_modules/
-src/package-lock.json
-tests/node_modules
-tests/package-lock.json
 src/upload/releases/*
 !src/upload/releases/.gitkeep
-/src/cypress/videos
-/src/cypress/download
+/src/tests/cypress/videos
+/src/tests/cypress/download
+/src/tests/cypress/screenshots

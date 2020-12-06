@@ -10,10 +10,36 @@ function init(app, db, ObjectId) {
     app.post("/projectView/:projectId/createSprint", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
         const nbSprint = (project.sprint.length != 0) ? project.nbSprint+1 : 1
+        const endDate = req.body.beginDate.split("-")
+        let date = formatDate(new Date(endDate).addDays(7*project.sprintDelay))
+        await projectModel.updateEndDate(db, ObjectId(req.params.projectId), date)
         await sprintModel.updateSprintNumber(db, ObjectId(req.params.projectId), nbSprint)
         await sprintModel.insertSprint(db, ObjectId(req.params.projectId), nbSprint, req.body.beginDate, req.body.description)
         res.redirect("/projectView/"+req.params.projectId+"/sprint")        
     })
+}
+
+
+function formatDate(date){
+    let dd    = date.getDate() 
+    let mm    = date.getMonth() + 1 
+    let yyyy  = date.getFullYear() 
+    
+    if (dd < 10) { 
+        dd = "0" + dd 
+    }
+    if (mm < 10) { 
+        mm = "0" + mm 
+    }
+    let formattedDate = dd + "/" + mm + "/" + yyyy 
+    return formattedDate.toString()
+}
+
+
+Date.prototype.addDays = function(days) {
+    let date = new Date(this.valueOf())
+    date.setDate(date.getDate() + days)
+    return date
 }
 
 module.exports = {

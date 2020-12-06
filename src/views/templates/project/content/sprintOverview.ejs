@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <span id="nbSprint" class="d-none"><%=project.nbSprint%></span>
+        <% let coutTotal = 0 %>
+        <% for(var i = 0; i < project.nbSprint; i++) {%>
+            <div class="col">
+                <div class="card border-left-primary shadow h-100">
+                    <div class="card-header tooltip1">
+                        <div class="float-left">
+                            <h4><%=project.sprint[i].id%></h4>
+                        </div>
+                        
+                        <div class="float-right">
+                            <%let cptDone = 0 %>
+                            <%let cptTotal = 0 %>
+                            <% for(var j = 0; j < project.us.length; j++) {%>
+                                <% if(project.us[j].plannification == project.sprint[i].id){%>
+                                    <%if(project.us[j].taskDone == project.us[j].taskTotal && project.us[j].taskTotal != 0){%>
+                                        <%cptDone += parseInt(project.us[j].difficulte, 10) %>
+                                    <%}%>
+                                    <%cptTotal += parseInt(project.us[j].difficulte,10) %>
+                                <%}%>        
+                            <%}%>
+                            <% if(cptDone == 0){%>
+                                0%
+                            <%}else{%> 
+                                <% let res = cptDone/cptTotal*100%>
+                                <%= res.toFixed(2)%>%
+                            <%}%> 
+                            <% coutTotal += cptTotal %>
+                            <span id="usDoneCout<%=i%>" class="d-none"><%=cptDone%></span>
+                            <span id="usTotalCout<%=i%>" class="d-none"><%=cptTotal%></span>
+                            <span class="tooltiptext">
+                                v&eacute;locit&eacute;: <%=cptDone%>/<%=cptTotal%>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <% for(var j = 0; j < project.us.length; j++) {%>
+                            <% if(project.us[j].plannification == project.sprint[i].id){%>
+                                
+                                <div class="row small">
+                                    <div class="col-md-3">
+                                        <div class="float-left">US#<%=project.us[j].id%></div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="progress">
+                                            <% if(project.us[j].taskTotal == 0){%>
+                                                <div class="progress-bar  bg-success" style="width:0%">0%</div>
+                                            <%}else{%> 
+                                                <% let res = project.us[j].taskDone/project.us[j].taskTotal*100%>
+                                                <% res = res.toFixed(2)%>
+                                                <div class="progress-bar  bg-success" style="width:<%=res%>%"><%=res%>%</div>
+                                            <%}%> 
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+        <span id="allUsTotalCout" class="d-none"><%=coutTotal%></span>
+    </div>
+</div>

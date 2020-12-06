@@ -8,8 +8,8 @@
             </div>
             <table class="table table-hover table-sm table-striped">
                 <thead>
-                    <th scope="col" class="text-center">ID US</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" class="text-center" style="min-width: 5em;">ID US</th>
+                    <th scope="col" class="text-center">Description</th>
                     <th scope="col" class="text-center">Difficulté</th>
                     <th scope="col" class="text-center">Importance</th>
                     <th scope="col" class="text-center">Etat</th>
@@ -19,8 +19,8 @@
                     <% for(var i = 0; i < project.us.length; i++) {%>
                         <% if(project.us[i].plannification == project.sprint[j].id){ %>
                             <tr>
-                                <td class="align-middle"><span>US#<%= project.us[i].id %></span></td>
-                                <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                                <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
+                                <td class="text-center align-middle"><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                                 <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
                                 <td class="align-middle text-center"><h5>
                                     <% if (project.us[i].importance == 'Haute') {%>
@@ -38,13 +38,13 @@
             
                                 </h5></td>
                                 <td class="align-middle text-center"><h5>
-                                    <% if (project.us[i].etat == 'TODO') {%>
+                                    <% if (project.us[i].etat == 'PLANIFIEE') {%>
                                         <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
                                     <% } %>
-                                    <% if (project.us[i].etat == 'DOING') {%>
-                                        <span class="badge badge-pill badge-doing fullWidth"><%= project.us[i].etat %></span>
+                                    <% if (project.us[i].etat == 'OUVERTE') {%>
+                                        <span class="badge badge-pill badge-warning fullWidth"><%= project.us[i].etat %></span>
                                     <% } %>
-                                    <% if (project.us[i].etat == 'DONE') {%>
+                                    <% if (project.us[i].etat == 'FERMEE') {%>
                                         <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
                                     <% } %>
                                 </td>
@@ -89,7 +89,7 @@
                 <% if(project.us[i].plannification == '-'){ %>
                     <tr>
                         <td class="text-center align-middle"><span>US#<%= project.us[i].id %></span></td>
-                        <td><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
+                        <td class="text-center align-middle"><span>En tant que <%= project.us[i].entantque %>, je souhaite <%= project.us[i].jesouhaite %> afin de <%= project.us[i].afinde %> </span></td>
                         <td class="text-center align-middle"><span><%= project.us[i].difficulte %></span></td>
                         <td class="text-center align-middle"><h5>
                             <% if (project.us[i].importance == 'Haute') {%>
@@ -105,7 +105,14 @@
                                 <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].importance %></span>
                             <% } %>
                         </h5></td>
-                        <td class="text-center align-middle"><h5><span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span></h5></td>
+                        <td class="align-middle text-center"><h5>
+                            <% if (project.us[i].etat == 'FERMEE') {%>
+                                <span class="badge badge-pill badge-etat fullWidth"><%= project.us[i].etat %></span>
+                            <% } %>
+                            <% if (project.us[i].etat == 'OUVERTE') {%>
+                                <span class="badge badge-pill badge-success fullWidth"><%= project.us[i].etat %></span>
+                            <% } %>
+                        </td>
                     </tr>
                 <%}%>
             <% } %>
@@ -123,15 +130,3 @@
         <p>Coût total: <%= cout %> | <%= ticket %> tickets</p>
     </div>
 </div>
-
-
-<script>
-    jQuery(document).ready(function($) {
-        $(".trashUS").click(function(){
-            window.location = $(this).data("href");
-        });
-        $("tbody").sortable();
-    })
-
-
-</script>

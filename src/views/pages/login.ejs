@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include("../templates/header/headerLogin")%>
+</head>
+
+<body>
+    <div class="title">
+        <div class="navbar-title">
+            
+            <div class="ml-3 my-2 my-lg-0 d-flex justify-content-center">
+                
+                <h1 class="slideInRight">gestion de projet</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="name" />
+                <input type="password" placeholder="password" />
+                <input type="text" placeholder="email address" />
+                <button>create</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form" action="/projectList">
+                <input type="text" placeholder="username" />
+                <input type="password" placeholder="password" />
+                <button>login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+    <img src="../../assets/rocket.svg" class="diagonal rocketLogo">
+    <img id="rocket2" src="../../assets/rocket.svg" class="rocketLogo diagonal2">
+    <img id="rocket3" src="../../assets/rocket.svg" class="rocketLogo diagonal3">
+</body>
+
+</html>

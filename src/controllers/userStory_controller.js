@@ -9,7 +9,7 @@ function init(app, db, ObjectId) {
         await userStoryModel.insertUserStory(
             db,
             ObjectId(req.params.projectId),
-            updateNbUs,
+            updateNbUs.toString(),
             req.body.entantque,
             req.body.jesouhaite,
             req.body.afinde,
@@ -22,6 +22,7 @@ function init(app, db, ObjectId) {
 
     app.get("/projectView/:projectId/removeUS/:pos", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
+        await userStoryModel.removeUsRefFromTask(db, project, req.params.projectId,req.params.pos)
         await userStoryModel.deleteUserStoryAtPos(db, project, req.params.pos)
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })
@@ -30,6 +31,9 @@ function init(app, db, ObjectId) {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
         const usPos = parseInt(req.params.pos, 10)
         const usId = project.us[usPos].id
+        const taskTotal = project.us[usPos].taskTotal
+        const taskDone = project.us[usPos].taskDone
+
         await userStoryModel.deleteUserStoryAtPos(db, project, usPos)
         await userStoryModel.insertUserStoryAtPos(
             db,
@@ -42,7 +46,9 @@ function init(app, db, ObjectId) {
             req.body.importance,
             req.body.difficulte,
             req.body.plannification,
-            req.body.etat
+            req.body.etat,
+            taskTotal,
+            taskDone
         )
         res.redirect("/projectView/"+req.params.projectId+"/backlog")
     })

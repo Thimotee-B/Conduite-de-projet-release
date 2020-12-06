@@ -1,0 +1,30 @@
+name: Cypress Record PR
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          working-directory: src
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.3.0
+        with:
+          working-directory: src
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: src
+          project: ./tests
+          record: true
+          start : npm run app:test
+        env:
+          CYPRESS_RECORD_KEY: 68943b85-8553-41ae-9bbe-2d64ec97be63
