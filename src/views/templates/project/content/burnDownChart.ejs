@@ -7,6 +7,27 @@
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">BurnDown Chart</h6>
+                    <% let nbSprint = 0 %>
+                    <% let cout = 0 %>
+                    <% for(var i = 0; i < project.nbSprint; i++) {%>
+                        <%let cptDone = 0 %>
+                        <%let cptTotal = 0 %>
+                        <% for(var j = 0; j < project.us.length; j++) {%>
+                            <% if(project.us[j].plannification == project.sprint[i].id){%>
+                                <%if(project.us[j].taskDone == project.us[j].taskTotal && project.us[j].taskTotal != 0){%>
+                                    <%cptDone += parseInt(project.us[j].difficulte, 10) %>
+                                <%}%>
+                                <%cptTotal += parseInt(project.us[j].difficulte,10) %>
+                            <%}%>        
+                        <%}%>
+                        <% if(cptDone == 0){%>
+                            <%break%>
+                        <%}else{%> 
+                            <%nbSprint++%>
+                        <%}%> 
+                        <% cout += cptDone %>
+                    <%}%>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Vélocité moyenne: <%= Math.round(cout/nbSprint)%></h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
