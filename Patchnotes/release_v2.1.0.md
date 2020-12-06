@@ -1,6 +1,6 @@
 # Conduite de projet g1_eq6
 
-## Patchnote de la release 2.0.0 du 27/11/2020
+## Patchnote de la release 2.1.0 du 06/12/2020
 
 ### Fonctionnalités de la v2.1.0 de la moitié du sprint 3
 
