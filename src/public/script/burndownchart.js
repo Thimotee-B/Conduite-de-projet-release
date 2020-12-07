@@ -21,7 +21,8 @@ function getLabels(){
 function getData(){
     let data = []
     let total = parseInt(coutTotal,10)
-    data.push(total)
+    if(total != 0)
+        data.push(total)
     for(let i=0; i<parseInt(nbSprint, 10); i++){
         let usDone = document.getElementById("usDoneCout"+i).innerHTML
         // temporaire
@@ -43,7 +44,8 @@ function getPerfectData(){
         data.push(Math.round(total))
         i--
     }
-    data.push(0)
+    if(data.length != 0)
+        data.push(0)
     return data   
 }
 
@@ -59,7 +61,8 @@ function projection(){
         data.push(Math.round(data[data.length-1]-cout))
         nbRestant--
     }
-    data.push(0)
+    if(data.length != 0)
+        data.push(0)
     return data   
 }
 
@@ -179,8 +182,31 @@ let myLineChart = new Chart(ctx, {
             caretPadding: 10,
             callbacks: {
                 label: function(tooltipItem, chart) {
+                    let value
+                    let total
+                    let data
+                    if(tooltipItem.datasetIndex == 0){
+                        data  = getData()
+                        value = data[tooltipItem.index]
+                        total = coutTotal
+                        if(tooltipItem.index>0){
+                            total = data[tooltipItem.index-1]
+                        }
+                    }
+                    if(tooltipItem.datasetIndex == 1){
+                        data  = getPerfectData()
+                        value = data[tooltipItem.index]
+                        total = coutTotal
+                        if(tooltipItem.index>0){
+                            total = data[tooltipItem.index-1]
+                        }
+                    }
+                    if(tooltipItem.datasetIndex == 2){
+                        value = projection()[tooltipItem.index]
+                        total = projection()[tooltipItem.index-1]
+                    }
                     let coutRestant = parseInt(tooltipItem.yLabel, 10) || "0"
-                    let str = "Coût produit: "+ (coutTotal-coutRestant)+" | Coût restant: "+coutRestant
+                    let str = "Coût produit: "+ (total-value)+" | Coût restant: "+coutRestant
                     return str
                 }
             }

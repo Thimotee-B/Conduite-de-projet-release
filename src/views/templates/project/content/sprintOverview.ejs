@@ -1,15 +1,14 @@
-<div class="container">
+<% let coutTotal = 0 %>
+<div class="">
     <div class="row">
         <span id="nbSprint" class="d-none"><%=project.nbSprint%></span>
-        <% let coutTotal = 0 %>
         <% for(var i = 0; i < project.nbSprint; i++) {%>
-            <div class="col">
+            <div class="col-md-3 tooltip1">
                 <div class="card border-left-primary shadow h-100">
-                    <div class="card-header tooltip1">
+                    <div class="card-header">
                         <div class="float-left">
                             <h4><%=project.sprint[i].id%></h4>
                         </div>
-                        
                         <div class="float-right">
                             <%let cptDone = 0 %>
                             <%let cptTotal = 0 %>
@@ -30,10 +29,11 @@
                             <% coutTotal += cptTotal %>
                             <span id="usDoneCout<%=i%>" class="d-none"><%=cptDone%></span>
                             <span id="usTotalCout<%=i%>" class="d-none"><%=cptTotal%></span>
-                            <span class="tooltiptext">
-                                v&eacute;locit&eacute;: <%=cptDone%>/<%=cptTotal%>
-                            </span>
+                            
                         </div>
+                        <span class="tooltiptext">
+                            v&eacute;locit&eacute;: <%=cptDone%>/<%=cptTotal%>
+                        </span>
                     </div>
                     <div class="card-body">
                         <% for(var j = 0; j < project.us.length; j++) {%>
@@ -65,3 +65,14 @@
         <span id="allUsTotalCout" class="d-none"><%=coutTotal%></span>
     </div>
 </div>
+<% if(coutTotal == 0){%>
+    <div class="col-md-4 tooltip1">
+        <div class="card border-left-primary shadow h-100">
+            <div class="card-header">
+                <div class="float-left">
+                    <h4>Aucun sprint</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+<%}%>
