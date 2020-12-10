@@ -9,7 +9,7 @@
     "cy:open": "cypress open --project ./tests",
     "app": "nodemon server.js",
     "app:test": "nodemon server_test.js",
-    "mocha": "mocha"
+    "mocha": "mocha ./tests/unit/"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
@@ -26,6 +26,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "cypress": "^6.0.0",
     "cypress-downloadfile": "^1.2.0",
     "cypress-file-upload": "^4.1.1",

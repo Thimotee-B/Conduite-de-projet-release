@@ -1,0 +1,26 @@
+name: Mocha run push
+on:
+  push:
+    branches: 
+      - Thim
+      - wilfriedaugeard
+      - xav
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          working-directory: src
+      - name: Install dependencies
+        run: npm install
+        with:
+          working-directory: src
+      - name: "Run Test"
+        run: npm mocha
+        with:
+          working-directory: src
