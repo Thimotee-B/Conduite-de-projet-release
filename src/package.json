@@ -9,7 +9,6 @@
     "cy:open": "cypress open --project ./tests",
     "app": "nodemon server.js",
     "app:test": "nodemon server_test.js",
-    "start": "echo [nodemon] go brrbrr & nodemon server.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
