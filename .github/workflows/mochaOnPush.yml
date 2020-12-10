@@ -22,5 +22,4 @@ jobs:
           working-directory: src
       - name: "Run Test"
         run: npm mocha
-        with:
-          working-directory: src
+        working-directory: src
