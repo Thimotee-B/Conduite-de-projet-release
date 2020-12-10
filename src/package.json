@@ -8,8 +8,7 @@
     "cy:record": "cypress run --project ./tests --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
     "cy:open": "cypress open --project ./tests",
     "app": "nodemon server.js",
-    "app:test": "nodemon server_test.js",
-    "start": "echo [nodemon] go brrbrr & nodemon server.js"
+    "app:test": "nodemon server_test.js"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
@@ -19,6 +18,7 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
+    "jsdoc": "^3.6.6",
     "mongodb": "^3.6.3",
     "node": "^15.2.0",
     "nodemon": "^2.0.6",
