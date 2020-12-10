@@ -21,7 +21,6 @@ function init(app, db, ObjectId) {
         const projectId = ObjectId(req.params.projectId)
         const title = req.body.title
         const content = req.body.content
-        // TODO: récupérer la current release ou truc comme ça
         const release = ""
         const today = new Date()
         const date = today.getDate() + "/" + (today.getMonth()+1) + "/" + today.getFullYear()
