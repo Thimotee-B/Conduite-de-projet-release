@@ -1,6 +1,16 @@
 const projectModel = require("../models/project_model")
 const sprintModel = require("../models/sprint_model")
+/**
+ * @namespace Controller_Sprint
+ */
 
+/**
+ * Manage sprint and redirect on sprint page.
+ * @memberof Controller_Sprint
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ * @param {function} ObjectId - Function from mongoDB.
+ */
 function init(app, db, ObjectId) {
     app.get("/projectView/:projectId/sprint", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
@@ -19,7 +29,12 @@ function init(app, db, ObjectId) {
     })
 }
 
-
+/**
+ * Format date in dd/mm/yyyy format.
+ * @memberof Controller_Sprint
+ * @param {string} date to format. 
+ * @return {string} formatted date.
+ */
 function formatDate(date){
     let dd    = date.getDate() 
     let mm    = date.getMonth() + 1 
@@ -35,7 +50,12 @@ function formatDate(date){
     return formattedDate.toString()
 }
 
-
+/**
+ * Function to add a number of days on a day.
+ * @memberof Controller_Sprint
+ * @param {Integer} The days number to add. 
+ * @return {Date} computed date.
+ */
 Date.prototype.addDays = function(days) {
     let date = new Date(this.valueOf())
     date.setDate(date.getDate() + days)

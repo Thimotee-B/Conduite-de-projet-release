@@ -1,7 +1,17 @@
 const projectModel   = require("../models/project_model")
 const taskModel      = require("../models/task_model")
 const userStoryModel = require("../models/userStory_model")
+/**
+ * @namespace Controller_Task
+ */
 
+/**
+ * Manage Task operations and redirect on task page.
+ * @memberof Controller_Task
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ * @param {function} ObjectId - Function from mongoDB.
+ */
 function init(app, db, ObjectId) {
     app.get("/projectView/:projectId/tasks", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
@@ -107,11 +117,20 @@ function init(app, db, ObjectId) {
 
 
 
-
+/**
+ * Get US references from a task and update them.
+ * @memberof Controller_Task
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {function} objectId - Function from mongoDB.
+ * @param {string} usRef - List of US references.
+ * @param {string} oldUsRef - Old list of US references.  
+ * @param {string} state - The task state.
+ */
 async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
     for(let x=0; x<usRef.length; x++){
         if(!oldUsRef.includes(usRef[x])){
-            for(let i=0; i<project.us.length; i++){ // search us position
+            for(let i=0; i<project.us.length; i++){
                 if(project.us[i].id == usRef[x]){
                     let us = project.us[i]
                     let taskDone =  us.taskDone
@@ -125,7 +144,7 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
     }
     for(let x=0; x<oldUsRef.length; x++){
         if(!usRef.includes(oldUsRef[x])){
-            for(let i=0; i<project.us.length; i++){ // search us position
+            for(let i=0; i<project.us.length; i++){
                 if(project.us[i].id == oldUsRef[x]){
                     let us = project.us[i]
                     let taskDone =  us.taskDone
@@ -138,7 +157,13 @@ async function updateUsRef(db, project, objectId, usRef, oldUsRef, state){
         }
     }
 }
-
+/**
+ * Remove all item of a array with corresponding value.
+ * @memberof Controller_Task
+ * @param {Array} arr - An array.
+ * @param {any} value - Value to remove.
+ * @returns {Array} The array without removed items.
+ */
 function removeItemAll(arr, value) {
     let i = 0
     while (i < arr.length) {
@@ -150,12 +175,27 @@ function removeItemAll(arr, value) {
     }
     return arr
 }
-
+/**
+ * Clean the definition of done list.
+ * @memberof Controller_Task
+ * @param {string} dod - The dod string.
+ * @returns {function} Call removeItemAll function.
+ */
 function cleanDod(dod){
     let split = dod.split("/")
     return removeItemAll(split, "")
 }
-
+/**
+ * Update US.
+ * @memberof Controller_Task
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {function} objectId - Function from mongoDB.
+ * @param {string} us - us to update.
+ * @param {Integer} taskTotal - Total of tasks refered to the US.  
+ * @param {Integer} taskDone - Total of done tasks refered to the US.
+ * @param {Integer} pos - US position.
+ */
 async function updateUSTaskInfo(db, project, objectId, us, taskTotal, taskDone, pos){
     const usId           = us.id
     const entantque      = us.entantque
@@ -182,7 +222,16 @@ async function updateUSTaskInfo(db, project, objectId, us, taskTotal, taskDone, 
         taskDone
     )
 }
-
+/**
+ * Search US to update.
+ * @memberof Controller_Task
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {function} objectId - Function from mongoDB.
+ * @param {string} usRef - List of US.
+ * @param {Integer} taskTotalToAdd - number of tasks refered to the US to add.  
+ * @param {Integer} taskDone - number of done tasks refered to the US to add.
+ */
 async function updateTaskInfoByUSRef(db, project, objectId, usRef, taskTotalToAdd, taskDoneToAdd){
     for(let x=0; x<usRef.length; x++){
         for(let i=0; i<project.us.length; i++){
