@@ -1,6 +1,16 @@
 const projectModel = require("../models/project_model")
 const userStoryModel = require("../models/userStory_model")
+/**
+ * @namespace Controller_UserStory
+ */
 
+/**
+ * Manage User Stories and redirect on backlog page.
+ * @memberof Controller_UserStory
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ * @param {function} ObjectId - Function from mongoDB.
+ */
 function init(app, db, ObjectId) {
     app.post("/projectView/:projectId/createUS", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))

@@ -1,5 +1,18 @@
 const taskModel = require("./task_model")
+/**
+ * @namespace Model_UserStory
+ */
 
+/**
+ * Create a new documentation object in database.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {string} title - Documentation title.
+ * @param {string} content - Documentation content.
+ * @param {string} date - Documentation date.
+ * @param {string} release - Release version.
+ */
 function updateUserStoryNumber(db, projectId, userStoryNumber) {
     return db.collection("projects").updateOne(
         { _id: projectId },
@@ -8,7 +21,19 @@ function updateUserStoryNumber(db, projectId, userStoryNumber) {
     )
         .catch(err => console.error(err))
 }
-
+/**
+ * Create a new user story.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {string} id - US id.
+ * @param {string} entantque - entantque field.
+ * @param {string} jesouhaite - jesouhaite fild.
+ * @param {string} afinde - afinde field.
+ * @param {string} importance - US importance.
+ * @param {Integer} difficulte - US difficulty.
+ * @param {string} plannification - US plannification.
+ */
 function insertUserStory(
     db,
     projectId,
@@ -41,7 +66,22 @@ function insertUserStory(
     )
         .catch(error => console.error(error))
 }
-
+/**
+ * Create a new user story at a specify position.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {string} id - US id.
+ * @param {string} entantque - entantque field.
+ * @param {string} jesouhaite - jesouhaite fild.
+ * @param {string} afinde - afinde field.
+ * @param {string} importance - US importance.
+ * @param {Integer} difficulte - US difficulty.
+ * @param {string} plannification - US plannification.
+ * @param {Integer} pos - US position.
+ * @param {Integer} taskTotal - total of task.
+ * @param {Integer} taskDone - total of done task.
+ */
 function insertUserStoryAtPos(
     db,
     projectId,
@@ -80,7 +120,13 @@ function insertUserStoryAtPos(
     )
         .catch(error => console.error(error))
 }
-
+/**
+ * Remove an US at a specify position.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {Integer} pos - US position.
+ */
 function deleteUserStoryAtPos(db, project, pos) {
     return db.collection("projects").updateOne(
         { _id : project._id},
@@ -88,7 +134,13 @@ function deleteUserStoryAtPos(db, project, pos) {
     )
         .catch(error => console.error(error))
 }
-
+/**
+ * Remove US present in an usRef task array.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {Integer} pos - US position.
+ */
 function removeUsRefFromTask(db, project, objectId, pos){
     for(let i = 0; i<project.task.length; i++){
         for(let j=0; j<project.task[i].usRef.length; j++){
@@ -99,9 +151,7 @@ function removeUsRefFromTask(db, project, objectId, pos){
                 const description   = project.task[taskPos].description
                 const dod           = project.task[taskPos].dod
                 let usRef           = project.task[taskPos].usRef
-                console.log(usRef)
                 usRef.splice(j,1)
-                console.log(usRef)
                 const duree         = project.task[taskPos].duree
                 const etat          = project.task[taskPos].etat
                 const taskTotal     = project.task[taskPos].taskTotal
@@ -129,7 +179,14 @@ function removeUsRefFromTask(db, project, objectId, pos){
         }
     }
 }
-
+/**
+ * Update state US.
+ * @memberof Model_UserStory
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {Integer} usPos - US position.
+ * @param {string} state - Task state.
+ */
 async function updateUSState(db, project, usPos, state){
     const id = project.us[usPos].id
     const entantque = project.us[usPos].entantque

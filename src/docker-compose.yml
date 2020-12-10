@@ -1,7 +1,7 @@
 version: "3"
 services: 
   app:
-    image: waugeard/cdp-release-sprint3:1.0
+    image: waugeard/cdp-release-sprint3:1.1
     ports: 
       - 3000:3000
     
