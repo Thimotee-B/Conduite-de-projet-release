@@ -97,6 +97,7 @@
 }
 
 .tooltip1 {
+  margin-top: 2em;
   position: relative;
   display: inline-block;
   opacity: 1; 
@@ -125,6 +126,18 @@
   visibility: visible;
   opacity: 1;
 }
+
+
+.horizontal-scrollable{
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.tooltip1 { 
+    display: inline-block;
+
+} 
+  
 
 @media (max-width: 768px){
     #wrapper{

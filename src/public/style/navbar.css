@@ -5,16 +5,20 @@
 }
   
 .navbar-title {
-  position: absolute;
-  width: 100%;
   left: 0;
+  width: 100%;
+  margin: auto;
   text-align: center;
   text-transform: uppercase;
   font-size: x-large;
   font-weight: bold;
+  position: absolute;
 }
 
 #deconnexionBtn{
   background-color: inherit;
   color: inherit;
+}
+#deconnexion{
+  position: absolute;
 }
