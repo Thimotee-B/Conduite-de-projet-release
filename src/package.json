@@ -8,7 +8,8 @@
     "cy:record": "cypress run --project ./tests --record --key 68943b85-8553-41ae-9bbe-2d64ec97be63",
     "cy:open": "cypress open --project ./tests",
     "app": "nodemon server.js",
-    "app:test": "nodemon server_test.js"
+    "app:test": "nodemon server_test.js",
+    "mocha": "mocha"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
@@ -28,6 +29,7 @@
     "cypress": "^6.0.0",
     "cypress-downloadfile": "^1.2.0",
     "cypress-file-upload": "^4.1.1",
-    "eslint": "^7.13.0"
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
   }
 }
