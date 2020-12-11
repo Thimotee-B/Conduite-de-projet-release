@@ -39,7 +39,7 @@ Vocabulaire:
 
 # User stories mises de côté
 
-|  ID  |                            User Story                             | Importance | Difficulté | Etat |
+|  ID  |                            User Story                             | Importance | Difficulté | Plannification |
 | :--: | :----------------------------------------------------------: | :-----: | :-----------: | :--: |
 | #24 | En tant que Scrum Master, je souhaite pouvoir supprimer le **planning** du projet afin de ne plus planifier le projet. (Undo-able) | Moyenne-Haute | 3 |Sprint 4|
 | #26 | En tant que Scrum Master, je souhaite pouvoir modifier mon **planning** afin d'organiser mon équipe et la planification des tâches. (Undo-able) | Moyenne-Haute | 5 |Sprint 4|
