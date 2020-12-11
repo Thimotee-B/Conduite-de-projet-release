@@ -21,9 +21,6 @@
 | #30 | En tant qu'utilisateur, je souhaite, sur la page d'accueil, voir la progression de chaque Sprint et User storys à l'aide de moyens graphiques (Chaque Sprint aura le pourcentage de progression associé à son nom et listera l'ID de ses US. A coté de chaque US, une barre de progression indiquera la progression qui a été effectuée sur cette US (tâches réalisées/total tâches liées à l'US) afin d'avoir un aperçu rapide de ce qui est fait et de ce qu'il reste à faire. | Haute | 3 | FERMEE |
 | #34 | En tant qu'utilisateur, je souhaite avoir une **page d'accueil** contenant un aperçu des sprints (liste des US pour chaque sprints), le diagramme de type "BurnDown Chart" et la vélocité du sprint afin d'avoir un visualisation globale du projet.  | Moyenne-Haute | 8 |FERMEE|
 
-
-
-
 # User stories mises de côté
 
 |  ID  |                            User Story                             | Importance | Difficulté | Etat |
