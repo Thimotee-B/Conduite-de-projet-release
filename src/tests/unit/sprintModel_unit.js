@@ -27,7 +27,9 @@ describe("Test sprintModel", function () {
         let sprintDesc = "Description sprint"
         await sprintModel.insertSprint(db, projId, sprintId, sprintDate, sprintDesc)
         let projectSprint = await projectModel.getProjectId(db, projId)
-        let sprint = await projectSprint.sprint[projectSprint.sprint.length-1]
-        console.log(sprint)
+        let sprint = await projectSprint.sprint[projectSprint.sprint.length - 1]
+        sprint.id.should.equal("Sprint " + sprintId)
+        sprint.beginDate.should.equal(sprintDate)
+        sprint.description.should.equal(sprintDesc)
     })
 })
