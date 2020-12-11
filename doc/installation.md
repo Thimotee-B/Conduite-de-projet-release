@@ -1,4 +1,18 @@
 # Installation
+
+## Avec Script
+Nécessite d'avoir le package `git` et `docker-compose`.
+### Linux 
+```
+> chmod +x install.sh
+> ./install.sh
+```
+### Windows
+```
+> ./install.ps1
+```
+
+
 ## Avec DOCKER
 
 - Installer docker
