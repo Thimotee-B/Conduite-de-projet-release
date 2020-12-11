@@ -1,6 +1,7 @@
 # TESTS
 Le code pour les tests se trouve dans `src/tests`
-***Les resultats des gitactions sont visible sur le git de developpement ***
+
+***Les resultats des gitactions sont visible sur le git de developpement***
 
 ## Cypress (validation/END2END)
 
