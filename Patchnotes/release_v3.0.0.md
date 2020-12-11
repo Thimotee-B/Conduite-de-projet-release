@@ -22,6 +22,8 @@
 - (US#35) Possibilité de rechercher les projets auquel je participe via son nom
 - (US#30-34) Ajout d'éléments d'interface pour montrer l'avancement des différent sprints et du projet
 - (US#29) Possibilité de publier une release
+#### Nouveau
 
-#### Autre (aucune us)
-- 
+- (US#38) Possibilité d'écrire de la documentation
+
+
