@@ -1,6 +1,16 @@
 const projectModel = require("../models/project_model")
 const docModel = require("../models/doc_model")
+/**
+ * @namespace Controller_Documentation
+ */
 
+/**
+ * Manage root on documentation page.
+ * @memberof Controller_Documentation
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ * @param {function} ObjectId - Function from mongoDB.
+*/
 function init(app, db, ObjectId) {
     app.get("/projectView/:projectId/doc", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))
@@ -11,7 +21,6 @@ function init(app, db, ObjectId) {
         const projectId = ObjectId(req.params.projectId)
         const title = req.body.title
         const content = req.body.content
-        // TODO: récupérer la current release ou truc comme ça
         const release = ""
         const today = new Date()
         const date = today.getDate() + "/" + (today.getMonth()+1) + "/" + today.getFullYear()

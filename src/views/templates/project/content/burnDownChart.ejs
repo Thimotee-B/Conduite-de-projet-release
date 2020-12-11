@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
     <div class="row m-1 mt-4">
         <!-- Area Chart -->
         <div class="w-100">
@@ -27,13 +27,25 @@
                         <%}%> 
                         <% cout += cptDone %>
                     <%}%>
-                    <h6 class="m-0 font-weight-bold text-primary float-right">Vélocité moyenne: <%= Math.round(cout/nbSprint)%></h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Vélocité moyenne: 
+                        <% if(cout == 0){%>
+                            <%= 0%>
+                        <%}else{%> 
+                            <%= Math.round(cout/nbSprint)%>
+                        <%}%></h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
+                    <% if(cout == 0){%>
+                        <div class="text-center">
+                            <p>Aucune US plannifiée</p>
+                        </div>
+                    <%}else{%> 
+                        <div class="chart-area">
+                            <canvas id="myAreaChart"></canvas>
+                        </div>
+                    <%}%>
+                    
                 </div>
             </div>
         </div>

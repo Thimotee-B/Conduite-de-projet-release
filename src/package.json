@@ -9,13 +9,14 @@
     "cy:open": "cypress open --project ./tests",
     "app": "nodemon server.js",
     "app:test": "nodemon server_test.js",
-    "start": "echo [nodemon] go brrbrr & nodemon server.js"
+    "mocha": "mocha ./tests/unit/"
   },
   "author": "Wilfried AUGEARD, Thimothée BROCARD, Xavier GERARDIN",
   "license": "Apache",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "body-parser": "^1.19.0",
+    "documentation": "^13.1.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
@@ -25,9 +26,11 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "cypress": "^6.0.0",
     "cypress-downloadfile": "^1.2.0",
     "cypress-file-upload": "^4.1.1",
-    "eslint": "^7.13.0"
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
   }
 }

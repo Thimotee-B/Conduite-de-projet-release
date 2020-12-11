@@ -1,5 +1,14 @@
 const projectModel = require("../models/project_model")
+/**
+ * @namespace Controller_ProjectList
+ */
 
+/**
+ * Manage root on projectList page.
+ * @memberof Controller_ProjectList 
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ */
 function init(app, db) {
     app.get("/projectList", async (req, res) => {
         const projects = await projectModel.getAllProject(db)
@@ -21,6 +30,11 @@ function init(app, db) {
     })
 }
 
+/**
+ * Get current date and return it in dd/mm/yyyy format.
+ * @memberof Controller_ProjectList 
+ * @return {string} Current date.
+ */
 function getTodayDate(){
     let today = new Date() 
     let dd    = today.getDate() 
@@ -37,6 +51,12 @@ function getTodayDate(){
     return today.toString()
 }
 
+/**
+ * Get project end date.
+ * @memberof Controller_ProjectList 
+ * @param {date} string - Date from picker date format.
+ * @return {string} Project end date.
+ */
 function getEndDate(date){
     let endDate = "-"
     if(date != ""){

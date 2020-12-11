@@ -1,9 +1,18 @@
-const fs = require("fs")
-const path = require("path")
-
+const fs           = require("fs")
+const path         = require("path")
 const releaseModel = require("../models/release_model")
 const projectModel = require("../models/project_model")
+/**
+ * @namespace Controller_Release
+ */
 
+/**
+ * Manage root on release page.
+ * @memberof Controller_Release
+ * @param {function} app - Express application.
+ * @param {object} db - Database object.
+ * @param {function} ObjectId - Function from mongoDB.
+ */
 function init(app, db, ObjectId) {
     app.get("/projectView/:projectId/release", async (req, res) => {
         const project = await projectModel.getProjectId(db, ObjectId(req.params.projectId))

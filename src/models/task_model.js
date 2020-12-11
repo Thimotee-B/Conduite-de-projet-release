@@ -1,4 +1,18 @@
-function updateTaskNumber(db, projectId, taskNumber) {
+/**
+ * @namespace Model_Task
+ */
+/**
+ * Update the number of task.
+ * @memberof Model_Task
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {Integer} taskNumber - number total of task in the project.
+ */
+function updateTaskNumber(
+    db, 
+    projectId, 
+    taskNumber
+) {
     return db.collection("projects")
         .updateOne(
             { _id: projectId },
@@ -7,7 +21,18 @@ function updateTaskNumber(db, projectId, taskNumber) {
         )
         .catch(err => console.error(err))
 }
-
+/**
+ * Create a new task.
+ * @memberof Model_Task
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {string} taskId - Task id.
+ * @param {string} description - Task description.
+ * @param {Integer} duree - Task period.
+ * @param {string} dod - Definition of done.
+ * @param {Array} dep - List of dependent tasks id.
+ * @param {Array} usRef - List of refered US id.
+ */
 function insertTask(
     db, 
     projectId, 
@@ -35,7 +60,20 @@ function insertTask(
         })
         .catch(err => console.error(err))
 }
-
+/**
+ * Update a task.
+ * @memberof Model_Task
+ * @param {object} db - Database object.
+ * @param {object} projectId - Project from database.
+ * @param {Integer} taskPos - Task position.
+ * @param {string} taskId - Task id.
+ * @param {string} description - Task description.
+ * @param {Integer} duree - Task period.
+ * @param {string} dod - Definition of done.
+ * @param {Array} dep - List of dependent tasks id.
+ * @param {Array} usRef - List of refered US id.
+ * @param {string} etat - Task state.
+ */
 function updateTaskByPos(
     db,
     projectId,
@@ -67,8 +105,18 @@ function updateTaskByPos(
         })
         .catch(err => console.error(err))
 }
-
-function deleteTaskByPos(db, project, pos) {
+/**
+ * Remove a task.
+ * @memberof Model_Task
+ * @param {object} db - Database object.
+ * @param {object} project - Project from database.
+ * @param {Integer} pos - Task position.
+ */
+function deleteTaskByPos(
+    db, 
+    project,
+    pos
+) {
     return db.collection("projects").updateOne(
         { _id : project._id},
         { $pull:  {task:  project.task[pos]}}
