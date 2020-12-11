@@ -18,7 +18,7 @@ afterEach(async function () {
 })
 
 describe("Test sprintModel", function () {
-    it("Inserer un sprint", async function () {
+    it("Inserer un sprint et mettre a jour le nombre de sprint", async function () {
         await projectModel.insertProject(db, "Name", "Description", "2", "10/12/2020", "10/12/2020")
         let projects = await projectModel.getAllProject(db)
         let projId = projects[projects.length - 1]._id
@@ -28,8 +28,11 @@ describe("Test sprintModel", function () {
         await sprintModel.insertSprint(db, projId, sprintId, sprintDate, sprintDesc)
         let projectSprint = await projectModel.getProjectId(db, projId)
         let sprint = await projectSprint.sprint[projectSprint.sprint.length - 1]
+        await sprintModel.updateSprintNumber(db, projId, projectSprint.sprint.length)
+        projectSprint = await projectModel.getProjectId(db, projId)
         sprint.id.should.equal("Sprint " + sprintId)
         sprint.beginDate.should.equal(sprintDate)
         sprint.description.should.equal(sprintDesc)
+        projectSprint.nbSprint.should.equal(projectSprint.sprint.length)
     })
 })
