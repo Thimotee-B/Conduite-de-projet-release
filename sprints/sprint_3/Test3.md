@@ -94,12 +94,13 @@ Le test `end2end_test.js` reprend tous les tests précendents "d'une passe"
 Il vous faut une BDD Mongo locale (sur `mongodb://127.0.0.1:27017`) sans quoi les tests ne pourront pas se lancer manuellement
 
 | Nom du test | Déroulement | Résultat |
-|:-------------|:-------------|:----------|:----:|
+|:-------------|:-------------|:----------|
 | projectModel : Recupérer tous les projets | - test de la fonction `getAllProject` | Tous les projets doivent être recupérés |
 | projectModel : Ajouter un projet | - test de la fonction `insertProject` | Un projet doit être crée |
 | projectModel : Recupérer un projet par ID | - test de la fonction `getProjectId` | Le projet recupéré par la fonction doit correspondre au projet voulu (deep equals) |
 | projectModel : Modifier un projet | - test de la fonction `updateProject` | Le projet recupéré après la fonction update doit correspondre au changement demandés |
 | sprintModel : Inserer un sprint et mettre à jour le nombre de sprint | - test de la fonction `insertSprint` et `updateSprintNumber` | Le sprint doit être ajouté au projet et le nombre de sprint dans le projet doit correspondre à la taille du tableau des sprints |
+
 
 ### Lancer les tests
 
