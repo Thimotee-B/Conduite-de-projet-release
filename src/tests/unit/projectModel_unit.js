@@ -48,12 +48,3 @@ describe("Test projectModel", function () {
         projectID.sprintDelay.should.equal(newSprint)
     })
 })
-
-
-//     MongoClient.connect(connectionString, { useUnifiedTopology: true })
-//         .then(client => {
-//             console.log("Connected to Database")
-//             const db = client.db("MAIN_DATABASE")
-//         })
-// });
-
