@@ -5,7 +5,7 @@ const bodyParser        = require("body-parser")
 const express           = require("express")
 const path              = require("path")
 const app               = express()
-const connectionString  = "mongodb+srv://cdp2020:cdp2020@clustercdp.8wan9.mongodb.net/cdp2020?retryWrites=true&w=majority" 
+const connectionString  = "MONGO_DB_CONNEXION" 
 const port              = 3000
 
 // eslint-disable-next-line no-undef
